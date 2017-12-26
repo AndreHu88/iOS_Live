@@ -17,6 +17,17 @@
 #define DLog(...)
 #endif
 
+#define  KAdjustsScrollViewInsets_NO(vc,scrollView)\
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"") \
+if (@available(iOS 11.0,*))  {\
+scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;\
+} else {\
+self.automaticallyAdjustsScrollViewInsets = NO;\
+}\
+_Pragma("clang diagnostic pop") \
+
+
 /** ----------------------------设备信息---------------------------------
  --------------------------------------------------------------------*/
 #pragma mark - 设备信息

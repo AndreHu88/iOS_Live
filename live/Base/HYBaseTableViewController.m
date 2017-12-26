@@ -68,7 +68,19 @@
 }
 
 
+#pragma mark - 没有数据
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
+    
+    NSString *text = @"没有数据啊，在等等吧";
+    NSDictionary *attributes = @{NSFontAttributeName : KFitFont(14),NSForegroundColorAttributeName : KAPP_b7b7b7_COLOR};
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
 
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView{
+    
+    UIImage *image = [UIImage imageNamed:@"searchNoData"];
+    return image;
+}
 
 
 #pragma mark - lazyload

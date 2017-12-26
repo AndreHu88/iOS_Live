@@ -7,6 +7,7 @@
 //
 
 #import "HYCustomTabBar.h"
+#import "HYHomeLaunchView.h"
 
 @implementation HYCustomTabBar
 
@@ -69,7 +70,9 @@
 #pragma mark - action
 - (void)clickCenterBtn:(UIButton *)sender{
     
-    
+    HYHomeLaunchView *launchView = [[HYHomeLaunchView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [KEYWINDOW addSubview:launchView];
+    [launchView showLaunchView];
 }
 
 // 重写hitTest方法，让超出tabBar部分也能响应事件

@@ -130,7 +130,6 @@
     CGFloat precent = translationPoint.y / KSCREEN_HEIGHT;
     precent = precent < 0 ? 0 : precent;
     precent = precent > 1 ? 1 : precent;
-    DLog(@"---拖动了:%%%f",precent);
     return precent;
 }
 

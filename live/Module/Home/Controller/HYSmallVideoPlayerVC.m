@@ -112,8 +112,11 @@
             self.transition.screenShotImg = self.snapImage;
             self.transition.transitionBeforeImgView = self.bgImgView;
             self.tabBarController.tabBar.hidden = NO;
+            if (self.player.isPlaying) {
+                
+                [self.player pause];
+            }
             self.bottomView.hidden = self.player.view.hidden = YES;
-            [self.player pause];
             [self.navigationController popViewControllerAnimated:YES];
 
         }
@@ -147,7 +150,10 @@
             self.transition = nil;
             self.navigationController.delegate = self.transition;
             self.bottomView.hidden = self.player.view.hidden = NO;
-            [self.player play];
+            if (!self.player.isPlaying) {
+                
+                [self.player play];
+            }
             break;
         default:
             break;

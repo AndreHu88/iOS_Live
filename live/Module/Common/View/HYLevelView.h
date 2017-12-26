@@ -12,4 +12,8 @@
 
 - (instancetype)initWithFrame:(CGRect)frame andLevel:(NSInteger)level;
 
+
+/** 等级 */
+@property (nonatomic,strong) NSString *level;
+
 @end

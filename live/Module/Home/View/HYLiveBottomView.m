@@ -76,8 +76,8 @@
     }];
     
     [self layoutIfNeeded];
-    _badgeLabel.p_centerX = _messageBtn.imageView.center.x + _messageBtn.left;
-    _badgeLabel.p_centerY = _messageBtn.imageView.center.y + _messageBtn.left;
+    _badgeLabel.p_x =  _messageBtn.right - 14 * WIDTH_MULTIPLE;
+    _badgeLabel.p_y = _messageBtn.top + 4 * WIDTH_MULTIPLE;
 }
 
 #pragma mark - setViewModel

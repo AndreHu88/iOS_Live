@@ -37,5 +37,6 @@
 #import "HYRefreshGifHeader.h"
 #import "HYBaseTableViewController.h"
 #import "HYLoadingManager.h"
+#import "HYLevelView.h"
 
 #endif /* PrefixHeader_pch */

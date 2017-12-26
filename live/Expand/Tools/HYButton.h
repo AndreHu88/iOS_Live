@@ -10,4 +10,6 @@
 
 @interface HYButton : UIButton
 
+- (void)shakeAnimationWithDelay:(CGFloat)delay;
+
 @end

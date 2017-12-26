@@ -39,19 +39,15 @@ static NSString *cellID = @"smallVideoCellID";
     
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
-    self.edgesForExtendedLayout = UIRectEdgeAll;
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    KAdjustsScrollViewInsets_NO(self, self.collectionView);
+}
 
-    if (@available(iOS 11.0, *)){
-        
-        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
-    }
-    else {
-        self.automaticallyAdjustsScrollViewInsets = NO;
-
-    }
+- (void)viewDidLayoutSubviews{
     
-    
+    [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.edges.equalTo(self.view);
+    }];
 }
 
 - (void)requestData{
@@ -136,11 +132,11 @@ static NSString *cellID = @"smallVideoCellID";
         CGFloat padding = 6 * WIDTH_MULTIPLE;
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        layout.itemSize = CGSizeMake((KSCREEN_WIDTH - padding * 2) / 2 - padding / 2, 300 * WIDTH_MULTIPLE);
+        layout.itemSize = CGSizeMake((KSCREEN_WIDTH - padding * 2 - padding) / 2, 300 * WIDTH_MULTIPLE);
         layout.minimumLineSpacing = 0;
         layout.minimumInteritemSpacing = 0;
         layout.sectionInset = UIEdgeInsetsMake(0, padding, 0, padding);
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, KSCREEN_WIDTH, KSCREEN_HEIGHT - 64 - 49) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;

@@ -7,6 +7,7 @@
 //
 
 #import "HYNetWorkHandle.h"
+#import "HYNearLiveModel.h"
 
 @implementation HYNetWorkHandle
 
@@ -122,11 +123,25 @@
                 NSArray *array = returnData[@"lives"];
                 if (array.count) {
                     
-                    complection(array);
+                    //多线程中去处理数据
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        
+                        NSMutableArray *tempArray = [NSMutableArray array];
+                        [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            
+                            HYNearLiveModel *model = [HYNearLiveModel modelWithDictionary:obj];
+                            [tempArray addObject:model];
+                        }];
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                            complection(tempArray);
+                        });
+                    });
                 }
                 else{
                     
-                    complection(array);
+                    complection(nil);
                 }
             }
             else{
