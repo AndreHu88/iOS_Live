@@ -80,6 +80,7 @@
 		04CAEE7D1FF233CC001127B5 /* HYHomeLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CAEE7C1FF233CC001127B5 /* HYHomeLaunchView.m */; };
 		04D6D5AA1FDF820A00A75EE4 /* HYFansView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D6D5A91FDF820A00A75EE4 /* HYFansView.m */; };
 		04FFF9D21FF117CF00C93F70 /* HYNearLiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FFF9D11FF117CF00C93F70 /* HYNearLiveModel.m */; };
+		B547A48F20ABC574008FBA0E /* HYPresentAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */; };
 		DBA029A2360017E7D515EAAA /* libPods-live.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C21482B5397D3E4C7A82646A /* libPods-live.a */; };
 /* End PBXBuildFile section */
 
@@ -232,6 +233,8 @@
 		04FFF9D11FF117CF00C93F70 /* HYNearLiveModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYNearLiveModel.m; sourceTree = "<group>"; };
 		12C23243CF2F103DAF33DE3F /* Pods-live.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-live.debug.xcconfig"; path = "Pods/Target Support Files/Pods-live/Pods-live.debug.xcconfig"; sourceTree = "<group>"; };
 		7199097CD39ED884F3733F58 /* Pods-live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-live.release.xcconfig"; path = "Pods/Target Support Files/Pods-live/Pods-live.release.xcconfig"; sourceTree = "<group>"; };
+		B547A48D20ABC574008FBA0E /* HYPresentAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPresentAnimator.h; sourceTree = "<group>"; };
+		B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPresentAnimator.m; sourceTree = "<group>"; };
 		C21482B5397D3E4C7A82646A /* libPods-live.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-live.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -408,6 +411,8 @@
 				042572D61FC56D8F0040A10A /* SAMTextView.m */,
 				042572D71FC56D8F0040A10A /* UILabel+HYJustifyAlign.h */,
 				042572D81FC56D8F0040A10A /* UILabel+HYJustifyAlign.m */,
+				B547A48D20ABC574008FBA0E /* HYPresentAnimator.h */,
+				B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -976,6 +981,7 @@
 				042C22B61FCD590F00DFD274 /* HYLiveViewModel.m in Sources */,
 				04CAEE7D1FF233CC001127B5 /* HYHomeLaunchView.m in Sources */,
 				042572E01FC56D8F0040A10A /* GTMBase64.m in Sources */,
+				B547A48F20ABC574008FBA0E /* HYPresentAnimator.m in Sources */,
 				046E5BB01FD9238A00ED04FA /* HYSmallVideoCollectionCell.m in Sources */,
 				041F8D361FF1E20F001E952A /* HYNearCollectionViewCell.m in Sources */,
 				049AD3A11FDA3AED009252A4 /* HYImageInteractiveDriven.m in Sources */,
