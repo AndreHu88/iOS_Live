@@ -74,13 +74,13 @@
             make.top.equalTo(self.mas_bottom).offset(-200 * WIDTH_MULTIPLE);
         }];
         
-        [UIView animateWithDuration:0.6 animations:^{
+        [UIView animateWithDuration:0.3 animations:^{
            
             self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
             [self setNeedsUpdateConstraints];
             [self layoutIfNeeded];
             
-            float j = 0.1;
+            float j = 0.2;
             for (NSInteger i = 0; i < self.subviews.count; i++) {
                 
                 UIView *button = self.subviews[i];
@@ -88,7 +88,8 @@
                     
                     HYButton *btn = (HYButton *)button;
                     [btn shakeAnimationWithDelay:j];
-                    j += 0.1;
+        
+                    j += 3;
                 }
             }
         }];

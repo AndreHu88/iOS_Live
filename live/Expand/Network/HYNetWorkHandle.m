@@ -20,7 +20,7 @@
             NSInteger code = [[returnData objectForKey:@"dm_error"] integerValue];
             if (code == 0) {
                 
-                NSArray *array = returnData[@"lives"];
+                NSArray *array = returnData[@"data"];
                 if (array.count) {
                     
                     complection(array);

@@ -42,9 +42,9 @@
             
             [self.datalist removeAllObjects];
             
-            [datalist enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [datalist enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL * _Nonnull stop) {
                 
-                HYHotLiveModel *model = [HYHotLiveModel modelWithDictionary:obj];
+                HYHotLiveModel *model = [HYHotLiveModel modelWithDictionary:dict[@"live"]];
                 [self.datalist addObject:model];
             }];
             

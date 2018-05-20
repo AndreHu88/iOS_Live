@@ -17,15 +17,15 @@
 #define API_DomainStr           @"http://service.ingkee.com"
 
 /** 热门直播 */
-#define API_HotLive             @"api/live/aggregation?uid=133825214&interest=1&count=20"
+#define API_HotLive             @"api/live/recommend"
 
 /** 小视频 */
-#define API_SmallVideo             @"api/feeds_tab/recommends?limit=10"
+#define API_SmallVideo             @"api/feeds_tab/nearby?limit=20&start=0&uid=268945518"
 
 /** 吃鸡 */
 #define API_EatChicken            @"api/live/themesearch?keyword=F2BEA36EB1AB0C13"
 
 /** 附近直播 */
-#define API_NearLive(lat,lon) [NSString stringWithFormat:@"api/live/near_recommend?uid=268945519&latitude=%@&longitude=%@",lat,lon]
+#define API_NearLive(lat,lon)     [NSString stringWithFormat:@"api/live/near_recommend?uid=268945519&latitude=%@&longitude=%@",lat,lon]
 
 #endif

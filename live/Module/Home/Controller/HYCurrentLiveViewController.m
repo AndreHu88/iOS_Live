@@ -37,6 +37,7 @@
     self.viewModel = [[HYLiveViewModel alloc] init];
     [self.viewModel setWithViewModel:self.liveModel];
     self.scrollView.viewModel = self.viewModel;
+    
     [_viewModel.closeLiveSubject subscribeNext:^(id x) {
        
         [self.navigationController popViewControllerAnimated:YES];
