@@ -80,6 +80,10 @@
 		04CAEE7D1FF233CC001127B5 /* HYHomeLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CAEE7C1FF233CC001127B5 /* HYHomeLaunchView.m */; };
 		04D6D5AA1FDF820A00A75EE4 /* HYFansView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D6D5A91FDF820A00A75EE4 /* HYFansView.m */; };
 		04FFF9D21FF117CF00C93F70 /* HYNearLiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FFF9D11FF117CF00C93F70 /* HYNearLiveModel.m */; };
+		B5465E2920B557C000118097 /* HYMusicHandleTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E2820B557C000118097 /* HYMusicHandleTool.m */; };
+		B5465E2C20B55B6900118097 /* HYMusicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E2B20B55B6900118097 /* HYMusicModel.m */; };
+		B5465E2F20B55B8300118097 /* HYLrcModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E2E20B55B8300118097 /* HYLrcModel.m */; };
+		B5465E3120B55B9D00118097 /* QQResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B5465E3020B55B9D00118097 /* QQResources.bundle */; };
 		B547A48F20ABC574008FBA0E /* HYPresentAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */; };
 		DBA029A2360017E7D515EAAA /* libPods-live.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C21482B5397D3E4C7A82646A /* libPods-live.a */; };
 /* End PBXBuildFile section */
@@ -233,6 +237,13 @@
 		04FFF9D11FF117CF00C93F70 /* HYNearLiveModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYNearLiveModel.m; sourceTree = "<group>"; };
 		12C23243CF2F103DAF33DE3F /* Pods-live.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-live.debug.xcconfig"; path = "Pods/Target Support Files/Pods-live/Pods-live.debug.xcconfig"; sourceTree = "<group>"; };
 		7199097CD39ED884F3733F58 /* Pods-live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-live.release.xcconfig"; path = "Pods/Target Support Files/Pods-live/Pods-live.release.xcconfig"; sourceTree = "<group>"; };
+		B5465E2720B557C000118097 /* HYMusicHandleTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicHandleTool.h; sourceTree = "<group>"; };
+		B5465E2820B557C000118097 /* HYMusicHandleTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMusicHandleTool.m; sourceTree = "<group>"; };
+		B5465E2A20B55B6900118097 /* HYMusicModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicModel.h; sourceTree = "<group>"; };
+		B5465E2B20B55B6900118097 /* HYMusicModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMusicModel.m; sourceTree = "<group>"; };
+		B5465E2D20B55B8300118097 /* HYLrcModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYLrcModel.h; sourceTree = "<group>"; };
+		B5465E2E20B55B8300118097 /* HYLrcModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYLrcModel.m; sourceTree = "<group>"; };
+		B5465E3020B55B9D00118097 /* QQResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = QQResources.bundle; sourceTree = "<group>"; };
 		B547A48D20ABC574008FBA0E /* HYPresentAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPresentAnimator.h; sourceTree = "<group>"; };
 		B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPresentAnimator.m; sourceTree = "<group>"; };
 		C21482B5397D3E4C7A82646A /* libPods-live.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-live.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -457,10 +468,11 @@
 		042C22761FCD590F00DFD274 /* Focus */ = {
 			isa = PBXGroup;
 			children = (
+				B5465E3020B55B9D00118097 /* QQResources.bundle */,
 				042C22771FCD590F00DFD274 /* Controller */,
-				042C227A1FCD590F00DFD274 /* Model */,
-				042C227B1FCD590F00DFD274 /* View */,
-				042C227C1FCD590F00DFD274 /* ViewModel */,
+				B5465E2520B557AD00118097 /* Model */,
+				B5465E2420B557AD00118097 /* View */,
+				B5465E2620B557AD00118097 /* ViewModel */,
 			);
 			path = Focus;
 			sourceTree = "<group>";
@@ -472,27 +484,6 @@
 				042C22791FCD590F00DFD274 /* HYFocusViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		042C227A1FCD590F00DFD274 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		042C227B1FCD590F00DFD274 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		042C227C1FCD590F00DFD274 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		042C227D1FCD590F00DFD274 /* Home */ = {
@@ -793,6 +784,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B5465E2420B557AD00118097 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B5465E2520B557AD00118097 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B5465E2A20B55B6900118097 /* HYMusicModel.h */,
+				B5465E2B20B55B6900118097 /* HYMusicModel.m */,
+				B5465E2D20B55B8300118097 /* HYLrcModel.h */,
+				B5465E2E20B55B8300118097 /* HYLrcModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B5465E2620B557AD00118097 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B5465E2720B557C000118097 /* HYMusicHandleTool.h */,
+				B5465E2820B557C000118097 /* HYMusicHandleTool.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -856,6 +874,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04CAEE731FF232D4001127B5 /* EmojisList.plist in Resources */,
+				B5465E3120B55B9D00118097 /* QQResources.bundle in Resources */,
 				047EC34E1FC6C75B0075A08D /* navigation.mp4 in Resources */,
 				042572AB1FC56CF30040A10A /* Info.plist in Resources */,
 				042572DE1FC56D8F0040A10A /* sms-received.caf in Resources */,
@@ -936,8 +955,10 @@
 				042572D91FC56D8F0040A10A /* HTTPManager.m in Sources */,
 				046E5BB61FD93DA200ED04FA /* HYSmallVideoPlayerVC.m in Sources */,
 				042572EC1FC56D8F0040A10A /* UILabel+HYJustifyAlign.m in Sources */,
+				B5465E2920B557C000118097 /* HYMusicHandleTool.m in Sources */,
 				042C22AC1FCD590F00DFD274 /* HYHotLiveViewController.m in Sources */,
 				042C22AA1FCD590F00DFD274 /* HYCurrentLiveViewController.m in Sources */,
+				B5465E2C20B55B6900118097 /* HYMusicModel.m in Sources */,
 				042572F31FC56DBA0040A10A /* Const.m in Sources */,
 				042C22AD1FCD590F00DFD274 /* HYLiveControllerVC.m in Sources */,
 				04875B6C1FD95B800031FDA8 /* HYImageTransition.m in Sources */,
@@ -954,6 +975,7 @@
 				042572E91FC56D8F0040A10A /* MBProgressHUD+HYExtension.m in Sources */,
 				042572E41FC56D8F0040A10A /* HYLabel.m in Sources */,
 				042C22BE1FCD5F4800DFD274 /* HYBaseTableViewController.m in Sources */,
+				B5465E2F20B55B8300118097 /* HYLrcModel.m in Sources */,
 				042572E51FC56D8F0040A10A /* HYPhoneInfo.m in Sources */,
 				0433B3E01FDE81DD0089B34E /* HYLocationManager.m in Sources */,
 				046E5BA61FD8E59D00ED04FA /* HYLoadingManager.m in Sources */,
