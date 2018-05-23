@@ -7,10 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HYMusicModel.h"
 
 @interface HYMusicHandleTool : NSObject
 
 + (instancetype)shareInstance;
 
+@property (nonatomic,strong) NSArray <HYMusicModel *> *musicList;
+
+- (HYMusicModel *)getCurrentMusicModel;
+
+- (BOOL)playMusicWithModel:(HYMusicModel *)model;
+
+- (void)playCurrentMusic;
+
+- (void)pauseCurrentMusic;
+
+- (BOOL)playNextMusic;
+
+- (BOOL)playPreviousMusic;
+
+- (void)seekToTime:(NSTimeInterval)timeInterval;
 
 @end

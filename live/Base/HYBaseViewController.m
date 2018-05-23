@@ -50,8 +50,12 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(backBtnAction)];
-    self.navigationItem.leftBarButtonItem = backItem;
+    if (self.navigationController.viewControllers.count > 1) {
+        
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"global_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backBtnAction)];
+        self.navigationItem.leftBarButtonItem = backItem;
+    }
+    
 }
 
 - (void)backBtnAction{

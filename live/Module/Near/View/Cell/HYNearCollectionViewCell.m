@@ -65,7 +65,7 @@
 - (void)setModel:(HYNearLiveModel *)model{
     
     _model = model;
-    [_thumbnailImgView sd_setImageWithURL:[NSURL URLWithString:model.creator.portrait] placeholderImage:[UIImage imageNamed:@"ig_home_header_placeholder"]];
+    [_thumbnailImgView sd_setImageWithURL:[NSURL URLWithString:model.creator.portrait] placeholderImage:[UIImage imageNamed:@"default_room"]];
     _levelView.level = model.creator.level;
     _distanceLabel.text = model.distance;
 }
