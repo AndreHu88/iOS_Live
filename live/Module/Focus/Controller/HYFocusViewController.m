@@ -22,9 +22,19 @@
     
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
+    [self setupNav];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+}
+
+- (void)setupNav{
+    
+    [super setupNav];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    self.navigationController.navigationBar.barTintColor = KAPP_NETEASE_COLOR;
+    self.title = @"仿网易云";
 }
 
 #pragma mark - tableViewDelegate DataSource

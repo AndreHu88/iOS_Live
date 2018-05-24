@@ -68,6 +68,8 @@ _Pragma("clang diagnostic pop") \
 #define KAPP_THEME_COLOR                   [UIColor colorWithHexString:@"00D8C9"]
 /** APP导航栏颜色 */
 #define KAPP_NAV_COLOR                   [UIColor colorWithHexString:@"00D8C9"]
+/** 网易颜色 */
+#define KAPP_NETEASE_COLOR                   [UIColor colorWithHexString:@"c82627"]
 /** 白色 */
 #define KAPP_WHITE_COLOR                   [UIColor whiteColor]
 /** 黑色 */

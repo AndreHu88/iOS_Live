@@ -19,8 +19,45 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    [super setupNav];
     [self setupSubViews];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    [self setupNav];
+}
+
+- (void)setupNav{
+    
+//    [super setupNav];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+//    self.navigationController.navigationBar.backgroundColor = KAPP_Clear_COLOR;
+//    self.navigationController.navigationBar.barTintColor = KAPP_Clear_COLOR;
+    [self setNeedsNavigationBackground:0];
+}
+
+- (void)setNeedsNavigationBackground:(CGFloat)alpha {
+    // _UIBarBackground
+    UIView *barBackgroundView = [[self.navigationController.navigationBar subviews] objectAtIndex:0];
+    // UIImageView
+    UIImageView *backgroundImageView = [[barBackgroundView subviews] objectAtIndex:0];
+    if (self.navigationController.navigationBar.isTranslucent) {
+        if (backgroundImageView != nil && backgroundImageView.image != nil) {
+            barBackgroundView.alpha = alpha;
+        } else {
+            UIView *backgroundEffectView = [[barBackgroundView subviews] objectAtIndex:1];// UIVisualEffectView
+            if (backgroundEffectView != nil) {
+                backgroundEffectView.alpha = alpha;
+            }
+        }
+    } else {
+        barBackgroundView.alpha = alpha;
+    }
+    
+    // 对导航栏下面那条线做处理
+    self.navigationController.navigationBar.clipsToBounds = alpha == 0.0;
 }
 
 - (void)setupSubViews{
