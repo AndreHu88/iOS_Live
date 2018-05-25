@@ -16,4 +16,6 @@
 
 - (void)backBtnAction;
 
++ (UIViewController *)getCurrentVC;
+
 @end

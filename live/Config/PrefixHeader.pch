@@ -38,5 +38,7 @@
 #import "HYBaseTableViewController.h"
 #import "HYLoadingManager.h"
 #import "HYLevelView.h"
+#import "UIView+HYCommon.h"
+#import "ObjcRuntime.h"
 
 #endif /* PrefixHeader_pch */
