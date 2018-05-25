@@ -48,7 +48,7 @@
     [self addChildViewController:nearVC title:@"附近" image:@"tab_near" selectImage:@"tab_near_p"];
     
     HYFocusViewController *focusVC = [HYFocusViewController new];
-    [self addChildViewController:focusVC title:@"关注" image:@"tab_following" selectImage:@"tab_following_p"];
+    [self addChildViewController:focusVC title:@"网易云" image:@"tab_following" selectImage:@"tab_following_p"];
     
     HYMineViewController *mineVC = [HYMineViewController new];
     [self addChildViewController:mineVC title:@"我的" image:@"tab_me" selectImage:@"tab_me_p"];

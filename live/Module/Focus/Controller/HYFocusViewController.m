@@ -25,6 +25,7 @@
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    
 }
 
 #pragma mark - tableViewDelegate DataSource
@@ -81,6 +82,7 @@
     }
     return _tableView;
 }
+
 
 
 - (void)didReceiveMemoryWarning {

@@ -86,7 +86,12 @@
 		B5465E2C20B55B6900118097 /* HYMusicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E2B20B55B6900118097 /* HYMusicModel.m */; };
 		B5465E2F20B55B8300118097 /* HYLrcModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E2E20B55B8300118097 /* HYLrcModel.m */; };
 		B5465E3120B55B9D00118097 /* QQResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B5465E3020B55B9D00118097 /* QQResources.bundle */; };
+		B5465E5720B7D47600118097 /* HYBlankPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E5620B7D47600118097 /* HYBlankPageView.m */; };
+		B5465E5920B7EB3400118097 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = B5465E5820B7EB3300118097 /* loading.gif */; };
+		B5465E5D20B7FC4B00118097 /* UITableViewCell+HYCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E5C20B7FC4B00118097 /* UITableViewCell+HYCommon.m */; };
+		B5465E6220B7FD7200118097 /* ObjcRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E6120B7FD7200118097 /* ObjcRuntime.m */; };
 		B547A48F20ABC574008FBA0E /* HYPresentAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */; };
+		B54E8CFC20B8017C00F6DCAD /* UIView+HYCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E8CFB20B8017C00F6DCAD /* UIView+HYCommon.m */; };
 		DBA029A2360017E7D515EAAA /* libPods-live.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C21482B5397D3E4C7A82646A /* libPods-live.a */; };
 /* End PBXBuildFile section */
 
@@ -250,8 +255,17 @@
 		B5465E2D20B55B8300118097 /* HYLrcModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYLrcModel.h; sourceTree = "<group>"; };
 		B5465E2E20B55B8300118097 /* HYLrcModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYLrcModel.m; sourceTree = "<group>"; };
 		B5465E3020B55B9D00118097 /* QQResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = QQResources.bundle; sourceTree = "<group>"; };
+		B5465E5520B7D47600118097 /* HYBlankPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYBlankPageView.h; sourceTree = "<group>"; };
+		B5465E5620B7D47600118097 /* HYBlankPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYBlankPageView.m; sourceTree = "<group>"; };
+		B5465E5820B7EB3300118097 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
+		B5465E5B20B7FC4B00118097 /* UITableViewCell+HYCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+HYCommon.h"; sourceTree = "<group>"; };
+		B5465E5C20B7FC4B00118097 /* UITableViewCell+HYCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+HYCommon.m"; sourceTree = "<group>"; };
+		B5465E6020B7FD7100118097 /* ObjcRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcRuntime.h; sourceTree = "<group>"; };
+		B5465E6120B7FD7200118097 /* ObjcRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcRuntime.m; sourceTree = "<group>"; };
 		B547A48D20ABC574008FBA0E /* HYPresentAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPresentAnimator.h; sourceTree = "<group>"; };
 		B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPresentAnimator.m; sourceTree = "<group>"; };
+		B54E8CFA20B8017C00F6DCAD /* UIView+HYCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+HYCommon.h"; path = "live/Expand/HYLoading/UIView+HYCommon.h"; sourceTree = SOURCE_ROOT; };
+		B54E8CFB20B8017C00F6DCAD /* UIView+HYCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+HYCommon.m"; path = "live/Expand/HYLoading/UIView+HYCommon.m"; sourceTree = SOURCE_ROOT; };
 		C21482B5397D3E4C7A82646A /* libPods-live.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-live.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -351,6 +365,8 @@
 		042572AC1FC56D8F0040A10A /* Expand */ = {
 			isa = PBXGroup;
 			children = (
+				B5465E5E20B7FD0C00118097 /* Utils */,
+				B5465E5A20B7FC0200118097 /* Category */,
 				04875B691FD95B4F0031FDA8 /* HYTransition */,
 				046E5BA11FD8E59D00ED04FA /* HYLoading */,
 				042572AD1FC56D8F0040A10A /* Network */,
@@ -718,10 +734,13 @@
 		046E5BA11FD8E59D00ED04FA /* HYLoading */ = {
 			isa = PBXGroup;
 			children = (
+				B5465E5820B7EB3300118097 /* loading.gif */,
 				046E5BA21FD8E59D00ED04FA /* HYLoadingManager.h */,
 				046E5BA31FD8E59D00ED04FA /* HYLoadingManager.m */,
 				046E5BA41FD8E59D00ED04FA /* HYLoadingView.h */,
 				046E5BA51FD8E59D00ED04FA /* HYLoadingView.m */,
+				B5465E5520B7D47600118097 /* HYBlankPageView.h */,
+				B5465E5620B7D47600118097 /* HYBlankPageView.m */,
 			);
 			path = HYLoading;
 			sourceTree = "<group>";
@@ -821,6 +840,34 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		B5465E5A20B7FC0200118097 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				B54E8CFA20B8017C00F6DCAD /* UIView+HYCommon.h */,
+				B54E8CFB20B8017C00F6DCAD /* UIView+HYCommon.m */,
+				B5465E5B20B7FC4B00118097 /* UITableViewCell+HYCommon.h */,
+				B5465E5C20B7FC4B00118097 /* UITableViewCell+HYCommon.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		B5465E5E20B7FD0C00118097 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B5465E5F20B7FD1E00118097 /* ObjRuntime */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B5465E5F20B7FD1E00118097 /* ObjRuntime */ = {
+			isa = PBXGroup;
+			children = (
+				B5465E6020B7FD7100118097 /* ObjcRuntime.h */,
+				B5465E6120B7FD7200118097 /* ObjcRuntime.m */,
+			);
+			path = ObjRuntime;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -887,6 +934,7 @@
 				B5465E3120B55B9D00118097 /* QQResources.bundle in Resources */,
 				047EC34E1FC6C75B0075A08D /* navigation.mp4 in Resources */,
 				042572AB1FC56CF30040A10A /* Info.plist in Resources */,
+				B5465E5920B7EB3400118097 /* loading.gif in Resources */,
 				042572DE1FC56D8F0040A10A /* sms-received.caf in Resources */,
 				042572891FC56A9C0040A10A /* Assets.xcassets in Resources */,
 			);
@@ -982,8 +1030,10 @@
 				04FFF9D21FF117CF00C93F70 /* HYNearLiveModel.m in Sources */,
 				042C22A91FCD590F00DFD274 /* HYFocusViewController.m in Sources */,
 				046E5BAD1FD91B0D00ED04FA /* HYSmallVideoViewController.m in Sources */,
+				B5465E5720B7D47600118097 /* HYBlankPageView.m in Sources */,
 				042572E11FC56D8F0040A10A /* HYButton.m in Sources */,
 				042572DD1FC56D8F0040A10A /* Reachability.m in Sources */,
+				B5465E6220B7FD7200118097 /* ObjcRuntime.m in Sources */,
 				042572E91FC56D8F0040A10A /* MBProgressHUD+HYExtension.m in Sources */,
 				042572E41FC56D8F0040A10A /* HYLabel.m in Sources */,
 				042C22BE1FCD5F4800DFD274 /* HYBaseTableViewController.m in Sources */,
@@ -1020,12 +1070,14 @@
 				041F8D361FF1E20F001E952A /* HYNearCollectionViewCell.m in Sources */,
 				049AD3A11FDA3AED009252A4 /* HYImageInteractiveDriven.m in Sources */,
 				0425728F1FC56A9C0040A10A /* main.m in Sources */,
+				B5465E5D20B7FC4B00118097 /* UITableViewCell+HYCommon.m in Sources */,
 				042572E71FC56D8F0040A10A /* HYReachabilityManager.m in Sources */,
 				042C22EB1FD0EF1700DFD274 /* HYChatInputView.m in Sources */,
 				042572E81FC56D8F0040A10A /* JRToast.m in Sources */,
 				042572FF1FC5761F0040A10A /* HYTabBarController.m in Sources */,
 				042C22BB1FCD5BA200DFD274 /* HYEatChickenViewController.m in Sources */,
 				042C22491FC8180600DFD274 /* HYNetWorkHandle.m in Sources */,
+				B54E8CFC20B8017C00F6DCAD /* UIView+HYCommon.m in Sources */,
 				042C22B81FCD590F00DFD274 /* HYNearViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
