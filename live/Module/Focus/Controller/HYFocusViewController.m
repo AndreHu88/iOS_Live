@@ -29,13 +29,16 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [self setupNav];
+}
+
+
 - (void)setupNav{
     
-    [super setupNav];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    self.navigationController.navigationBar.barTintColor = KAPP_NETEASE_COLOR;
-    self.title = @"仿网易云";
+    [self wr_setNavBarBarTintColor:KAPP_NETEASE_COLOR];
+    self.title = @"网易云";
 }
 
 #pragma mark - tableViewDelegate DataSource

@@ -28,6 +28,14 @@
 }
 
 
+- (void)setupNavBarAppearence{
+    
+    [WRNavigationBar wr_setDefaultStatusBarStyle:UIStatusBarStyleDefault];
+    [WRNavigationBar wr_setDefaultNavBarTintColor:KAPP_THEME_COLOR];
+    [WRNavigationBar wr_setDefaultNavBarTitleColor:KAPP_WHITE_COLOR];
+}
+
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     
     

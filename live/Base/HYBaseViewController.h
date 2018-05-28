@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WRCustomNavigationBar.h>
 
 @interface HYBaseViewController : UIViewController
+
+@property (nonatomic, strong) WRCustomNavigationBar *customNavBar;
 
 - (void)setStatusBarBackgroundColor:(UIColor *)color;
 

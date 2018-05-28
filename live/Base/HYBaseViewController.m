@@ -18,12 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self setupNav];
-    
     self.view.backgroundColor = KAPP_TableView_BgColor;
     [self setStatusBarBackgroundColor:[UIColor clearColor]];
-
     
 }
 
@@ -36,20 +34,26 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
-    //设置导航栏的颜色
-    self.navigationController.navigationBar.barTintColor = KAPP_NAV_COLOR;
-    //设置导航栏的字体颜色
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSForegroundColorAttributeName:KAPP_WHITE_COLOR}];
-    self.navigationController.navigationBar.translucent = NO;
-    
-    //设置返回按钮的颜色为白色
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//
+//    //设置导航栏的颜色
+//    self.navigationController.navigationBar.barTintColor = KAPP_NAV_COLOR;
+//    //设置导航栏的字体颜色
+//    [self.navigationController.navigationBar setTitleTextAttributes:
+//     @{NSForegroundColorAttributeName:KAPP_WHITE_COLOR}];
+//    self.navigationController.navigationBar.translucent = NO;
+//
+//    //设置返回按钮的颜色为白色
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+
+    [self wr_setNavBarTintColor:KAPP_WHITE_COLOR];
+    [self wr_setNavBarTitleColor:KAPP_WHITE_COLOR];
+    [self wr_setStatusBarStyle:UIStatusBarStyleDefault];
+    [self wr_setNavBarBackgroundAlpha:1.0];
+    [self wr_setNavBarBarTintColor:KAPP_THEME_COLOR];
     
     if (self.navigationController.viewControllers.count > 1) {
         

@@ -1,4 +1,4 @@
-//
+  //
 //  HYHomeViewController.m
 //  live
 //
@@ -35,18 +35,6 @@
     [self setStatusBarBackgroundColor:KAPP_Clear_COLOR];
     [self setupChildVC];
     [self addTitleView];
-}
-
-- (void)setupNav{
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    //设置导航栏的字体颜色
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSForegroundColorAttributeName:KAPP_WHITE_COLOR}];
-    
-    
 }
 
 - (void)setupChildVC{

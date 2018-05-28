@@ -56,6 +56,17 @@ static HYMusicHandleTool *tool;
 }
 
 #pragma mark - publicMethod
+- (BOOL)playMusicWithModel:(HYMusicModel *)model{
+    
+    NSString *fileName = model.filename;
+    BOOL isPlaySucceed = [self.musicTool playMusic:fileName];
+    if (self.musicList.count < 1) {
+        return NO;
+    }
+    self.currentIndex = [self.musicList indexOfObject:model];
+    return isPlaySucceed;
+}
+
 
 #pragma mark - setter
 - (void)setCurrentIndex:(NSInteger)currentIndex{
@@ -86,5 +97,6 @@ static HYMusicHandleTool *tool;
     }
     return _musicList;
 }
+
 
 @end

@@ -70,9 +70,7 @@
         self.frame = CGRectMake(0, offset, self.width, self.height);
     }
     [self setupMasonryLayout];
-    if (self.reloadButtonBlock) {
-        self.reloadButtonBlock = block;
-    }
+    self.reloadButtonBlock = block;
 }
 
 - (void)setupSubView{
@@ -90,21 +88,21 @@
        
         make.size.mas_equalTo(CGSizeMake(160, 160));
         make.centerX.equalTo(self);
-        make.top.equalTo(self.mas_bottom).multipliedBy(0.3);
+        make.top.equalTo(self.mas_bottom).multipliedBy(0.25);
     }];
     
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
        
         make.left.equalTo(self).offset(30);
         make.right.equalTo(self).offset(-30);
-        make.top.equalTo(self.iconImageView.mas_bottom).offset(30);
+        make.top.equalTo(self.iconImageView.mas_bottom).offset(50);
     }];
     
     [_tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.right.equalTo(_titleLabel);
         if (_titleLabel.text.length > 0) {
-            make.top.equalTo(self.titleLabel.mas_bottom).offset(30);
+            make.top.equalTo(self.titleLabel.mas_bottom).offset(50);
         }
         else{
             make.top.equalTo(self.iconImageView.mas_bottom);

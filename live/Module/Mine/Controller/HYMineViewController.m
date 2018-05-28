@@ -17,8 +17,11 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-   
     [self.view beginLoading];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
     
     __weak typeof(self) weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -29,16 +32,6 @@
             [weakSelf.view beginLoading];
         }];
     });
-}
-
-- (void)setupNav{
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    //设置导航栏的字体颜色
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSForegroundColorAttributeName:KAPP_WHITE_COLOR}];
 }
 
 - (void)didReceiveMemoryWarning {

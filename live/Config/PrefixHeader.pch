@@ -40,5 +40,6 @@
 #import "HYLevelView.h"
 #import "UIView+HYCommon.h"
 #import "ObjcRuntime.h"
+#import <WRNavigationBar.h>
 
 #endif /* PrefixHeader_pch */

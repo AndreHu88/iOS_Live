@@ -7,6 +7,7 @@
 //
 
 #import "HYMusicPlayerVC.h"
+#import "HYMusicHandleTool.h"
 
 @interface HYMusicPlayerVC ()
 
@@ -20,6 +21,7 @@
     
     [super viewDidLoad];
     [self setupSubViews];
+    self.title = self.musicModel.name;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -30,35 +32,16 @@
 
 - (void)setupNav{
     
-//    [super setupNav];
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-//    self.navigationController.navigationBar.backgroundColor = KAPP_Clear_COLOR;
-//    self.navigationController.navigationBar.barTintColor = KAPP_Clear_COLOR;
-    [self setNeedsNavigationBackground:0];
+    // 设置初始导航栏透明度
+    [self wr_setNavBarBackgroundAlpha:0];
+    // 设置导航栏按钮和标题颜色
+    [self wr_setNavBarTintColor:[UIColor whiteColor]];
+    [self wr_setNavBarTitleColor:KAPP_WHITE_COLOR];
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"global_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backBtnAction)];
+    self.navigationItem.leftBarButtonItem = backItem;
 }
 
-- (void)setNeedsNavigationBackground:(CGFloat)alpha {
-    // _UIBarBackground
-    UIView *barBackgroundView = [[self.navigationController.navigationBar subviews] objectAtIndex:0];
-    // UIImageView
-    UIImageView *backgroundImageView = [[barBackgroundView subviews] objectAtIndex:0];
-    if (self.navigationController.navigationBar.isTranslucent) {
-        if (backgroundImageView != nil && backgroundImageView.image != nil) {
-            barBackgroundView.alpha = alpha;
-        } else {
-            UIView *backgroundEffectView = [[barBackgroundView subviews] objectAtIndex:1];// UIVisualEffectView
-            if (backgroundEffectView != nil) {
-                backgroundEffectView.alpha = alpha;
-            }
-        }
-    } else {
-        barBackgroundView.alpha = alpha;
-    }
-    
-    // 对导航栏下面那条线做处理
-    self.navigationController.navigationBar.clipsToBounds = alpha == 0.0;
-}
 
 - (void)setupSubViews{
     
@@ -70,12 +53,24 @@
     }];
 }
 
+#pragma mark - setter
+- (void)setMusicModel:(HYMusicModel *)musicModel{
+    
+    _musicModel = musicModel;
+    [[HYMusicHandleTool shareInstance] playMusicWithModel:musicModel];
+}
+
 #pragma mark - lazyload
 - (UIImageView *)bgImageView{
     
     if (!_bgImageView) {
         
-        _bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"music_back"]];
+        _bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cm2_fm_bg"]];
+        // 添加模糊效果
+        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
+        effectView.frame = _bgImageView.bounds;
+        [_bgImageView addSubview:effectView];
     }
     return _bgImageView;
 }
