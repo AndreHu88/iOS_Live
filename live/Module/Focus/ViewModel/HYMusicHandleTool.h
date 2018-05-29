@@ -13,9 +13,14 @@
 
 + (instancetype)shareInstance;
 
+@property (nonatomic,assign) NSInteger currentIndex;
 @property (nonatomic,strong) NSArray <HYMusicModel *> *musicList;
 
 - (HYMusicModel *)getCurrentMusicModel;
+
+- (HYMusicModel *)previousMusicModel;
+
+- (HYMusicModel *)nextMusicModel;
 
 - (BOOL)playMusicWithModel:(HYMusicModel *)model;
 

@@ -41,5 +41,6 @@
 #import "UIView+HYCommon.h"
 #import "ObjcRuntime.h"
 #import <WRNavigationBar.h>
+#import "HYMusicHandleTool.h"
 
 #endif /* PrefixHeader_pch */

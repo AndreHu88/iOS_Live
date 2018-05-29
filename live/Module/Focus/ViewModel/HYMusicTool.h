@@ -21,4 +21,6 @@
  */
 - (BOOL)playMusic:(NSString *)musicName;
 
+- (BOOL)pauseMusicModel:(HYMusicModel *)musicModel;
+
 @end

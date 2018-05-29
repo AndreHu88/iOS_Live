@@ -29,15 +29,11 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    
-    [self setupNav];
-}
-
-
 - (void)setupNav{
     
     [self wr_setNavBarBarTintColor:KAPP_NETEASE_COLOR];
+    [self wr_setNavBarTitleColor:KAPP_WHITE_COLOR];
+    
     self.title = @"网易云";
 }
 
