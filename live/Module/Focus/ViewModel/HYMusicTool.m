@@ -42,7 +42,7 @@
     
     // 判断路径是否正确
     NSString *path = [[NSBundle mainBundle] pathForResource:@"QQResources" ofType:@"bundle"];
-     NSString *filePath = [[path stringByAppendingPathComponent:@"MP3s"] stringByAppendingPathComponent:musicName];
+    NSString *filePath = [[path stringByAppendingPathComponent:@"MP3s"] stringByAppendingPathComponent:musicName];
     NSURL *url = [NSURL fileURLWithPath:filePath];
     if (!url) {
         return NO;
@@ -72,6 +72,7 @@
     return YES;
 }
 
+<<<<<<< HEAD
 - (BOOL)pauseMusicModel:(HYMusicModel *)musicModel{
     
     if ([self.player isPlaying]) {
@@ -79,6 +80,32 @@
         [self.player stop];
     }
     return YES;
+=======
+- (void)pauseCurrentMusic{
+    
+    [self.player pause];
+}
+
+- (void)stopCurrentMusic{
+    
+    [self.player stop];
+}
+
+- (void)resumePlayCurrentMusic{
+    
+    [self.player play];
+}
+
+- (void)seekTo:(NSTimeInterval)timeInteval{
+    
+    self.player.currentTime = timeInteval;
+}
+
+#pragma mark - AudioPlayerDelegate
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
+    
+    DLog(@"歌曲播放完成");
+>>>>>>> d489a656d48062b111be591ee628720c16a30628
 }
 
 @end

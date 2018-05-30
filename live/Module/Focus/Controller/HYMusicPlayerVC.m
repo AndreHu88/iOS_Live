@@ -9,12 +9,18 @@
 #import "HYMusicPlayerVC.h"
 #import "HYMusicHandleTool.h"
 #import "HYMusicPlayerDiscView.h"
+#import "HYLyricView.h"
+#import "HYMusicControlView.h"
 
-@interface HYMusicPlayerVC () <HYMusicPlayerDiscViewDelegate>
+@interface HYMusicPlayerVC () <HYMusicPlayerDiscViewDelegate,HYMusicControlViewDelegate>
 
 @property (nonatomic,strong) UIImageView *bgImageView;
 @property (nonatomic,strong) HYMusicPlayerDiscView *discView;
 @property (nonatomic,strong) YYLabel *titleLabel;
+@property (nonatomic,strong) HYLyricView *lyricView;
+@property (nonatomic,strong) HYMusicControlView *musicControlView;
+/** 歌词定时器*/
+@property (nonatomic, weak) CADisplayLink *displayLink;
 
 @end
 
@@ -24,6 +30,7 @@
     
     [super viewDidLoad];
     [self setupSubViews];
+    [self addDisplayLink];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -48,13 +55,82 @@
 - (void)setupSubViews{
     
     [self.view addSubview:self.bgImageView];
+    [self.view addSubview:self.musicControlView];
     [self.view addSubview:self.discView];
-    
+    [self.view addSubview:self.lyricView];
     [_bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
        
         make.edges.equalTo(self.view);
     }];
     
+    [_musicControlView mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.left.right.bottom.equalTo(self.view);
+        make.height.mas_equalTo(170 * WIDTH_MULTIPLE);
+    }];
+    
+    [_lyricView mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.edges.equalTo(self.discView);
+    }];
+    
+    [_discView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showLyricView)]];
+    [_lyricView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showDiscView)]];
+    
+}
+
+#pragma mark - action
+- (void)showLyricView{
+    
+    self.lyricView.hidden = NO;
+    [UIView animateWithDuration:0.5 animations:^{
+       
+        self.lyricView.alpha = 1;
+        self.discView.alpha = 0;
+        
+    } completion:^(BOOL finished) {
+       
+        self.discView.hidden = YES;
+    }];
+}
+
+- (void)showDiscView{
+    
+    self.discView.hidden = NO;
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        self.lyricView.alpha = 0;
+        self.discView.alpha = 1;
+        
+    } completion:^(BOOL finished) {
+        
+        self.lyricView.hidden = YES;
+    }];
+}
+
+- (void)updateLrc{
+    
+   //获取当前的播放时长
+    HYMusicPlayInfoModel *musicInfoModel = [[HYMusicHandleTool shareInstance] getCurrentMusicPlayInfoModel];
+    [HYLyricHandleTool getLyricRowWithTime:musicInfoModel.currentPlayTime lyricModelArray:self.lyricView.lyricDataSource complection:^(NSInteger row, HYLrcModel *lyricModel) {
+        
+        self.lyricView.scrollRow = row;
+        //歌词进度
+        CGFloat progress = (musicInfoModel.currentPlayTime - lyricModel.beginTime) / (lyricModel.endTime - lyricModel.beginTime);
+        self.lyricView.progress = progress;
+    }];
+    
+}
+
+/** 定时更新 歌词面板信息*/
+- (void)addDisplayLink{
+    
+    if (!_displayLink) {
+        CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateLrc)];
+        self.displayLink = displayLink;
+        // 添加到 runloop
+        [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    }
 }
 
 #pragma mark - setter
@@ -65,6 +141,8 @@
     self.discView.musicModel = musicModel;
     
     [self setTitleLabelWithModel:musicModel];
+    [self setLyricWithModel:musicModel];
+    [self.musicControlView setupPlayBtn];
 }
 
 - (void)setTitleLabelWithModel:(HYMusicModel *)musicModel{
@@ -84,6 +162,12 @@
     self.navigationItem.titleView = self.titleLabel;
 }
 
+- (void)setLyricWithModel:(HYMusicModel *)musicModel{
+    
+    NSArray *lyricModelArray = [HYLyricHandleTool getLyricDataModelWithFileName:musicModel.lrcname];
+    self.lyricView.lyricDataSource = lyricModelArray;
+}
+
 #pragma mark - discViewDelegate
 - (void)discViewWillChangeModel:(HYMusicModel *)musicModel{
     
@@ -92,7 +176,20 @@
 
 - (void)discViewDidChangeModel:(HYMusicModel *)musicModel{
     
-    [self setTitleLabelWithModel:musicModel];
+    self.musicModel = musicModel;
+}
+
+#pragma mark - HYMusicControlViewDelegate
+- (void)controlView:(HYMusicControlView *)controlView didClickPrevious:(UIButton *)previousMusicButton{
+    
+    HYMusicModel *musicModel = [[HYMusicHandleTool shareInstance] previousMusicModel];
+    self.musicModel = musicModel;
+}
+
+- (void)controlView:(HYMusicControlView *)controlView didClickNextButton:(UIButton *)NextMusicButton{
+    
+    HYMusicModel *musicModel = [[HYMusicHandleTool shareInstance] nextMusicModel];
+    self.musicModel = musicModel;
 }
 
 #pragma mark - lazyload
@@ -114,7 +211,7 @@
     
     if (!_discView) {
         
-        _discView = [[HYMusicPlayerDiscView alloc] initWithFrame:CGRectMake(0, KIs_iPhoneX ? 88 : 64, KSCREEN_WIDTH, KSCREEN_HEIGHT - 200)];
+        _discView = [[HYMusicPlayerDiscView alloc] initWithFrame:CGRectMake(0, KIs_iPhoneX ? 88 : 64, KSCREEN_WIDTH, KSCREEN_HEIGHT - 170 * WIDTH_MULTIPLE - (KIs_iPhoneX ? 88 : 64))];
         _discView.delegate = self;
     }
     return _discView;
@@ -130,6 +227,25 @@
         _titleLabel.textColor = KAPP_WHITE_COLOR;
     }
     return _titleLabel;
+}
+
+- (HYMusicControlView *)musicControlView{
+    
+    if (!_musicControlView) {
+        
+        _musicControlView = [HYMusicControlView new];
+        _musicControlView.delegate = self;
+    }
+    return _musicControlView;
+}
+
+- (HYLyricView *)lyricView{
+    
+    if (!_lyricView) {
+        _lyricView = [[HYLyricView alloc] init];
+        _lyricView.hidden = YES;
+    }
+    return _lyricView;
 }
 
 - (void)didReceiveMemoryWarning {

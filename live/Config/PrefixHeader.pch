@@ -42,5 +42,7 @@
 #import "ObjcRuntime.h"
 #import <WRNavigationBar.h>
 #import "HYMusicHandleTool.h"
+#import "HYLyricHandleTool.h"
+#import "HYLyricTimeTool.h"
 
 #endif /* PrefixHeader_pch */
