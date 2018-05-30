@@ -2,8 +2,8 @@
 
 <div>
 <h2>iOS直播项目 && 音乐播放器</h2>
-  <h3>业余时间编写，慢慢完善</h3>
-<ul>
+<h3>业余时间编写，正在慢慢完善</h3>
+<h3>截图如下</h3>
 </div>
 <div>
     <img src="https://github.com/AndreHu88/iOS_Live/blob/master/screenshot/IMG_1876.PNG" width="24%">
