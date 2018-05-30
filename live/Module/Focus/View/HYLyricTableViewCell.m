@@ -53,7 +53,7 @@
         
         _lyricLabel = [[HYLyricLabel alloc] init];
         _lyricLabel.textColor = [UIColor whiteColor];
-        _lyricLabel.font = KFitFont(13);
+        _lyricLabel.font = KFitFont(14);
         _lyricLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _lyricLabel;

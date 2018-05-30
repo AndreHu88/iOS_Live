@@ -138,18 +138,14 @@ static HYMusicHandleTool *tool;
     if (!_musicList) {
         
         NSString *path = [[NSBundle mainBundle] pathForResource:@"QQResources" ofType:@"bundle"];
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSArray *arr = [NSArray arrayWithContentsOfFile:[path stringByAppendingPathComponent:@"Musics.plist"]];
+        NSMutableArray *tempArray = [NSMutableArray array];
+        for (NSDictionary *dict in arr) {
             
-            NSArray *arr = [NSArray arrayWithContentsOfFile:[path stringByAppendingPathComponent:@"Musics.plist"]];
-            NSMutableArray *tempArray = [NSMutableArray array];
-            for (NSDictionary *dict in arr) {
-                
-                HYMusicModel *model = [HYMusicModel modelWithDictionary:dict];
-                [tempArray addObject:model];
-            }
-            _musicList = tempArray.mutableCopy;
-        });
+            HYMusicModel *model = [HYMusicModel modelWithDictionary:dict];
+            [tempArray addObject:model];
+        }
+        _musicList = tempArray.mutableCopy;
     }
     return _musicList;
 }
