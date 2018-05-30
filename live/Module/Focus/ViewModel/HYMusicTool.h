@@ -21,6 +21,27 @@
  */
 - (BOOL)playMusic:(NSString *)musicName;
 
-- (BOOL)pauseMusicModel:(HYMusicModel *)musicModel;
+/**
+ *  暂停当前音乐
+ */
+- (void)pauseCurrentMusic;
+
+/**
+ *  继续播放当前音乐
+ */
+- (void)resumePlayCurrentMusic;
+
+
+/**
+ 停止当前音乐
+ */
+- (void)stopCurrentMusic;
+
+/**
+ *  指定播放进度
+ *
+ *  @param timeInteval 时间, 指定歌曲已经播放了多长时间
+ */
+- (void)seekTo:(NSTimeInterval)timeInteval;
 
 @end

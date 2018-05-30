@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HYLrcModel.h"
 
 @interface HYLyricView : UIView
+
+/** 歌词数据源 */
+@property (nonatomic,copy) NSArray<HYLrcModel *> *lyricDataSource;
+/** 指定歌词滚动到某一行*/
+@property (nonatomic, assign) NSInteger scrollRow;
+/** 当前歌词的播放进度*/
+@property (nonatomic, assign) CGFloat progress;
 
 @end

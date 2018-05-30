@@ -95,6 +95,12 @@
 		B5C1E6E420BCE5C000933D35 /* HYMusicPlayerDiscView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6E320BCE5C000933D35 /* HYMusicPlayerDiscView.m */; };
 		B5C1E6E720BCE6D600933D35 /* HYDiscView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6E620BCE6D600933D35 /* HYDiscView.m */; };
 		B5C1E6EA20BD3AEB00933D35 /* HYLyricView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6E920BD3AEB00933D35 /* HYLyricView.m */; };
+		B5C1E6ED20BE6DA100933D35 /* HYLyricTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6EC20BE6DA100933D35 /* HYLyricTableViewCell.m */; };
+		B5C1E6F020BE728100933D35 /* HYLyricHandleTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6EF20BE728100933D35 /* HYLyricHandleTool.m */; };
+		B5C1E6F320BE7B1F00933D35 /* HYLyricTimeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6F220BE7B1F00933D35 /* HYLyricTimeTool.m */; };
+		B5C1E6F620BE7D7600933D35 /* HYMusicControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6F520BE7D7600933D35 /* HYMusicControlView.m */; };
+		B5C1E6F920BE82BF00933D35 /* HYLyricLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6F820BE82BF00933D35 /* HYLyricLabel.m */; };
+		B5C1E6FC20BE8A3200933D35 /* HYMusicPlayInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6FB20BE8A3200933D35 /* HYMusicPlayInfoModel.m */; };
 		DBA029A2360017E7D515EAAA /* libPods-live.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C21482B5397D3E4C7A82646A /* libPods-live.a */; };
 /* End PBXBuildFile section */
 
@@ -275,6 +281,18 @@
 		B5C1E6E620BCE6D600933D35 /* HYDiscView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYDiscView.m; sourceTree = "<group>"; };
 		B5C1E6E820BD3AEB00933D35 /* HYLyricView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYLyricView.h; sourceTree = "<group>"; };
 		B5C1E6E920BD3AEB00933D35 /* HYLyricView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYLyricView.m; sourceTree = "<group>"; };
+		B5C1E6EB20BE6DA100933D35 /* HYLyricTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYLyricTableViewCell.h; sourceTree = "<group>"; };
+		B5C1E6EC20BE6DA100933D35 /* HYLyricTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYLyricTableViewCell.m; sourceTree = "<group>"; };
+		B5C1E6EE20BE728100933D35 /* HYLyricHandleTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYLyricHandleTool.h; sourceTree = "<group>"; };
+		B5C1E6EF20BE728100933D35 /* HYLyricHandleTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYLyricHandleTool.m; sourceTree = "<group>"; };
+		B5C1E6F120BE7B1F00933D35 /* HYLyricTimeTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYLyricTimeTool.h; sourceTree = "<group>"; };
+		B5C1E6F220BE7B1F00933D35 /* HYLyricTimeTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYLyricTimeTool.m; sourceTree = "<group>"; };
+		B5C1E6F420BE7D7600933D35 /* HYMusicControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicControlView.h; sourceTree = "<group>"; };
+		B5C1E6F520BE7D7600933D35 /* HYMusicControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMusicControlView.m; sourceTree = "<group>"; };
+		B5C1E6F720BE82BF00933D35 /* HYLyricLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYLyricLabel.h; sourceTree = "<group>"; };
+		B5C1E6F820BE82BF00933D35 /* HYLyricLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYLyricLabel.m; sourceTree = "<group>"; };
+		B5C1E6FA20BE8A3200933D35 /* HYMusicPlayInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicPlayInfoModel.h; sourceTree = "<group>"; };
+		B5C1E6FB20BE8A3200933D35 /* HYMusicPlayInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMusicPlayInfoModel.m; sourceTree = "<group>"; };
 		C21482B5397D3E4C7A82646A /* libPods-live.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-live.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -829,6 +847,12 @@
 				B5C1E6E620BCE6D600933D35 /* HYDiscView.m */,
 				B5C1E6E820BD3AEB00933D35 /* HYLyricView.h */,
 				B5C1E6E920BD3AEB00933D35 /* HYLyricView.m */,
+				B5C1E6EB20BE6DA100933D35 /* HYLyricTableViewCell.h */,
+				B5C1E6EC20BE6DA100933D35 /* HYLyricTableViewCell.m */,
+				B5C1E6F720BE82BF00933D35 /* HYLyricLabel.h */,
+				B5C1E6F820BE82BF00933D35 /* HYLyricLabel.m */,
+				B5C1E6F420BE7D7600933D35 /* HYMusicControlView.h */,
+				B5C1E6F520BE7D7600933D35 /* HYMusicControlView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -838,6 +862,8 @@
 			children = (
 				B5465E2A20B55B6900118097 /* HYMusicModel.h */,
 				B5465E2B20B55B6900118097 /* HYMusicModel.m */,
+				B5C1E6FA20BE8A3200933D35 /* HYMusicPlayInfoModel.h */,
+				B5C1E6FB20BE8A3200933D35 /* HYMusicPlayInfoModel.m */,
 				B5465E2D20B55B8300118097 /* HYLrcModel.h */,
 				B5465E2E20B55B8300118097 /* HYLrcModel.m */,
 			);
@@ -851,6 +877,10 @@
 				B5465E2820B557C000118097 /* HYMusicHandleTool.m */,
 				3EF31F0220B5A46A00F37D88 /* HYMusicTool.h */,
 				3EF31F0320B5A46A00F37D88 /* HYMusicTool.m */,
+				B5C1E6EE20BE728100933D35 /* HYLyricHandleTool.h */,
+				B5C1E6EF20BE728100933D35 /* HYLyricHandleTool.m */,
+				B5C1E6F120BE7B1F00933D35 /* HYLyricTimeTool.h */,
+				B5C1E6F220BE7B1F00933D35 /* HYLyricTimeTool.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1024,6 +1054,7 @@
 				042C22B31FCD590F00DFD274 /* HYLiveBottomView.m in Sources */,
 				042572DF1FC56D8F0040A10A /* DESECB.m in Sources */,
 				042C22C51FCE5ADA00DFD274 /* HYRefreshGifHeader.m in Sources */,
+				B5C1E6F620BE7D7600933D35 /* HYMusicControlView.m in Sources */,
 				046E5BA71FD8E59D00ED04FA /* HYLoadingView.m in Sources */,
 				04875B721FD95D7C0031FDA8 /* HYImageInteractivePopAnimation.m in Sources */,
 				042572D91FC56D8F0040A10A /* HTTPManager.m in Sources */,
@@ -1031,6 +1062,7 @@
 				042572EC1FC56D8F0040A10A /* UILabel+HYJustifyAlign.m in Sources */,
 				B5465E2920B557C000118097 /* HYMusicHandleTool.m in Sources */,
 				042C22AC1FCD590F00DFD274 /* HYHotLiveViewController.m in Sources */,
+				B5C1E6FC20BE8A3200933D35 /* HYMusicPlayInfoModel.m in Sources */,
 				042C22AA1FCD590F00DFD274 /* HYCurrentLiveViewController.m in Sources */,
 				B5465E2C20B55B6900118097 /* HYMusicModel.m in Sources */,
 				042572F31FC56DBA0040A10A /* Const.m in Sources */,
@@ -1046,7 +1078,9 @@
 				042C22A91FCD590F00DFD274 /* HYFocusViewController.m in Sources */,
 				046E5BAD1FD91B0D00ED04FA /* HYSmallVideoViewController.m in Sources */,
 				B5465E5720B7D47600118097 /* HYBlankPageView.m in Sources */,
+				B5C1E6F920BE82BF00933D35 /* HYLyricLabel.m in Sources */,
 				042572E11FC56D8F0040A10A /* HYButton.m in Sources */,
+				B5C1E6F320BE7B1F00933D35 /* HYLyricTimeTool.m in Sources */,
 				042572DD1FC56D8F0040A10A /* Reachability.m in Sources */,
 				B5C1E6EA20BD3AEB00933D35 /* HYLyricView.m in Sources */,
 				B5465E6220B7FD7200118097 /* ObjcRuntime.m in Sources */,
@@ -1058,6 +1092,7 @@
 				0433B3E01FDE81DD0089B34E /* HYLocationManager.m in Sources */,
 				046E5BA61FD8E59D00ED04FA /* HYLoadingManager.m in Sources */,
 				042572E61FC56D8F0040A10A /* HYPlistTools.m in Sources */,
+				B5C1E6ED20BE6DA100933D35 /* HYLyricTableViewCell.m in Sources */,
 				042C22E71FCE8F9200DFD274 /* HYLiveMessageModel.m in Sources */,
 				B5C1E6E720BCE6D600933D35 /* HYDiscView.m in Sources */,
 				042C22B11FCD590F00DFD274 /* HYLiveTableViewCell.m in Sources */,
@@ -1071,6 +1106,7 @@
 				04875B6F1FD95D6D0031FDA8 /* HYImageInteractivePushAnimation.m in Sources */,
 				042572E31FC56D8F0040A10A /* HYDateHandle.m in Sources */,
 				042572FA1FC574FE0040A10A /* HYBaseNavController.m in Sources */,
+				B5C1E6F020BE728100933D35 /* HYLyricHandleTool.m in Sources */,
 				042C22B71FCD590F00DFD274 /* HYMineViewController.m in Sources */,
 				042C22DE1FCE89BE00DFD274 /* HYChatRoomCell.m in Sources */,
 				042572EB1FC56D8F0040A10A /* SAMTextView.m in Sources */,

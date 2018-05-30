@@ -7,13 +7,12 @@
 //
 
 #import "HYMusicHandleTool.h"
-#import "HYMusicTool.h"
 
 @interface HYMusicHandleTool ()
 
-@property (nonatomic,strong) HYMusicTool *musicTool;
 @property (nonatomic,assign) NSInteger currentLrcRow;
 @property (nonatomic,strong) HYMusicModel *currentMusicModel;
+@property (nonatomic,strong) HYMusicPlayInfoModel *musicInfoModel;
 
 
 @end
@@ -73,12 +72,21 @@ static HYMusicHandleTool *tool;
 
 - (void)pauseCurrentMusic{
     
-    [self.musicTool pauseMusicModel:self.currentMusicModel];
+    [self.musicTool pauseCurrentMusic];
 }
 
 - (HYMusicModel *)getCurrentMusicModel{
     
     return self.musicList[self.currentIndex];
+}
+
+- (HYMusicPlayInfoModel *)getCurrentMusicPlayInfoModel{
+    
+    self.musicInfoModel.musicModel = self.getCurrentMusicModel;
+    self.musicInfoModel.currentPlayTime = self.musicTool.player.currentTime;
+    self.musicInfoModel.totalTime = self.musicTool.player.duration;
+    self.musicInfoModel.isPlay = self.musicTool.player.isPlaying;
+    return self.musicInfoModel;
 }
 
 - (HYMusicModel *)previousMusicModel{
@@ -103,6 +111,7 @@ static HYMusicHandleTool *tool;
 }
 
 
+
 #pragma mark - setter
 - (void)setCurrentIndex:(NSInteger)currentIndex{
     
@@ -114,6 +123,14 @@ static HYMusicHandleTool *tool;
         currentIndex = 0;
     }
     _currentIndex = currentIndex;
+}
+
+- (HYMusicPlayInfoModel *)musicInfoModel{
+    
+    if (!_musicInfoModel) {
+        _musicInfoModel = [HYMusicPlayInfoModel new];
+    }
+    return _musicInfoModel;
 }
 
 - (NSArray<HYMusicModel *> *)musicList{

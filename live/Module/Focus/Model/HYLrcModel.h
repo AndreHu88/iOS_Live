@@ -10,4 +10,13 @@
 
 @interface HYLrcModel : NSObject
 
+/** 开始时间*/
+@property (nonatomic, assign) NSTimeInterval beginTime;
+
+/** 结束时间*/
+@property (nonatomic, assign) NSTimeInterval endTime;
+
+/** 歌词*/
+@property (nonatomic, copy) NSString *lrcStr;
+
 @end
