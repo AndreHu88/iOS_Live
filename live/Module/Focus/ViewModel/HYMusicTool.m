@@ -72,4 +72,13 @@
     return YES;
 }
 
+- (BOOL)pauseMusicModel:(HYMusicModel *)musicModel{
+    
+    if ([self.player isPlaying]) {
+        
+        [self.player stop];
+    }
+    return YES;
+}
+
 @end

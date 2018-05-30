@@ -47,6 +47,7 @@
     _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
     _scrollView.contentSize = CGSizeMake(KSCREEN_WIDTH * 3, 0);
     _scrollView.pagingEnabled = YES;
+    _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.delegate = self;
     
     _leftDisc = [[HYDiscView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height)];
