@@ -194,14 +194,14 @@
     [self.playBtn setImage:[UIImage imageNamed:@"cm2_fm_btn_pause"] forState:UIControlStateNormal];
     [self.playBtn setImage:[UIImage imageNamed:@"cm2_fm_btn_pause_prs"] forState:UIControlStateHighlighted];
     
-    [[HYMusicHandleTool shareInstance].musicTool pauseCurrentMusic];
+    [[HYMusicHandleTool shareInstance].musicTool resumePlayCurrentMusic];
 }
 
 - (void)setupPauseBtn {
     [self.playBtn setImage:[UIImage imageNamed:@"cm2_fm_btn_play"] forState:UIControlStateNormal];
     [self.playBtn setImage:[UIImage imageNamed:@"cm2_fm_btn_play_prs"] forState:UIControlStateHighlighted];
     
-    [[HYMusicHandleTool shareInstance].musicTool resumePlayCurrentMusic];
+    [[HYMusicHandleTool shareInstance].musicTool pauseCurrentMusic];
 
 }
 
@@ -234,14 +234,13 @@
 }
 
 - (void)playBtnClick:(id)sender {
-    self.playBtn.selected = !self.playBtn.selected;
     if (self.playBtn.selected) {
         [self setupPlayBtn];
     }
     else {
         [self setupPauseBtn];
     }
-    
+    self.playBtn.selected = !self.playBtn.selected;
 }
 
 - (void)loopBtnClick:(id)sender {

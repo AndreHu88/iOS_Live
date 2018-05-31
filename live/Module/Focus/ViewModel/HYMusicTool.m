@@ -61,7 +61,6 @@
     NSError *error = nil;
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
     self.player.delegate = self;
-    [self.player prepareToPlay];
     [self.player play];
     if (error) {
         NSLog(@"%@", error);

@@ -56,6 +56,12 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.lyricModel = self.lyricDataSource[indexPath.row];
+    if (indexPath.row == self.scrollRow) {
+        cell.progress = self.progress;
+    }
+    else{
+        cell.progress = 0;
+    }
     return cell;
 }
 

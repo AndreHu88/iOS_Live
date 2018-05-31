@@ -80,6 +80,7 @@
 		04CAEE7D1FF233CC001127B5 /* HYHomeLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CAEE7C1FF233CC001127B5 /* HYHomeLaunchView.m */; };
 		04D6D5AA1FDF820A00A75EE4 /* HYFansView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D6D5A91FDF820A00A75EE4 /* HYFansView.m */; };
 		04FFF9D21FF117CF00C93F70 /* HYNearLiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FFF9D11FF117CF00C93F70 /* HYNearLiveModel.m */; };
+		3E440D1920C048AF002D83D4 /* HYMusicProgressSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E440D1820C048AF002D83D4 /* HYMusicProgressSlider.m */; };
 		3EF31F0420B5A46A00F37D88 /* HYMusicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF31F0320B5A46A00F37D88 /* HYMusicTool.m */; };
 		3EF31F0720B5ADD700F37D88 /* HYMusicPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF31F0620B5ADD700F37D88 /* HYMusicPlayerVC.m */; };
 		B5465E2920B557C000118097 /* HYMusicHandleTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E2820B557C000118097 /* HYMusicHandleTool.m */; };
@@ -252,6 +253,8 @@
 		04FFF9D01FF117CF00C93F70 /* HYNearLiveModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYNearLiveModel.h; sourceTree = "<group>"; };
 		04FFF9D11FF117CF00C93F70 /* HYNearLiveModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYNearLiveModel.m; sourceTree = "<group>"; };
 		12C23243CF2F103DAF33DE3F /* Pods-live.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-live.debug.xcconfig"; path = "Pods/Target Support Files/Pods-live/Pods-live.debug.xcconfig"; sourceTree = "<group>"; };
+		3E440D1720C048AF002D83D4 /* HYMusicProgressSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicProgressSlider.h; sourceTree = "<group>"; };
+		3E440D1820C048AF002D83D4 /* HYMusicProgressSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMusicProgressSlider.m; sourceTree = "<group>"; };
 		3EF31F0220B5A46A00F37D88 /* HYMusicTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicTool.h; sourceTree = "<group>"; };
 		3EF31F0320B5A46A00F37D88 /* HYMusicTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMusicTool.m; sourceTree = "<group>"; };
 		3EF31F0520B5ADD700F37D88 /* HYMusicPlayerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicPlayerVC.h; sourceTree = "<group>"; };
@@ -853,6 +856,8 @@
 				B5C1E6F820BE82BF00933D35 /* HYLyricLabel.m */,
 				B5C1E6F420BE7D7600933D35 /* HYMusicControlView.h */,
 				B5C1E6F520BE7D7600933D35 /* HYMusicControlView.m */,
+				3E440D1720C048AF002D83D4 /* HYMusicProgressSlider.h */,
+				3E440D1820C048AF002D83D4 /* HYMusicProgressSlider.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1080,6 +1085,7 @@
 				B5465E5720B7D47600118097 /* HYBlankPageView.m in Sources */,
 				B5C1E6F920BE82BF00933D35 /* HYLyricLabel.m in Sources */,
 				042572E11FC56D8F0040A10A /* HYButton.m in Sources */,
+				3E440D1920C048AF002D83D4 /* HYMusicProgressSlider.m in Sources */,
 				B5C1E6F320BE7B1F00933D35 /* HYLyricTimeTool.m in Sources */,
 				042572DD1FC56D8F0040A10A /* Reachability.m in Sources */,
 				B5C1E6EA20BD3AEB00933D35 /* HYLyricView.m in Sources */,
