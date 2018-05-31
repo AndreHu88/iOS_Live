@@ -72,15 +72,6 @@
     return YES;
 }
 
-<<<<<<< HEAD
-- (BOOL)pauseMusicModel:(HYMusicModel *)musicModel{
-    
-    if ([self.player isPlaying]) {
-        
-        [self.player stop];
-    }
-    return YES;
-=======
 - (void)pauseCurrentMusic{
     
     [self.player pause];
@@ -105,7 +96,6 @@
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
     
     DLog(@"歌曲播放完成");
->>>>>>> d489a656d48062b111be591ee628720c16a30628
 }
 
 @end

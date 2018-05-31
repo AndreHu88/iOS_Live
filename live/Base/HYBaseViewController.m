@@ -81,11 +81,12 @@
     
 }
 
+#pragma mark - PublicMethod
 + (UIViewController *)getCurrentVC{
     
     UIWindow * window = [[UIApplication sharedApplication] keyWindow];
-    if (window.windowLevel != UIWindowLevelNormal)
-    {
+    if (window.windowLevel != UIWindowLevelNormal){
+        
         NSArray *windows = [[UIApplication sharedApplication] windows];
         for(UIWindow * tmpWin in windows)
         {
@@ -107,6 +108,59 @@
         result = [(UINavigationController *)result topViewController];
     }
     return result;
+}
+
++ (void)presentVC:(UIViewController *)viewController{
+    if (!viewController) {
+        return;
+    }
+    UINavigationController *nav = [[HYBaseNavController alloc] initWithRootViewController:viewController];
+    if (!viewController.navigationItem.leftBarButtonItem) {
+        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:viewController action:@selector(dismissModalVC)];
+    }
+    [[self getCurrentVC] presentViewController:nav animated:YES completion:nil];
+}
+
++ (void)pushToVC:(UIViewController *)viewController{
+    if (!viewController) {
+        return;
+    }
+    UINavigationController *nav = [self getCurrentVC].navigationController;
+    if (nav) {
+        [nav pushViewController:viewController animated:YES];
+    }
+}
+
++ (void)handleNotificationInfo:(NSDictionary *)userInfo applicationState:(UIApplicationState)applicationState{
+    
+    switch (applicationState) {
+        case UIApplicationStateActive:{
+            //APP在前台
+            
+        }
+            break;
+        case UIApplicationStateInactive:{
+            //APP在待激活 (锁屏 下拉通知栏 锁屏)
+        }
+            break;
+        case UIApplicationStateBackground:{
+            //当前应用在后台
+            
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)tabBarItemClicked{
+    
+    DLog(@"tabBarItemClicked:%@",NSStringFromClass([self class]));
+}
+
+- (void)dismissModalVC{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - setStatusBar

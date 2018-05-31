@@ -68,6 +68,21 @@
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     
+    id selectedViewController = self.selectedViewController;
+    if ([selectedViewController isKindOfClass:[HYBaseNavController class]]) {
+        
+        HYBaseNavController *navVC = (HYBaseNavController *)selectedViewController;
+        if (navVC.topViewController != navVC.viewControllers[0]) {
+            return;
+        }
+        
+        if ([navVC.topViewController isKindOfClass:[HYBaseViewController class]]) {
+            
+            HYBaseViewController *currentVC = (HYBaseViewController *)navVC.topViewController;
+            [currentVC tabBarItemClicked];
+        }
+    }
+    
     
 }
 

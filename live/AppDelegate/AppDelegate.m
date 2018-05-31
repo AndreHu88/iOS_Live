@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HYTabBarController.h"
+#import "HYBaseViewController.h"
 
 @interface AppDelegate ()
 
@@ -39,27 +40,41 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     
     
-    
 }
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    
     
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     
+    
 }
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     
+    //APP变为活跃时
+    UIViewController *currentViewController = [HYBaseViewController getCurrentVC];
+    SEL refreshSelector = NSSelectorFromString(@"refresh");
+    if ([currentViewController respondsToSelector:refreshSelector]) {
+        //如果当前的VC可以响应此方法
+        
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [currentViewController performSelector:refreshSelector];
+#pragma clang diagnostic pop
+        
+    }
 }
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     
+    //do some save
 }
 
 
