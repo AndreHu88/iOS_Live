@@ -11,6 +11,7 @@
 #import "HYMusicPlayerDiscView.h"
 #import "HYLyricView.h"
 #import "HYMusicControlView.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface HYMusicPlayerVC () <HYMusicPlayerDiscViewDelegate,HYMusicControlViewDelegate>
 
@@ -79,7 +80,45 @@
     
 }
 
+- (void)setupLockScreenControlInfo{
+    
+    MPRemoteCommandCenter *commandCenter = [MPRemoteCommandCenter sharedCommandCenter];
+    // 启用播放命令 (锁屏界面和上拉快捷功能菜单处的播放按钮触发的命令)
+    commandCenter.playCommand.enabled = YES;
+    // 为播放命令添加响应事件, 在点击后触发
+    [commandCenter.playCommand addTarget:self action:@selector(controlViewPauseMusic)];
+    
+    commandCenter.pauseCommand.enabled = YES;
+    [commandCenter.pauseCommand addTarget:self action:@selector(controlViewPauseMusic)];
+    
+    commandCenter.nextTrackCommand.enabled = YES;
+    [commandCenter.nextTrackCommand addTarget:self action:@selector(playNext)];
+    
+    commandCenter.previousTrackCommand.enabled = YES;
+    [commandCenter.previousTrackCommand addTarget:self action:@selector(playPrevious)];
+    
+    commandCenter.togglePlayPauseCommand.enabled = YES;
+}
+
+- (void)updateLockScreenControlInfo{
+    
+//    MPNowPlayingInfoCenter *infoCenter = [MPNowPlayingInfoCenter defaultCenter];
+//    // MPMediaItemArtwork 用来表示锁屏界面图片的类型
+//    MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:@""]];
+//    infoCenter.nowPlayingInfo = @{};
+}
+
 #pragma mark - action
+- (void)playNext{
+    
+    
+}
+
+- (void)playPrevious{
+    
+    
+}
+
 - (void)showLyricView{
     
     self.lyricView.hidden = NO;
@@ -120,6 +159,8 @@
         self.lyricView.progress = progress;
     }];
     
+    self.musicControlView.sliderValue = musicInfoModel.currentPlayTime / musicInfoModel.totalTime;
+    self.musicControlView.currentTime = [HYLyricTimeTool getFormatTimeWithInterval:musicInfoModel.currentPlayTime];
 }
 
 /** 定时更新 歌词面板信息*/
@@ -143,6 +184,7 @@
     [self setTitleLabelWithModel:musicModel];
     [self setLyricWithModel:musicModel];
     [self.musicControlView setupPlayBtn];
+    [self setMusicControlWithModel:musicModel];
 }
 
 - (void)setTitleLabelWithModel:(HYMusicModel *)musicModel{
@@ -168,6 +210,12 @@
     self.lyricView.lyricDataSource = lyricModelArray;
 }
 
+- (void)setMusicControlWithModel:(HYMusicModel *)musicModel{
+    
+    self.musicControlView.totalTime = [HYLyricTimeTool getFormatTimeWithInterval:[[HYMusicHandleTool shareInstance] getCurrentMusicPlayInfoModel].totalTime];
+    self.musicControlView.currentTime = [HYLyricTimeTool getFormatTimeWithInterval:[[HYMusicHandleTool shareInstance] getCurrentMusicPlayInfoModel].currentPlayTime];
+}
+
 #pragma mark - discViewDelegate
 - (void)discViewWillChangeModel:(HYMusicModel *)musicModel{
     
@@ -190,6 +238,28 @@
     
     HYMusicModel *musicModel = [[HYMusicHandleTool shareInstance] nextMusicModel];
     self.musicModel = musicModel;
+}
+
+- (void)controlViewPauseMusic{
+    
+    [self.discView pauseMusicWithAnimated:YES];
+}
+
+- (void)controlViewResumePlayMusic{
+    
+    [self.discView playedWithAnimated:YES];
+}
+
+- (void)controlView:(HYMusicControlView *)controlView didChangePlayTime:(CGFloat)currentPlayTIme{
+    
+    //调整歌词
+    [HYLyricHandleTool getLyricRowWithTime:currentPlayTIme lyricModelArray:self.lyricView.lyricDataSource complection:^(NSInteger row, HYLrcModel *lyricModel) {
+        
+        self.lyricView.scrollRow = row;
+        //歌词进度
+        CGFloat progress = (currentPlayTIme - lyricModel.beginTime) / (lyricModel.endTime - lyricModel.beginTime);
+        self.lyricView.progress = progress;
+    }];
 }
 
 #pragma mark - lazyload

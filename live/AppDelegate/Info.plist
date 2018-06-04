@@ -54,6 +54,11 @@
 	<string>直播需要定位</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>直播需要定位</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

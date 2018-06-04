@@ -70,6 +70,16 @@ static HYMusicHandleTool *tool;
     [self playMusicWithModel:self.musicList[self.currentIndex]];
 }
 
+- (void)playNextMusic{
+    
+    [self playMusicWithModel:self.nextMusicModel];
+}
+
+- (void)playPreviousMusic{
+    
+    [self playMusicWithModel:self.previousMusicModel];
+}
+
 - (void)pauseCurrentMusic{
     
     [self.musicTool pauseCurrentMusic];
@@ -88,6 +98,7 @@ static HYMusicHandleTool *tool;
     self.musicInfoModel.isPlay = self.musicTool.player.isPlaying;
     return self.musicInfoModel;
 }
+
 
 - (HYMusicModel *)previousMusicModel{
     

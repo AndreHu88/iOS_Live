@@ -70,7 +70,7 @@
     [_needleImgView mas_makeConstraints:^(MASConstraintMaker *make) {
        
         make.centerX.equalTo(self).offset(20);
-        make.top.equalTo(self).offset(10);
+        make.top.equalTo(self);
     }];
     
     [_discCycleBgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -126,10 +126,9 @@
 // 播放音乐时，指针恢复，图片旋转
 - (void)playedWithAnimated:(BOOL)animated {
     
-    if (self.isAnimated) return;
+//    if (self.isAnimated) return;
     self.isAnimated = NO;
     
-    [self setAnchorPoint:CGPointMake(25.0/97, 25.0/153) forView:self.needleImgView];
     [[HYMusicHandleTool shareInstance] playCurrentMusic];
     // 加入到主循环中
     [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];

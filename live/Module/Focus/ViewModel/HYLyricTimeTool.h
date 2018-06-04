@@ -12,4 +12,6 @@
 
 + (NSTimeInterval)getTimeInterval:(NSString *)formatTime;
 
++ (NSString *)getFormatTimeWithInterval:(NSTimeInterval)timeInterval;
+
 @end

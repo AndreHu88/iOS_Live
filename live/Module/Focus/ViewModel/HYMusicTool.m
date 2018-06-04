@@ -86,15 +86,23 @@
     [self.player play];
 }
 
-- (void)seekTo:(NSTimeInterval)timeInteval{
+- (void)seekToTime:(NSTimeInterval)timeInteval{
     
     self.player.currentTime = timeInteval;
+}
+
+- (void)seekToSliderValue:(CGFloat)sliderValue{
+    
+    self.player.currentTime = sliderValue * self.player.duration;
 }
 
 #pragma mark - AudioPlayerDelegate
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
     
     DLog(@"歌曲播放完成");
+    [JRToast showWithText:@"歌曲播放完成" duration:2];
+    [[NSNotificationCenter defaultCenter] postNotificationName:KMusicPlayComplectionNotificationName object:nil];
+    [[HYMusicHandleTool shareInstance] playNextMusic];
 }
 
 @end

@@ -24,32 +24,120 @@
     if (self) {
         
         [self setupSubViews];
+        self.userInteractionEnabled = YES;
     }
     return self;
 }
+
 
 - (void)setupSubViews{
     
     [self addSubview:self.progressBgView];
     [self addSubview:self.sliderProgressView];
+    [self addSubview:self.sliderBtn];
+    //给sliderView添加一个点击手势
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sliderTapped:)];
+    [self addGestureRecognizer:tapGes];
 }
+
+- (void)setupMasonryLayout{
+    
+    [self.progressBgView mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.centerY.equalTo(self);
+        make.height.mas_equalTo(self.height / 2);
+        make.left.right.equalTo(self);
+    }];
+    
+    [self.sliderProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.centerY.equalTo(self);
+        make.height.mas_equalTo(self.height / 2);
+        make.left.equalTo(self);
+    }];
+    
+    [self.sliderBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.centerY.equalTo(self);
+        make.height.mas_equalTo(self.height / 2);
+        make.left.equalTo(self);
+    }];
+}
+
+- (void)layoutSubviews{
+    
+    [super layoutSubviews];
+    [self.progressBgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.centerY.equalTo(self);
+        make.height.mas_equalTo(2);
+        make.left.right.equalTo(self);
+    }];
+    
+    [self.sliderProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.left.equalTo(self);
+        make.top.bottom.equalTo(self.progressBgView);
+    }];
+    
+    [self.sliderBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self);
+        make.centerY.equalTo(self);
+        make.size.mas_equalTo(CGSizeMake(15 * WIDTH_MULTIPLE, 15 * WIDTH_MULTIPLE));
+    }];
+}
+
+- (void)setSliderValue:(CGFloat)sliderValue{
+    
+    _sliderValue = sliderValue;
+    
+    //更新sliderView的frame 滑块按钮的frame
+    self.sliderProgressView.width = self.progressBgView.width * sliderValue;
+    self.sliderBtn.centerX = self.progressBgView.width * sliderValue;
+}
+
 
 #pragma mark - action
 - (void)sliderBtnTouchBegin:(id)sender{
     
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(sliderValueTouchBegin:)]) {
+        
+        [self.delegate sliderValueTouchBegin:self.sliderValue];
+    }
 }
 
 - (void)sliderBtnTouchEnded:(id)sender{
     
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(sliderValueTouchEnd:)]) {
+        
+        [self.delegate sliderValueTouchEnd:self.sliderValue];
+    }
 }
 
 - (void)sliderBtnDragMoving:(UIButton *)btn event:(UIEvent *)event{
     
-    
+    CGPoint point = [event.allTouches.anyObject locationInView:self];
+    CGFloat value = (point.x - btn.width / 2) / self.progressBgView.width;
+    value = value >= 1.0 ? 1.0 : value <= 0 ? 0 : value;
+    self.sliderValue = value;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(sliderValueChanged:)]) {
+        
+        [self.delegate sliderValueChanged:value];
+    }
 }
 
+- (void)sliderTapped:(UITapGestureRecognizer *)tapGes{
+    
+    CGPoint tapPoint = [tapGes locationInView:self];
+    //计算进度
+    CGFloat value = (tapPoint.x - self.progressBgView.left) / self.progressBgView.width;
+    value = value >= 1.0 ? 1.0 : value <= 0 ? 0 :value;
+    self.sliderValue = value;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(sliderValueTapped:)]) {
+        
+        [self.delegate sliderValueTapped:value];
+    }
+}
 
 
 #pragma mark - lazyload

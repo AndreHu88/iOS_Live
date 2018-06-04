@@ -34,7 +34,7 @@
     
     [_musicInfoImgView mas_makeConstraints:^(MASConstraintMaker *make) {
        
-        make.edges.equalTo(self.discBgImageView).insets(UIEdgeInsetsMake(40, 40, 40, 40));
+        make.edges.equalTo(self.discBgImageView).insets(UIEdgeInsetsMake(40 * WIDTH_MULTIPLE, 40 * WIDTH_MULTIPLE, 40 * WIDTH_MULTIPLE, 40 * WIDTH_MULTIPLE));
     }];
     
     [self layoutIfNeeded];

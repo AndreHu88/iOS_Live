@@ -27,7 +27,7 @@
 #import <RongIMLib/RongIMLib.h>
 #import <PPBadgeView.h>
 
-#import "Const.h"
+#import "AppConst.h"
 #import "Macro.h"
 #import "WebApi.h"
 #import "JRToast.h"

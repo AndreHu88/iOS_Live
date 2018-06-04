@@ -42,6 +42,8 @@
  *
  *  @param timeInteval 时间, 指定歌曲已经播放了多长时间
  */
-- (void)seekTo:(NSTimeInterval)timeInteval;
+- (void)seekToTime:(NSTimeInterval)timeInteval;
+
+- (void)seekToSliderValue:(CGFloat)sliderValue;
 
 @end

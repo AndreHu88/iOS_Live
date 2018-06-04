@@ -22,4 +22,7 @@
 @property (nonatomic,strong) HYMusicModel *musicModel;
 @property (nonatomic,assign) id<HYMusicPlayerDiscViewDelegate> delegate;
 
+- (void)pauseMusicWithAnimated:(BOOL)animated;
+- (void)playedWithAnimated:(BOOL)animated;
+
 @end

@@ -26,9 +26,8 @@
     if (isShowHUD) {
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            
-            [HYLoadingManager showInkeLoading];
 
+            [HYLoadingManager showInkeLoading];
         });
     }
     

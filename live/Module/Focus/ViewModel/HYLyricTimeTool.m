@@ -31,4 +31,24 @@
     return 0;
 }
 
++ (NSString *)getFormatTimeWithInterval:(NSTimeInterval)timeInterval{
+    
+    NSInteger time = (NSInteger)timeInterval;
+    if (time / 3600 > 0) {
+        // 时分秒
+        NSInteger hour   = time / 3600;
+        NSInteger minute = (time % 3600) / 60;
+        NSInteger second = (time % 3600) % 60;
+        
+        return [NSString stringWithFormat:@"%02zd:%02zd:%02zd", hour, minute, second];
+    }
+    else {
+        // 分秒
+        NSInteger minute = time / 60;
+        NSInteger second = time % 60;
+        
+        return [NSString stringWithFormat:@"%02zd:%02zd", minute, second];
+    }
+}
+
 @end

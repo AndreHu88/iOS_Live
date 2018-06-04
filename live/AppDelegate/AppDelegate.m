@@ -24,7 +24,8 @@
     [self.window makeKeyAndVisible];
     
     KEYWINDOW.rootViewController = [HYTabBarController new];
-    
+    //开启远程接收时间
+    [application beginReceivingRemoteControlEvents];
     return YES;
 }
 
@@ -74,7 +75,8 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     
-    //do some save
+    // 在App要终止前结束接收远程控制事件, 也可以在需要终止时调用该方法终止
+    [application endReceivingRemoteControlEvents];
 }
 
 

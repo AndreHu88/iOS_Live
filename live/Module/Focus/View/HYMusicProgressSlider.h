@@ -8,7 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol HYMusicProgressSliderDelegate <NSObject>
+
+- (void)sliderValueTouchBegin:(CGFloat)sliderValue;
+
+- (void)sliderValueChanged:(CGFloat)sliderValue;
+
+- (void)sliderValueTouchEnd:(CGFloat)sliderValue;
+
+- (void)sliderValueTapped:(CGFloat)sliderValue;
+
+
+@end
+
 @interface HYMusicProgressSlider : UIView
+
+@property (nonatomic,weak) id<HYMusicProgressSliderDelegate> delegate;
+@property (nonatomic,assign) CGFloat sliderValue;
 
 @end
 

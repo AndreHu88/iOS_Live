@@ -13,7 +13,10 @@
 
 - (void)controlView:(HYMusicControlView *)controlView didClickPrevious:(UIButton *)previousMusicButton;
 - (void)controlView:(HYMusicControlView *)controlView didClickNextButton:(UIButton *)NextMusicButton;
-
+- (void)controlViewPauseMusic;
+- (void)controlViewResumePlayMusic;
+//改变了当前的播放时间
+- (void)controlView:(HYMusicControlView *)controlView didChangePlayTime:(CGFloat)currentPlayTIme;
 
 @end
 
@@ -22,7 +25,7 @@
 
 @property (nonatomic, copy)     NSString *currentTime;
 @property (nonatomic, copy)     NSString *totalTime;
-@property (nonatomic, assign)   CGFloat value;
+@property (nonatomic, assign)   CGFloat sliderValue;
 @property (nonatomic, assign)   BOOL isLove;
 @property (nonatomic, strong)   UIView *topView;
 @property (nonatomic, weak)     id <HYMusicControlViewDelegate> delegate;

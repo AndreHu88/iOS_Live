@@ -7,8 +7,9 @@
 //
 
 #import "HYMusicControlView.h"
+#import "HYMusicProgressSlider.h"
 
-@interface HYMusicControlView ()
+@interface HYMusicControlView () <HYMusicProgressSliderDelegate>
 
 @property (nonatomic, strong) UIButton *loveBtn;
 @property (nonatomic, strong) UIButton *downloadBtn;
@@ -22,8 +23,11 @@
 @property (nonatomic, strong) UIButton *listBtn;
 
 @property (nonatomic, strong) UIView *sliderView;
+@property (nonatomic, strong) HYMusicProgressSlider *sliderProgressView;
 @property (nonatomic, strong) UILabel *currentLabel;
 @property (nonatomic, strong) UILabel *totalLabel;
+
+@property (nonatomic, assign) BOOL isDragSlider;
 
 @end
 
@@ -35,6 +39,7 @@
         self.backgroundColor = [UIColor clearColor];
         [self setupSubviews];
         [self setupMasonryLayout];
+        [self setupInitialData];
     }
     return self;
 }
@@ -50,6 +55,7 @@
     
     // 滑杆
     [self addSubview:self.sliderView];
+    [self.sliderView addSubview:self.sliderProgressView];
     [self.sliderView addSubview:self.currentLabel];
     [self.sliderView addSubview:self.totalLabel];
     
@@ -60,11 +66,6 @@
     [self addSubview:self.nextBtn];
     [self addSubview:self.listBtn];
     
-    //
-    [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.equalTo(self);
-        make.height.mas_equalTo(50);
-    }];
 }
 
 - (void)setupMasonryLayout{
@@ -73,6 +74,11 @@
     CGFloat btnWH  = 50;
     CGFloat leftM  = 50;
     CGFloat margin = (KSCREEN_WIDTH - 4 * btnWH - 2 * leftM) / 3;
+    
+    [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.equalTo(self);
+        make.height.mas_equalTo(50);
+    }];
     
     [self.loveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.equalTo(self.topView);
@@ -100,24 +106,24 @@
     
     [self.sliderView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self);
-        //            make.top.equalTo(self).offset(30);
+//                    make.top.equalTo(self).offset(30);
         make.top.equalTo(self.topView.mas_bottom);
         make.height.mas_equalTo(30);
     }];
     
-    //        [self.slider mas_makeConstraints:^(MASConstraintMaker *make) {
-    //            make.top.bottom.equalTo(self.sliderView);
-    //            make.left.equalTo(self.sliderView).offset(60);
-    //            make.right.equalTo(self.sliderView).offset(-60);
-    //        }];
+    [self.sliderProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.equalTo(self.sliderView);
+        make.left.equalTo(self.sliderView).offset(60 * WIDTH_MULTIPLE);
+        make.right.equalTo(self.sliderView).offset(-60 * WIDTH_MULTIPLE);
+    }];
     
     [self.currentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.sliderView.mas_left).offset(30);
+        make.centerX.equalTo(self.sliderView.mas_left).offset(30 * WIDTH_MULTIPLE);
         make.centerY.equalTo(self.sliderView.mas_centerY);
     }];
     
     [self.totalLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.sliderView.mas_right).offset(30);
+        make.centerX.equalTo(self.sliderView.mas_right).offset(-30 * WIDTH_MULTIPLE);
         make.centerY.equalTo(self.sliderView.mas_centerY);
     }];
     
@@ -155,12 +161,17 @@
 
 - (void)setTotalTime:(NSString *)totalTime {
     _totalTime = totalTime;
-    
     self.totalLabel.text = totalTime;
 }
 
-- (void)setValue:(CGFloat)value {
-    _value = value;
+- (void)setSliderValue:(CGFloat)sliderValue{
+    
+    _sliderValue = sliderValue;
+    if (!self.isDragSlider) {
+        
+        self.sliderProgressView.sliderValue = sliderValue;
+    }
+    
 }
 
 - (void)setIsLove:(BOOL)isLove {
@@ -174,7 +185,7 @@
 }
 
 - (void)setupInitialData {
-    self.value       = 0;
+    self.sliderValue       = 0;
     self.currentTime = @"00:00";
     self.totalTime   = @"00:00";
     
@@ -194,6 +205,10 @@
     [self.playBtn setImage:[UIImage imageNamed:@"cm2_fm_btn_pause"] forState:UIControlStateNormal];
     [self.playBtn setImage:[UIImage imageNamed:@"cm2_fm_btn_pause_prs"] forState:UIControlStateHighlighted];
     
+    if (self.delegate && [self.delegate respondsToSelector:@selector(controlViewResumePlayMusic)]) {
+        
+        [self.delegate controlViewResumePlayMusic];
+    }
     [[HYMusicHandleTool shareInstance].musicTool resumePlayCurrentMusic];
 }
 
@@ -201,6 +216,10 @@
     [self.playBtn setImage:[UIImage imageNamed:@"cm2_fm_btn_play"] forState:UIControlStateNormal];
     [self.playBtn setImage:[UIImage imageNamed:@"cm2_fm_btn_play_prs"] forState:UIControlStateHighlighted];
     
+    if (self.delegate && [self.delegate respondsToSelector:@selector(controlViewPauseMusic)]) {
+        
+        [self.delegate controlViewPauseMusic];
+    }
     [[HYMusicHandleTool shareInstance].musicTool pauseCurrentMusic];
 
 }
@@ -216,6 +235,47 @@
     [self.loveBtn setImage:[UIImage imageNamed:@"cm2_play_icn_loved_prs"] forState:UIControlStateHighlighted];
 }
 
+#pragma mark - SliderProgressViewDelegate
+- (void)sliderValueChanged:(CGFloat)sliderValue{
+    
+    self.isDragSlider = YES;
+    self.currentTime = [HYLyricTimeTool getFormatTimeWithInterval:[HYMusicHandleTool shareInstance].musicTool.player.duration * sliderValue];
+}
+
+- (void)sliderValueTapped:(CGFloat)sliderValue {
+    
+    //点击进度条将歌曲快进到当前的值
+    [[HYMusicHandleTool shareInstance].musicTool seekToSliderValue:sliderValue];
+    self.isDragSlider = YES;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(controlView:didChangePlayTime:)]) {
+        
+        //当前播放的时间
+        CGFloat currentPlayTime = [HYMusicHandleTool shareInstance].musicTool.player.currentTime;
+        [self.delegate controlView:self didChangePlayTime:currentPlayTime];
+    }
+}
+
+- (void)sliderValueTouchBegin:(CGFloat)sliderValue {
+    
+    self.isDragSlider = YES;
+}
+
+
+- (void)sliderValueTouchEnd:(CGFloat)sliderValue {
+    
+    //拖动结束后将歌曲快进到当前的值
+    [[HYMusicHandleTool shareInstance].musicTool seekToSliderValue:sliderValue];
+    self.isDragSlider = NO;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(controlView:didChangePlayTime:)]) {
+        
+        //当前播放的时间
+        CGFloat currentPlayTime = [HYMusicHandleTool shareInstance].musicTool.player.currentTime;
+        [self.delegate controlView:self didChangePlayTime:currentPlayTime];
+    }
+}
+
+
+
 #pragma mark - UserAction
 - (void)loveBtnClick:(id)sender {
     
@@ -226,7 +286,7 @@
 }
 
 - (void)commentBtnClick:(id)sender {
-   
+    
 }
 
 - (void)moreBtnClick:(id)sender {
@@ -374,11 +434,22 @@
     return _sliderView;
 }
 
+- (HYMusicProgressSlider *)sliderProgressView{
+    
+    if (!_sliderProgressView) {
+        
+        _sliderProgressView = [HYMusicProgressSlider new];
+        _sliderProgressView.delegate = self;
+    }
+    return _sliderProgressView;
+}
+
 - (UILabel *)currentLabel {
     if (!_currentLabel) {
         _currentLabel = [UILabel new];
         _currentLabel.textColor = [UIColor whiteColor];
         _currentLabel.font = [UIFont systemFontOfSize:16.0];
+        _currentLabel.text = @"0:00";
     }
     return _currentLabel;
 }
@@ -388,8 +459,11 @@
         _totalLabel = [UILabel new];
         _totalLabel.textColor = [UIColor whiteColor];
         _totalLabel.font = [UIFont systemFontOfSize:16.0];
+        _totalLabel.text = @"0:00";
     }
     return _totalLabel;
 }
+
+
 
 @end
