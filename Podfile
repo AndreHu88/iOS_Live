@@ -18,5 +18,6 @@ pod 'ReactiveCocoa','~>2.4'
 pod 'RongCloudIM/IMLib', '~> 2.8.3'
 pod 'PPBadgeView', '~> 2.0.0'
 pod 'WRNavigationBar'
+pod 'CocoaAsyncSocket'
 
 end

@@ -31,7 +31,6 @@
 		042572EC1FC56D8F0040A10A /* UILabel+HYJustifyAlign.m in Sources */ = {isa = PBXBuildFile; fileRef = 042572D81FC56D8F0040A10A /* UILabel+HYJustifyAlign.m */; };
 		042572FA1FC574FE0040A10A /* HYBaseNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042572F41FC574FC0040A10A /* HYBaseNavController.m */; };
 		042572FB1FC574FE0040A10A /* HYBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042572F51FC574FD0040A10A /* HYBaseViewController.m */; };
-		042572FC1FC574FE0040A10A /* HYBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 042572F61FC574FD0040A10A /* HYBaseModel.m */; };
 		042572FF1FC5761F0040A10A /* HYTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042572FE1FC5761F0040A10A /* HYTabBarController.m */; };
 		042573021FC576DE0040A10A /* HYCustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 042573011FC576DE0040A10A /* HYCustomTabBar.m */; };
 		042C22491FC8180600DFD274 /* HYNetWorkHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 042C22481FC8180600DFD274 /* HYNetWorkHandle.m */; };
@@ -104,6 +103,14 @@
 		B5C1E70A20C113B800933D35 /* HYTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E70620C113B800933D35 /* HYTableViewDataSource.m */; };
 		B5C1E70B20C113B800933D35 /* HYTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E70920C113B800933D35 /* HYTableViewDelegate.m */; };
 		B5C1E71120C1141C00933D35 /* HYBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E70F20C1141C00933D35 /* HYBaseTableViewCell.m */; };
+		B5C1E71720C4EC1500933D35 /* HYSocketDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E71620C4EC1500933D35 /* HYSocketDataModel.m */; };
+		B5C1E71A20C501D000933D35 /* HYSocketUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E71920C501D000933D35 /* HYSocketUtils.m */; };
+		B5C1E75E20C51C6300933D35 /* HYBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E75920C51C6200933D35 /* HYBaseCellModel.m */; };
+		B5C1E75F20C51C6300933D35 /* HYBaseNetworkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E75A20C51C6200933D35 /* HYBaseNetworkModel.m */; };
+		B5C1E76020C51C6300933D35 /* HYBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E75B20C51C6200933D35 /* HYBaseModel.m */; };
+		B5C1E76120C51F7C00933D35 /* HYBaseModel.h in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E75820C51C6200933D35 /* HYBaseModel.h */; };
+		B5C1E76220C51F7C00933D35 /* HYBaseCellModel.h in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E75D20C51C6200933D35 /* HYBaseCellModel.h */; };
+		B5C1E76320C51F7C00933D35 /* HYBaseNetworkModel.h in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E75C20C51C6200933D35 /* HYBaseNetworkModel.h */; };
 		DBA029A2360017E7D515EAAA /* libPods-live.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C21482B5397D3E4C7A82646A /* libPods-live.a */; };
 /* End PBXBuildFile section */
 
@@ -155,8 +162,6 @@
 		042572F21FC56DBA0040A10A /* WebApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebApi.h; sourceTree = "<group>"; };
 		042572F41FC574FC0040A10A /* HYBaseNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBaseNavController.m; sourceTree = "<group>"; };
 		042572F51FC574FD0040A10A /* HYBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBaseViewController.m; sourceTree = "<group>"; };
-		042572F61FC574FD0040A10A /* HYBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBaseModel.m; sourceTree = "<group>"; };
-		042572F71FC574FD0040A10A /* HYBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBaseModel.h; sourceTree = "<group>"; };
 		042572F81FC574FD0040A10A /* HYBaseNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBaseNavController.h; sourceTree = "<group>"; };
 		042572F91FC574FE0040A10A /* HYBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBaseViewController.h; sourceTree = "<group>"; };
 		042572FD1FC5761F0040A10A /* HYTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTabBarController.h; sourceTree = "<group>"; };
@@ -304,6 +309,16 @@
 		B5C1E70D20C113D800933D35 /* HYTableViewCellDataBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTableViewCellDataBinding.h; sourceTree = "<group>"; };
 		B5C1E70F20C1141C00933D35 /* HYBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBaseTableViewCell.m; sourceTree = "<group>"; };
 		B5C1E71020C1141C00933D35 /* HYBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBaseTableViewCell.h; sourceTree = "<group>"; };
+		B5C1E71520C4EC1500933D35 /* HYSocketDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYSocketDataModel.h; sourceTree = "<group>"; };
+		B5C1E71620C4EC1500933D35 /* HYSocketDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYSocketDataModel.m; sourceTree = "<group>"; };
+		B5C1E71820C501D000933D35 /* HYSocketUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYSocketUtils.h; sourceTree = "<group>"; };
+		B5C1E71920C501D000933D35 /* HYSocketUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYSocketUtils.m; sourceTree = "<group>"; };
+		B5C1E75820C51C6200933D35 /* HYBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBaseModel.h; sourceTree = "<group>"; };
+		B5C1E75920C51C6200933D35 /* HYBaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBaseCellModel.m; sourceTree = "<group>"; };
+		B5C1E75A20C51C6200933D35 /* HYBaseNetworkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBaseNetworkModel.m; sourceTree = "<group>"; };
+		B5C1E75B20C51C6200933D35 /* HYBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBaseModel.m; sourceTree = "<group>"; };
+		B5C1E75C20C51C6200933D35 /* HYBaseNetworkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBaseNetworkModel.h; sourceTree = "<group>"; };
+		B5C1E75D20C51C6200933D35 /* HYBaseCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBaseCellModel.h; sourceTree = "<group>"; };
 		C21482B5397D3E4C7A82646A /* libPods-live.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-live.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -384,11 +399,10 @@
 		042572A91FC56CF30040A10A /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				B5C1E75720C51C6200933D35 /* BaseModel */,
 				B5C1E70E20C1141C00933D35 /* BaseView */,
 				B5C1E70C20C113D800933D35 /* Protocol */,
 				B5C1E70520C113B800933D35 /* BaseComponent */,
-				042572F71FC574FD0040A10A /* HYBaseModel.h */,
-				042572F61FC574FD0040A10A /* HYBaseModel.m */,
 				042572F81FC574FD0040A10A /* HYBaseNavController.h */,
 				042572F41FC574FC0040A10A /* HYBaseNavController.m */,
 				042572F91FC574FE0040A10A /* HYBaseViewController.h */,
@@ -512,6 +526,7 @@
 				04CAEE771FF23387001127B5 /* LaunchLive */,
 				042C22731FCD590F00DFD274 /* Common */,
 				042C22D01FCE88E800DFD274 /* ChatRoom */,
+				B5C1E71220C4EBAA00933D35 /* Socket */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -956,6 +971,46 @@
 			path = BaseView;
 			sourceTree = "<group>";
 		};
+		B5C1E71220C4EBAA00933D35 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				B5C1E71320C4EBAA00933D35 /* Tools */,
+				B5C1E71420C4EBAA00933D35 /* Model */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
+		B5C1E71320C4EBAA00933D35 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				B5C1E71820C501D000933D35 /* HYSocketUtils.h */,
+				B5C1E71920C501D000933D35 /* HYSocketUtils.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		B5C1E71420C4EBAA00933D35 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B5C1E71520C4EC1500933D35 /* HYSocketDataModel.h */,
+				B5C1E71620C4EC1500933D35 /* HYSocketDataModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B5C1E75720C51C6200933D35 /* BaseModel */ = {
+			isa = PBXGroup;
+			children = (
+				B5C1E75820C51C6200933D35 /* HYBaseModel.h */,
+				B5C1E75B20C51C6200933D35 /* HYBaseModel.m */,
+				B5C1E75D20C51C6200933D35 /* HYBaseCellModel.h */,
+				B5C1E75920C51C6200933D35 /* HYBaseCellModel.m */,
+				B5C1E75C20C51C6200933D35 /* HYBaseNetworkModel.h */,
+				B5C1E75A20C51C6200933D35 /* HYBaseNetworkModel.m */,
+			);
+			path = BaseModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -967,7 +1022,6 @@
 				042572781FC56A9C0040A10A /* Sources */,
 				042572791FC56A9C0040A10A /* Frameworks */,
 				0425727A1FC56A9C0040A10A /* Resources */,
-				4C117EE8FDAE29D8CD70EB9C /* [CP] Embed Pods Frameworks */,
 				22824B2D6A5EBF2E318A9E99 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -1049,26 +1103,13 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCConfig.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-live/Pods-live-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4C117EE8FDAE29D8CD70EB9C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-live/Pods-live-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8535024AC68D6FA0879060AD /* [CP] Check Pods Manifest.lock */ = {
@@ -1096,6 +1137,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5C1E76120C51F7C00933D35 /* HYBaseModel.h in Sources */,
+				B5C1E76220C51F7C00933D35 /* HYBaseCellModel.h in Sources */,
+				B5C1E76320C51F7C00933D35 /* HYBaseNetworkModel.h in Sources */,
 				046E5BB31FD92A2D00ED04FA /* HYSmallVideoModel.m in Sources */,
 				042C22C81FCE5AF700DFD274 /* HYRCIMChatRoomHelper.m in Sources */,
 				3EF31F0420B5A46A00F37D88 /* HYMusicTool.m in Sources */,
@@ -1118,6 +1162,7 @@
 				04D6D5AA1FDF820A00A75EE4 /* HYFansView.m in Sources */,
 				042C22B21FCD590F00DFD274 /* HYHomeNavTitleView.m in Sources */,
 				3EF31F0720B5ADD700F37D88 /* HYMusicPlayerVC.m in Sources */,
+				B5C1E75E20C51C6300933D35 /* HYBaseCellModel.m in Sources */,
 				042C22B51FCD590F00DFD274 /* HYLiveTopView.m in Sources */,
 				049AD39B1FDA2ACE009252A4 /* HYSmallVideoViewModel.m in Sources */,
 				042C22B41FCD590F00DFD274 /* HYLiveScrollView.m in Sources */,
@@ -1125,6 +1170,7 @@
 				042C22A91FCD590F00DFD274 /* HYFocusViewController.m in Sources */,
 				B5C1E70A20C113B800933D35 /* HYTableViewDataSource.m in Sources */,
 				046E5BAD1FD91B0D00ED04FA /* HYSmallVideoViewController.m in Sources */,
+				B5C1E71A20C501D000933D35 /* HYSocketUtils.m in Sources */,
 				B5465E5720B7D47600118097 /* HYBlankPageView.m in Sources */,
 				B5C1E6F920BE82BF00933D35 /* HYLyricLabel.m in Sources */,
 				042572E11FC56D8F0040A10A /* HYButton.m in Sources */,
@@ -1164,21 +1210,23 @@
 				042572FB1FC574FE0040A10A /* HYBaseViewController.m in Sources */,
 				042572E21FC56D8F0040A10A /* HYCustomAlert.m in Sources */,
 				042C22AB1FCD590F00DFD274 /* HYHomeViewController.m in Sources */,
-				042572FC1FC574FE0040A10A /* HYBaseModel.m in Sources */,
 				042C22B61FCD590F00DFD274 /* HYLiveViewModel.m in Sources */,
 				04CAEE7D1FF233CC001127B5 /* HYHomeLaunchView.m in Sources */,
+				B5C1E71720C4EC1500933D35 /* HYSocketDataModel.m in Sources */,
 				042572E01FC56D8F0040A10A /* GTMBase64.m in Sources */,
 				B5C1E6E420BCE5C000933D35 /* HYMusicPlayerDiscView.m in Sources */,
 				B547A48F20ABC574008FBA0E /* HYPresentAnimator.m in Sources */,
 				046E5BB01FD9238A00ED04FA /* HYSmallVideoCollectionCell.m in Sources */,
 				041F8D361FF1E20F001E952A /* HYNearCollectionViewCell.m in Sources */,
 				049AD3A11FDA3AED009252A4 /* HYImageInteractiveDriven.m in Sources */,
+				B5C1E76020C51C6300933D35 /* HYBaseModel.m in Sources */,
 				B5C1E70B20C113B800933D35 /* HYTableViewDelegate.m in Sources */,
 				0425728F1FC56A9C0040A10A /* main.m in Sources */,
 				B5465E5D20B7FC4B00118097 /* UITableViewCell+HYCommon.m in Sources */,
 				042572E71FC56D8F0040A10A /* HYReachabilityManager.m in Sources */,
 				042C22EB1FD0EF1700DFD274 /* HYChatInputView.m in Sources */,
 				042572E81FC56D8F0040A10A /* JRToast.m in Sources */,
+				B5C1E75F20C51C6300933D35 /* HYBaseNetworkModel.m in Sources */,
 				042572FF1FC5761F0040A10A /* HYTabBarController.m in Sources */,
 				042C22BB1FCD5BA200DFD274 /* HYEatChickenViewController.m in Sources */,
 				042C22491FC8180600DFD274 /* HYNetWorkHandle.m in Sources */,

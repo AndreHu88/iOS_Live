@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - CocoaAsyncSocket (7.6.3)
   - DZNEmptyDataSet (1.8.1)
   - IQKeyboardManager (4.0.13)
   - Masonry (1.0.2)
@@ -40,6 +41,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - CocoaAsyncSocket
   - DZNEmptyDataSet (~> 1.8.1)
   - IQKeyboardManager (~> 4.0.8)
   - Masonry (~> 1.0.2)
@@ -52,8 +54,26 @@ DEPENDENCIES:
   - WRNavigationBar
   - YYKit (~> 1.0.9)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - CocoaAsyncSocket
+    - DZNEmptyDataSet
+    - IQKeyboardManager
+    - Masonry
+    - MBProgressHUD
+    - MJRefresh
+    - PPBadgeView
+    - ReactiveCocoa
+    - RongCloudIM
+    - SDCycleScrollView
+    - SDWebImage
+    - WRNavigationBar
+    - YYKit
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   IQKeyboardManager: 8eab4d8111418414619d1df8e4779ce5d0f8d7e2
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
@@ -67,6 +87,6 @@ SPEC CHECKSUMS:
   WRNavigationBar: dc952230effbb646785f962587caaac06c60f229
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 3995fee44c47c55a44f83270301110eed100adcf
+PODFILE CHECKSUM: 23712fdf1cac477c91310ee9c7a2ca81c07f1422
 
-COCOAPODS: 1.4.0.beta.1
+COCOAPODS: 1.5.0
