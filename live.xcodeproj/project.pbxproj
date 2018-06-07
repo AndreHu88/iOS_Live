@@ -81,6 +81,9 @@
 		3E440D1920C048AF002D83D4 /* HYMusicProgressSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E440D1820C048AF002D83D4 /* HYMusicProgressSlider.m */; };
 		3EF31F0420B5A46A00F37D88 /* HYMusicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF31F0320B5A46A00F37D88 /* HYMusicTool.m */; };
 		3EF31F0720B5ADD700F37D88 /* HYMusicPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF31F0620B5ADD700F37D88 /* HYMusicPlayerVC.m */; };
+		B52D66F420C8D91C00010200 /* HYEmotionInputHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B52D66F320C8D91C00010200 /* HYEmotionInputHelper.m */; };
+		B52D66F620C8D95C00010200 /* EmoticonWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B52D66F520C8D95C00010200 /* EmoticonWeibo.bundle */; };
+		B52D66F920C8DC7700010200 /* HYEmotionGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B52D66F820C8DC7700010200 /* HYEmotionGroupModel.m */; };
 		B5465E2920B557C000118097 /* HYMusicHandleTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E2820B557C000118097 /* HYMusicHandleTool.m */; };
 		B5465E2C20B55B6900118097 /* HYMusicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E2B20B55B6900118097 /* HYMusicModel.m */; };
 		B5465E2F20B55B8300118097 /* HYLrcModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E2E20B55B8300118097 /* HYLrcModel.m */; };
@@ -265,6 +268,11 @@
 		3EF31F0520B5ADD700F37D88 /* HYMusicPlayerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicPlayerVC.h; sourceTree = "<group>"; };
 		3EF31F0620B5ADD700F37D88 /* HYMusicPlayerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMusicPlayerVC.m; sourceTree = "<group>"; };
 		7199097CD39ED884F3733F58 /* Pods-live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-live.release.xcconfig"; path = "Pods/Target Support Files/Pods-live/Pods-live.release.xcconfig"; sourceTree = "<group>"; };
+		B52D66F220C8D91C00010200 /* HYEmotionInputHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYEmotionInputHelper.h; sourceTree = "<group>"; };
+		B52D66F320C8D91C00010200 /* HYEmotionInputHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYEmotionInputHelper.m; sourceTree = "<group>"; };
+		B52D66F520C8D95C00010200 /* EmoticonWeibo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EmoticonWeibo.bundle; sourceTree = "<group>"; };
+		B52D66F720C8DC7700010200 /* HYEmotionGroupModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYEmotionGroupModel.h; sourceTree = "<group>"; };
+		B52D66F820C8DC7700010200 /* HYEmotionGroupModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYEmotionGroupModel.m; sourceTree = "<group>"; };
 		B5465E2720B557C000118097 /* HYMusicHandleTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicHandleTool.h; sourceTree = "<group>"; };
 		B5465E2820B557C000118097 /* HYMusicHandleTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMusicHandleTool.m; sourceTree = "<group>"; };
 		B5465E2A20B55B6900118097 /* HYMusicModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicModel.h; sourceTree = "<group>"; };
@@ -866,6 +874,42 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B52D66EE20C8D8A900010200 /* EmotionInputView */ = {
+			isa = PBXGroup;
+			children = (
+				B52D66F520C8D95C00010200 /* EmoticonWeibo.bundle */,
+				B52D66EF20C8D8E400010200 /* Helper */,
+				B52D66F020C8D8E400010200 /* Model */,
+				B52D66F120C8D8E400010200 /* View */,
+			);
+			path = EmotionInputView;
+			sourceTree = "<group>";
+		};
+		B52D66EF20C8D8E400010200 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				B52D66F220C8D91C00010200 /* HYEmotionInputHelper.h */,
+				B52D66F320C8D91C00010200 /* HYEmotionInputHelper.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		B52D66F020C8D8E400010200 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B52D66F720C8DC7700010200 /* HYEmotionGroupModel.h */,
+				B52D66F820C8DC7700010200 /* HYEmotionGroupModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B52D66F120C8D8E400010200 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B5465E2420B557AD00118097 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -929,6 +973,7 @@
 		B5465E5E20B7FD0C00118097 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B52D66EE20C8D8A900010200 /* EmotionInputView */,
 				B5465E5F20B7FD1E00118097 /* ObjRuntime */,
 			);
 			path = Utils;
@@ -1077,6 +1122,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B52D66F620C8D95C00010200 /* EmoticonWeibo.bundle in Resources */,
 				04CAEE731FF232D4001127B5 /* EmojisList.plist in Resources */,
 				B5465E3120B55B9D00118097 /* QQResources.bundle in Resources */,
 				047EC34E1FC6C75B0075A08D /* navigation.mp4 in Resources */,
@@ -1139,6 +1185,7 @@
 			files = (
 				B5C1E76120C51F7C00933D35 /* HYBaseModel.h in Sources */,
 				B5C1E76220C51F7C00933D35 /* HYBaseCellModel.h in Sources */,
+				B52D66F920C8DC7700010200 /* HYEmotionGroupModel.m in Sources */,
 				B5C1E76320C51F7C00933D35 /* HYBaseNetworkModel.h in Sources */,
 				046E5BB31FD92A2D00ED04FA /* HYSmallVideoModel.m in Sources */,
 				042C22C81FCE5AF700DFD274 /* HYRCIMChatRoomHelper.m in Sources */,
@@ -1230,6 +1277,7 @@
 				042572FF1FC5761F0040A10A /* HYTabBarController.m in Sources */,
 				042C22BB1FCD5BA200DFD274 /* HYEatChickenViewController.m in Sources */,
 				042C22491FC8180600DFD274 /* HYNetWorkHandle.m in Sources */,
+				B52D66F420C8D91C00010200 /* HYEmotionInputHelper.m in Sources */,
 				B54E8CFC20B8017C00F6DCAD /* UIView+HYCommon.m in Sources */,
 				042C22B81FCD590F00DFD274 /* HYNearViewController.m in Sources */,
 			);
