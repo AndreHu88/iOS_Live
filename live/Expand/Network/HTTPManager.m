@@ -31,7 +31,8 @@
         });
     }
     
-    NSString *urlString= [NSString stringWithFormat:@"%@/%@",API_DomainStr,url];
+//    NSString *urlString= [NSString stringWithFormat:@"%@/%@",API_DomainStr,url];
+    NSString *urlString = url;
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain", @"text/html", nil];
@@ -60,12 +61,13 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            [MBProgressHUD showPregressHUD:KEYWINDOW];
+            [HYLoadingManager showInkeLoading];
         });
         
     }
     
-    NSString *urlString= [NSString stringWithFormat:@"%@/%@",API_DomainStr,url];
+//    NSString *urlString= [NSString stringWithFormat:@"%@/%@",API_DomainStr,url];
+    NSString *urlString = url;
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain", @"text/html", nil];

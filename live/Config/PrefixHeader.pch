@@ -44,5 +44,6 @@
 #import "HYMusicHandleTool.h"
 #import "HYLyricHandleTool.h"
 #import "HYLyricTimeTool.h"
+#import "HYXiaMiMusicModel.h"
 
 #endif /* PrefixHeader_pch */

@@ -12,5 +12,6 @@
 @interface HYMusicPlayerVC : HYBaseViewController
 
 @property (nonatomic,strong) HYMusicModel *musicModel;
+@property (nonatomic,strong) HYXiaMiMusicModel *xiamiMusicModel;
 
 @end

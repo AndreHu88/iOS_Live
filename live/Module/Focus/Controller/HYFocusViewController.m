@@ -9,10 +9,12 @@
 #import "HYFocusViewController.h"
 #import "HYMusicHandleTool.h"
 #import "HYMusicPlayerVC.h"
+#import "HYMusicListTableViewCell.h"
 
 @interface HYFocusViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) NSMutableArray *datalist;
 
 @end
 
@@ -23,6 +25,14 @@
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
     [self setupNav];
+    
+    
+    [HYNetWorkHandle getXiaMiMusicList:^(NSArray *datalist) {
+       
+        self.datalist = (NSMutableArray *)[NSArray modelArrayWithClass:[HYXiaMiMusicModel class] json:datalist];
+        [self.tableView reloadData];
+    }];
+    
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
@@ -38,30 +48,39 @@
 
 #pragma mark - tableViewDelegate DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return [HYMusicHandleTool shareInstance].musicList.count;
+    return self.datalist.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *cellID = @"cellID";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+//    if (!cell) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    }
+//
+//    HYMusicModel *musicModel = [HYMusicHandleTool shareInstance].musicList[indexPath.row];
+//    cell.textLabel.text = musicModel.name;
+//    cell.detailTextLabel.text = musicModel.singer;
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"QQResources" ofType:@"bundle"];
+//    NSString *filePath = [[path stringByAppendingPathComponent:@"Images"] stringByAppendingPathComponent:musicModel.icon];
+//    cell.imageView.image = [UIImage imageWithContentsOfFile:filePath];
+//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    HYMusicListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+        cell = [[HYMusicListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    
-    HYMusicModel *musicModel = [HYMusicHandleTool shareInstance].musicList[indexPath.row];
-    cell.textLabel.text = musicModel.name;
-    cell.detailTextLabel.text = musicModel.singer;
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"QQResources" ofType:@"bundle"];
-    NSString *filePath = [[path stringByAppendingPathComponent:@"Images"] stringByAppendingPathComponent:musicModel.icon];
-    cell.imageView.image = [UIImage imageWithContentsOfFile:filePath];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.currentIndexPath = indexPath;
+    cell.musicModel = self.datalist[indexPath.row];
     return cell;
 }
 
@@ -72,10 +91,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    HYMusicModel *musicModel = [HYMusicHandleTool shareInstance].musicList[indexPath.row];
+////    HYMusicModel *musicModel = [HYMusicHandleTool shareInstance].musicList[indexPath.row];
+//    HYMusicPlayerVC *playerVC = [HYMusicPlayerVC new];
+//    playerVC.musicModel = musicModel;
+//    [self.navigationController pushViewController:playerVC animated:YES];
+    
+    HYXiaMiMusicModel *xiaMiModel = self.datalist[indexPath.row];
     HYMusicPlayerVC *playerVC = [HYMusicPlayerVC new];
-    playerVC.musicModel = musicModel;
-    [self.navigationController pushViewController:playerVC animated:YES];
+    playerVC.xiamiMusicModel = xiaMiModel;
+//    [self.navigationController pushViewController:playerVC animated:YES];
 }
 
 #pragma mark - lazyload

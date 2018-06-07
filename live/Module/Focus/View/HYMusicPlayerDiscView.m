@@ -70,7 +70,7 @@
     [_needleImgView mas_makeConstraints:^(MASConstraintMaker *make) {
        
         make.centerX.equalTo(self).offset(20);
-        make.top.equalTo(self);
+        make.top.equalTo(self).offset(-20);
     }];
     
     [_discCycleBgView mas_makeConstraints:^(MASConstraintMaker *make) {

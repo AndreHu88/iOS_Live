@@ -187,6 +187,11 @@
     [self setMusicControlWithModel:musicModel];
 }
 
+- (void)setXiamiMusicModel:(HYXiaMiMusicModel *)xiamiMusicModel{
+    
+    _xiamiMusicModel = xiamiMusicModel;
+}
+
 - (void)setTitleLabelWithModel:(HYMusicModel *)musicModel{
     
     NSString *str = [NSString stringWithFormat:@"%@\n%@",musicModel.name,musicModel.singer];
@@ -281,7 +286,7 @@
     
     if (!_discView) {
         
-        _discView = [[HYMusicPlayerDiscView alloc] initWithFrame:CGRectMake(0, KIs_iPhoneX ? 88 : 64, KSCREEN_WIDTH, KSCREEN_HEIGHT - 170 * WIDTH_MULTIPLE - (KIs_iPhoneX ? 88 : 64))];
+        _discView = [[HYMusicPlayerDiscView alloc] initWithFrame:CGRectMake(0, KIs_iPhoneX ?  : 64, KSCREEN_WIDTH, KSCREEN_HEIGHT - 170 * WIDTH_MULTIPLE - (KIs_iPhoneX ? 88 : 64))];
         _discView.delegate = self;
     }
     return _discView;

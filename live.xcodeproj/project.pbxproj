@@ -81,6 +81,8 @@
 		3E440D1920C048AF002D83D4 /* HYMusicProgressSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E440D1820C048AF002D83D4 /* HYMusicProgressSlider.m */; };
 		3EF31F0420B5A46A00F37D88 /* HYMusicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF31F0320B5A46A00F37D88 /* HYMusicTool.m */; };
 		3EF31F0720B5ADD700F37D88 /* HYMusicPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF31F0620B5ADD700F37D88 /* HYMusicPlayerVC.m */; };
+		3EFFD46320C97399003AA7C7 /* HYXiaMiMusicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFFD46220C97399003AA7C7 /* HYXiaMiMusicModel.m */; };
+		3EFFD46720C97EDA003AA7C7 /* HYMusicListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFFD46620C97EDA003AA7C7 /* HYMusicListTableViewCell.m */; };
 		B52D66F420C8D91C00010200 /* HYEmotionInputHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B52D66F320C8D91C00010200 /* HYEmotionInputHelper.m */; };
 		B52D66F620C8D95C00010200 /* EmoticonWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B52D66F520C8D95C00010200 /* EmoticonWeibo.bundle */; };
 		B52D66F920C8DC7700010200 /* HYEmotionGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B52D66F820C8DC7700010200 /* HYEmotionGroupModel.m */; };
@@ -267,6 +269,10 @@
 		3EF31F0320B5A46A00F37D88 /* HYMusicTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMusicTool.m; sourceTree = "<group>"; };
 		3EF31F0520B5ADD700F37D88 /* HYMusicPlayerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicPlayerVC.h; sourceTree = "<group>"; };
 		3EF31F0620B5ADD700F37D88 /* HYMusicPlayerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMusicPlayerVC.m; sourceTree = "<group>"; };
+		3EFFD46120C97399003AA7C7 /* HYXiaMiMusicModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYXiaMiMusicModel.h; sourceTree = "<group>"; };
+		3EFFD46220C97399003AA7C7 /* HYXiaMiMusicModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYXiaMiMusicModel.m; sourceTree = "<group>"; };
+		3EFFD46520C97EDA003AA7C7 /* HYMusicListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicListTableViewCell.h; sourceTree = "<group>"; };
+		3EFFD46620C97EDA003AA7C7 /* HYMusicListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMusicListTableViewCell.m; sourceTree = "<group>"; };
 		7199097CD39ED884F3733F58 /* Pods-live.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-live.release.xcconfig"; path = "Pods/Target Support Files/Pods-live/Pods-live.release.xcconfig"; sourceTree = "<group>"; };
 		B52D66F220C8D91C00010200 /* HYEmotionInputHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYEmotionInputHelper.h; sourceTree = "<group>"; };
 		B52D66F320C8D91C00010200 /* HYEmotionInputHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYEmotionInputHelper.m; sourceTree = "<group>"; };
@@ -856,6 +862,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3EFFD46420C97ECA003AA7C7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3EFFD46520C97EDA003AA7C7 /* HYMusicListTableViewCell.h */,
+				3EFFD46620C97EDA003AA7C7 /* HYMusicListTableViewCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		5EC0305F75BFD09781C1FB05 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -913,6 +928,7 @@
 		B5465E2420B557AD00118097 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3EFFD46420C97ECA003AA7C7 /* Cell */,
 				B5C1E6E220BCE5C000933D35 /* HYMusicPlayerDiscView.h */,
 				B5C1E6E320BCE5C000933D35 /* HYMusicPlayerDiscView.m */,
 				B5C1E6E520BCE6D600933D35 /* HYDiscView.h */,
@@ -940,6 +956,8 @@
 				B5C1E6FB20BE8A3200933D35 /* HYMusicPlayInfoModel.m */,
 				B5465E2D20B55B8300118097 /* HYLrcModel.h */,
 				B5465E2E20B55B8300118097 /* HYLrcModel.m */,
+				3EFFD46120C97399003AA7C7 /* HYXiaMiMusicModel.h */,
+				3EFFD46220C97399003AA7C7 /* HYXiaMiMusicModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1193,6 +1211,7 @@
 				042C22B31FCD590F00DFD274 /* HYLiveBottomView.m in Sources */,
 				042572DF1FC56D8F0040A10A /* DESECB.m in Sources */,
 				042C22C51FCE5ADA00DFD274 /* HYRefreshGifHeader.m in Sources */,
+				3EFFD46720C97EDA003AA7C7 /* HYMusicListTableViewCell.m in Sources */,
 				B5C1E6F620BE7D7600933D35 /* HYMusicControlView.m in Sources */,
 				046E5BA71FD8E59D00ED04FA /* HYLoadingView.m in Sources */,
 				04875B721FD95D7C0031FDA8 /* HYImageInteractivePopAnimation.m in Sources */,
@@ -1266,6 +1285,7 @@
 				046E5BB01FD9238A00ED04FA /* HYSmallVideoCollectionCell.m in Sources */,
 				041F8D361FF1E20F001E952A /* HYNearCollectionViewCell.m in Sources */,
 				049AD3A11FDA3AED009252A4 /* HYImageInteractiveDriven.m in Sources */,
+				3EFFD46320C97399003AA7C7 /* HYXiaMiMusicModel.m in Sources */,
 				B5C1E76020C51C6300933D35 /* HYBaseModel.m in Sources */,
 				B5C1E70B20C113B800933D35 /* HYTableViewDelegate.m in Sources */,
 				0425728F1FC56A9C0040A10A /* main.m in Sources */,

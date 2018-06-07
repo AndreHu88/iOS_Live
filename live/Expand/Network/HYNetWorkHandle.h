@@ -30,4 +30,7 @@
  */
 + (void)getNearDataWithLatitude:(NSString *)latitude longitude:(NSString *)longitude ComplectionBlock:(void(^)(NSArray *datalist))complection;
 
+//获取虾米音乐
++ (void)getXiaMiMusicList:(void(^)(NSArray *datalist))complection;
+
 @end

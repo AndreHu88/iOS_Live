@@ -158,4 +158,36 @@
     }];
 }
 
++ (void)getXiaMiMusicList:(void (^)(NSArray *))complection{
+    
+    [[HTTPManager shareHTTPManager] getDataFromUrl:API_XiaMiMusicList withParameter:nil isShowHUD:YES success:^(id returnData) {
+        
+        if (returnData) {
+            
+            if ([returnData objectForKey:@"status"]) {
+                
+                NSArray *array = returnData[@"resultObj"][@"songs"];
+                if (array.count) {
+                    
+                    complection(array);
+                }
+                else{
+                    
+                    complection(array);
+                }
+            }
+            else{
+                
+                complection(nil);
+                [JRToast showWithText:[returnData valueForKey:@"msg"]];
+            }
+        }
+        else{
+            
+            complection(nil);
+            [JRToast showWithText:@"获取音乐播放列表失败" duration:2];
+        }
+    }];
+}
+
 @end
