@@ -89,7 +89,7 @@
                     HYButton *btn = (HYButton *)button;
                     [btn shakeAnimationWithDelay:j];
         
-                    j += 3;
+                    j += 0.1;
                 }
             }
         }];

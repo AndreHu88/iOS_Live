@@ -29,6 +29,6 @@
 #define API_NearLive(lat,lon)     [NSString stringWithFormat:@"http://service.ingkee.com/api/live/near_recommend?uid=268945519&latitude=%@&longitude=%@",lat,lon]
 
 //音乐
-#define API_XiaMiMusicList             @"http://music.xiami.com/resource/collect/detail/406549798?auth_key=1528390510-0-0-5cba7a2bccfebbed5fd109cd61079754"
+#define API_XiaMiMusicList        @"http://music.xiami.com/resource/collect/detail/406549798?auth_key=1528390510-0-0-5cba7a2bccfebbed5fd109cd61079754"
 
 #endif

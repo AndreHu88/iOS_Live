@@ -11,6 +11,7 @@
 @interface HYMusicListTableViewCell : HYBaseTableViewCell
 
 @property (nonatomic,strong) HYXiaMiMusicModel *musicModel;
+@property (nonatomic,strong) HYMusicModel *localMusicModel;
 @property (nonatomic,strong) NSIndexPath *currentIndexPath;
 
 @end

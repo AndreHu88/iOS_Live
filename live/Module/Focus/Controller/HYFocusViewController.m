@@ -26,13 +26,6 @@
     [self.view addSubview:self.tableView];
     [self setupNav];
     
-    
-    [HYNetWorkHandle getXiaMiMusicList:^(NSArray *datalist) {
-       
-        self.datalist = (NSMutableArray *)[NSArray modelArrayWithClass:[HYXiaMiMusicModel class] json:datalist];
-        [self.tableView reloadData];
-    }];
-    
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
@@ -46,6 +39,14 @@
     self.title = @"网易云";
 }
 
+- (void)requestNetData{
+    
+    [HYNetWorkHandle getXiaMiMusicList:^(NSArray *datalist) {
+        self.datalist = (NSMutableArray *)[NSArray modelArrayWithClass:[HYXiaMiMusicModel class] json:datalist];
+        [self.tableView reloadData];
+    }];
+}
+
 #pragma mark - tableViewDelegate DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
@@ -54,7 +55,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.datalist.count;
+    return [HYMusicHandleTool shareInstance].musicList.count;
+//    return self.datalist.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -80,7 +82,8 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.currentIndexPath = indexPath;
-    cell.musicModel = self.datalist[indexPath.row];
+//    cell.musicModel = self.datalist[indexPath.row];
+    cell.localMusicModel = [HYMusicHandleTool shareInstance].musicList[indexPath.row];
     return cell;
 }
 
@@ -91,14 +94,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-////    HYMusicModel *musicModel = [HYMusicHandleTool shareInstance].musicList[indexPath.row];
-//    HYMusicPlayerVC *playerVC = [HYMusicPlayerVC new];
-//    playerVC.musicModel = musicModel;
-//    [self.navigationController pushViewController:playerVC animated:YES];
-    
-    HYXiaMiMusicModel *xiaMiModel = self.datalist[indexPath.row];
+    HYMusicModel *musicModel = [HYMusicHandleTool shareInstance].musicList[indexPath.row];
     HYMusicPlayerVC *playerVC = [HYMusicPlayerVC new];
-    playerVC.xiamiMusicModel = xiaMiModel;
+    playerVC.musicModel = musicModel;
+    [self.navigationController pushViewController:playerVC animated:YES];
+    
+//    HYXiaMiMusicModel *xiaMiModel = self.datalist[indexPath.row];
+//    HYMusicPlayerVC *playerVC = [HYMusicPlayerVC new];
+//    playerVC.xiamiMusicModel = xiaMiModel;
 //    [self.navigationController pushViewController:playerVC animated:YES];
 }
 

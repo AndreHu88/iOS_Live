@@ -71,6 +71,14 @@
     _indexLabel.text = [NSString stringWithFormat:@"%ld",self.currentIndexPath.row + 1];
 }
 
+- (void)setLocalMusicModel:(HYMusicModel *)localMusicModel{
+    
+    _localMusicModel = localMusicModel;
+    _musicNameLabel.text = localMusicModel.name;
+    _artistLabel.text = localMusicModel.singer;
+    _indexLabel.text = [NSString stringWithFormat:@"%ld",self.currentIndexPath.row + 1];
+}
+
 #pragma mark - lazyload
 - (UILabel *)indexLabel{
     

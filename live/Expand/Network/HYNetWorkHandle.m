@@ -185,7 +185,6 @@
         else{
             
             complection(nil);
-            [JRToast showWithText:@"获取音乐播放列表失败" duration:2];
         }
     }];
 }
