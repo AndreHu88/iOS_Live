@@ -21,4 +21,5 @@
 
 + (void)showWithText:(NSString *)text bottomOffset:(CGFloat)bottomOffset;
 + (void)showWithText:(NSString *)text bottomOffset:(CGFloat)bottomOffset duration:(CGFloat)duration;
+
 @end

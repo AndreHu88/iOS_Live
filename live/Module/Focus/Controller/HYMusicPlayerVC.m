@@ -38,6 +38,7 @@
     
     [super viewWillAppear:animated];
     [self setupNav];
+    [self setupLockScreenControlInfo];
 }
 
 - (void)setupNav{
@@ -196,14 +197,15 @@
     
     NSString *str = [NSString stringWithFormat:@"%@\n%@",musicModel.name,musicModel.singer];
     NSMutableAttributedString *attributeStr = [[NSMutableAttributedString alloc] initWithString:str attributes:@{NSForegroundColorAttributeName : KAPP_WHITE_COLOR}];
-    [attributeStr addAttributes:@{NSFontAttributeName : KFitFont(14)} range:NSMakeRange(0, musicModel.name.length)];
-    [attributeStr addAttributes:@{NSFontAttributeName : KFitFont(12)} range:NSMakeRange(musicModel.name.length, musicModel.singer.length)];
+    [attributeStr addAttributes:@{NSFontAttributeName : KFitFont(13)} range:NSMakeRange(0, musicModel.name.length)];
+    [attributeStr addAttributes:@{NSFontAttributeName : KFitFont(11)} range:NSMakeRange(musicModel.name.length, musicModel.singer.length)];
     [attributeStr setAlignment:NSTextAlignmentCenter];
     
     YYTextHighlight *sinerText = [[YYTextHighlight alloc] init];
     [attributeStr setTextHighlight:sinerText range:NSMakeRange(musicModel.name.length, musicModel.singer.length)];
     sinerText.tapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
         
+        [JRToast showWithText:[NSString stringWithFormat:@"tap %@",text] duration:2];
     };
     self.titleLabel.attributedText = attributeStr;
     self.navigationItem.titleView = self.titleLabel;
@@ -319,6 +321,11 @@
     if (!_lyricView) {
         _lyricView = [[HYLyricView alloc] init];
         _lyricView.hidden = YES;
+        __weak typeof(self) weakSelf = self;
+        _lyricView.scrollLyricBlock = ^(CGFloat scrollTime) {
+            
+            [weakSelf updateLrc];
+        };
     }
     return _lyricView;
 }

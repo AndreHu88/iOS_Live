@@ -17,5 +17,7 @@
 @property (nonatomic, assign) NSInteger scrollRow;
 /** 当前歌词的播放进度*/
 @property (nonatomic, assign) CGFloat progress;
+/** 滚动歌词block */
+@property (nonatomic, copy)   void(^scrollLyricBlock)(CGFloat scrollTime);
 
 @end

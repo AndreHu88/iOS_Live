@@ -32,10 +32,13 @@
 - (id)initWithText:(NSString *)text{
     if (self = [super init]) {
         
+        if (!text) {
+            return nil;
+        }
         _text = [text copy];
         
         UIFont *font = [UIFont boldSystemFontOfSize:(15)];
-        CGSize textSize = [text boundingRectWithSize:CGSizeMake(260 * WIDTH_MULTIPLE, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : font} context:nil].size;
+        CGSize textSize = [text boundingRectWithSize:CGSizeMake(280, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : font} context:nil].size;
         
         UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, textSize.width + 60, textSize.height + 30)];
         textLabel.backgroundColor = [UIColor clearColor];
@@ -46,14 +49,11 @@
         textLabel.numberOfLines = 0;
         
         _contentView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, textLabel.frame.size.width, textLabel.frame.size.height)];
-        _contentView.layer.cornerRadius = 5.0f;
+        _contentView.layer.cornerRadius = (textSize.height + 30) / 2;
         _contentView.layer.masksToBounds = YES;
-        _contentView.layer.borderWidth = 1.0f;
-        _contentView.layer.borderColor = [[UIColor grayColor] colorWithAlphaComponent:0.5].CGColor;
-        _contentView.backgroundColor = [UIColor colorWithRed:0.2f
-                                                      green:0.2f
-                                                       blue:0.2f
-                                                      alpha:0.9f];
+//        _contentView.layer.borderWidth = 1.0f;
+//        _contentView.layer.borderColor = [[UIColor grayColor] colorWithAlphaComponent:0.5].CGColor;
+        _contentView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
         [_contentView addSubview:textLabel];
         _contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [_contentView addTarget:self
