@@ -26,17 +26,16 @@ static CGFloat imageScale = 0.5;
 #pragma mark - public
 - (void)shakeAnimationWithDelay:(CGFloat)delay{
     
-    CGAffineTransform topTransform = CGAffineTransformMakeTranslation(0, 400);
-    CGAffineTransform topTransform2 = CGAffineTransformMakeTranslation(0, -200);
-    CGAffineTransform bottomTransform = CGAffineTransformMakeTranslation(0, 5);
-    
-    [UIView animateWithDuration:4 delay:delay usingSpringWithDamping:0.6 initialSpringVelocity:10 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    CGRect originFrmae = self.frame;
+    self.frame = CGRectMake(originFrmae.origin.x, originFrmae.origin.y - 100, self.width, self.height);
+    [UIView animateWithDuration:4 delay:delay usingSpringWithDamping:0.3 initialSpringVelocity:10 options:UIViewAnimationOptionCurveEaseIn animations:^{
 
-        self.transform = topTransform;
+        self.frame = originFrmae;
+        self.alpha = 1;
     } completion:^(BOOL finished) {
 
-        self.transform = CGAffineTransformIdentity;
     }];
+    
 }
 
 //重写button的
