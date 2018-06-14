@@ -80,7 +80,9 @@
             [self setNeedsUpdateConstraints];
             [self layoutIfNeeded];
             
-            float j = 0.2;
+        } completion:^(BOOL finished) {
+            
+            float j = 0;
             for (NSInteger i = 0; i < self.subviews.count; i++) {
                 
                 UIView *button = self.subviews[i];
@@ -88,8 +90,8 @@
                     
                     HYButton *btn = (HYButton *)button;
                     [btn shakeAnimationWithDelay:j];
-        
-                    j += 0.1;
+                    
+                    j += 0.4;
                 }
             }
         }];
