@@ -94,6 +94,8 @@
 		B5465E5920B7EB3400118097 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = B5465E5820B7EB3300118097 /* loading.gif */; };
 		B5465E5D20B7FC4B00118097 /* UITableViewCell+HYCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E5C20B7FC4B00118097 /* UITableViewCell+HYCommon.m */; };
 		B5465E6220B7FD7200118097 /* ObjcRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E6120B7FD7200118097 /* ObjcRuntime.m */; };
+		B546900920D265700051571C /* HYVideoHardEncodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B546900820D265700051571C /* HYVideoHardEncodeVC.m */; };
+		B546900C20D265840051571C /* HYAudioEncodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B546900B20D265840051571C /* HYAudioEncodeVC.m */; };
 		B547A48F20ABC574008FBA0E /* HYPresentAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */; };
 		B54E8CFC20B8017C00F6DCAD /* UIView+HYCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E8CFB20B8017C00F6DCAD /* UIView+HYCommon.m */; };
 		B5C1E6E420BCE5C000933D35 /* HYMusicPlayerDiscView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6E320BCE5C000933D35 /* HYMusicPlayerDiscView.m */; };
@@ -116,6 +118,8 @@
 		B5C1E76120C51F7C00933D35 /* HYBaseModel.h in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E75820C51C6200933D35 /* HYBaseModel.h */; };
 		B5C1E76220C51F7C00933D35 /* HYBaseCellModel.h in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E75D20C51C6200933D35 /* HYBaseCellModel.h */; };
 		B5C1E76320C51F7C00933D35 /* HYBaseNetworkModel.h in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E75C20C51C6200933D35 /* HYBaseNetworkModel.h */; };
+		B5E9ECFA20D2092000E08CA2 /* HYEmotionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E9ECF920D2092000E08CA2 /* HYEmotionInputView.m */; };
+		B5E9ECFD20D2190E00E08CA2 /* HYEmotionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5E9ECFC20D2190E00E08CA2 /* HYEmotionCollectionViewCell.m */; };
 		DBA029A2360017E7D515EAAA /* libPods-live.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C21482B5397D3E4C7A82646A /* libPods-live.a */; };
 /* End PBXBuildFile section */
 
@@ -293,6 +297,10 @@
 		B5465E5C20B7FC4B00118097 /* UITableViewCell+HYCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+HYCommon.m"; sourceTree = "<group>"; };
 		B5465E6020B7FD7100118097 /* ObjcRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcRuntime.h; sourceTree = "<group>"; };
 		B5465E6120B7FD7200118097 /* ObjcRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcRuntime.m; sourceTree = "<group>"; };
+		B546900720D265700051571C /* HYVideoHardEncodeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYVideoHardEncodeVC.h; sourceTree = "<group>"; };
+		B546900820D265700051571C /* HYVideoHardEncodeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYVideoHardEncodeVC.m; sourceTree = "<group>"; };
+		B546900A20D265840051571C /* HYAudioEncodeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYAudioEncodeVC.h; sourceTree = "<group>"; };
+		B546900B20D265840051571C /* HYAudioEncodeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYAudioEncodeVC.m; sourceTree = "<group>"; };
 		B547A48D20ABC574008FBA0E /* HYPresentAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPresentAnimator.h; sourceTree = "<group>"; };
 		B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPresentAnimator.m; sourceTree = "<group>"; };
 		B54E8CFA20B8017C00F6DCAD /* UIView+HYCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+HYCommon.h"; path = "live/Expand/HYLoading/UIView+HYCommon.h"; sourceTree = SOURCE_ROOT; };
@@ -333,6 +341,10 @@
 		B5C1E75B20C51C6200933D35 /* HYBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBaseModel.m; sourceTree = "<group>"; };
 		B5C1E75C20C51C6200933D35 /* HYBaseNetworkModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBaseNetworkModel.h; sourceTree = "<group>"; };
 		B5C1E75D20C51C6200933D35 /* HYBaseCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBaseCellModel.h; sourceTree = "<group>"; };
+		B5E9ECF820D2092000E08CA2 /* HYEmotionInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYEmotionInputView.h; sourceTree = "<group>"; };
+		B5E9ECF920D2092000E08CA2 /* HYEmotionInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYEmotionInputView.m; sourceTree = "<group>"; };
+		B5E9ECFB20D2190E00E08CA2 /* HYEmotionCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYEmotionCollectionViewCell.h; sourceTree = "<group>"; };
+		B5E9ECFC20D2190E00E08CA2 /* HYEmotionCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYEmotionCollectionViewCell.m; sourceTree = "<group>"; };
 		C21482B5397D3E4C7A82646A /* libPods-live.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-live.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -607,6 +619,10 @@
 				042C22801FCD590F00DFD274 /* HYCurrentLiveViewController.m */,
 				042C22851FCD590F00DFD274 /* HYLiveControllerVC.h */,
 				042C22861FCD590F00DFD274 /* HYLiveControllerVC.m */,
+				B546900720D265700051571C /* HYVideoHardEncodeVC.h */,
+				B546900820D265700051571C /* HYVideoHardEncodeVC.m */,
+				B546900A20D265840051571C /* HYAudioEncodeVC.h */,
+				B546900B20D265840051571C /* HYAudioEncodeVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -921,6 +937,10 @@
 		B52D66F120C8D8E400010200 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B5E9ECF820D2092000E08CA2 /* HYEmotionInputView.h */,
+				B5E9ECF920D2092000E08CA2 /* HYEmotionInputView.m */,
+				B5E9ECFB20D2190E00E08CA2 /* HYEmotionCollectionViewCell.h */,
+				B5E9ECFC20D2190E00E08CA2 /* HYEmotionCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1215,6 +1235,7 @@
 				B5C1E6F620BE7D7600933D35 /* HYMusicControlView.m in Sources */,
 				046E5BA71FD8E59D00ED04FA /* HYLoadingView.m in Sources */,
 				04875B721FD95D7C0031FDA8 /* HYImageInteractivePopAnimation.m in Sources */,
+				B5E9ECFD20D2190E00E08CA2 /* HYEmotionCollectionViewCell.m in Sources */,
 				042572D91FC56D8F0040A10A /* HTTPManager.m in Sources */,
 				046E5BB61FD93DA200ED04FA /* HYSmallVideoPlayerVC.m in Sources */,
 				042572EC1FC56D8F0040A10A /* UILabel+HYJustifyAlign.m in Sources */,
@@ -1262,6 +1283,7 @@
 				042C22B01FCD590F00DFD274 /* HYLiveCollectionViewCell.m in Sources */,
 				042572DA1FC56D8F0040A10A /* HYNetWorkStateManager.m in Sources */,
 				042573021FC576DE0040A10A /* HYCustomTabBar.m in Sources */,
+				B546900C20D265840051571C /* HYAudioEncodeVC.m in Sources */,
 				042C22EE1FD108EA00DFD274 /* HYLiveInputBar.m in Sources */,
 				042C22AF1FCD590F00DFD274 /* HYHotLiveModel.m in Sources */,
 				042572AA1FC56CF30040A10A /* AppDelegate.m in Sources */,
@@ -1278,11 +1300,13 @@
 				042C22AB1FCD590F00DFD274 /* HYHomeViewController.m in Sources */,
 				042C22B61FCD590F00DFD274 /* HYLiveViewModel.m in Sources */,
 				04CAEE7D1FF233CC001127B5 /* HYHomeLaunchView.m in Sources */,
+				B546900920D265700051571C /* HYVideoHardEncodeVC.m in Sources */,
 				B5C1E71720C4EC1500933D35 /* HYSocketDataModel.m in Sources */,
 				042572E01FC56D8F0040A10A /* GTMBase64.m in Sources */,
 				B5C1E6E420BCE5C000933D35 /* HYMusicPlayerDiscView.m in Sources */,
 				B547A48F20ABC574008FBA0E /* HYPresentAnimator.m in Sources */,
 				046E5BB01FD9238A00ED04FA /* HYSmallVideoCollectionCell.m in Sources */,
+				B5E9ECFA20D2092000E08CA2 /* HYEmotionInputView.m in Sources */,
 				041F8D361FF1E20F001E952A /* HYNearCollectionViewCell.m in Sources */,
 				049AD3A11FDA3AED009252A4 /* HYImageInteractiveDriven.m in Sources */,
 				3EFFD46320C97399003AA7C7 /* HYXiaMiMusicModel.m in Sources */,

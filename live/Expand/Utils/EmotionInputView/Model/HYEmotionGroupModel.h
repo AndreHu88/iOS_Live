@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, HYEmotionType) {
     HYEmotionTypeEmoji = 1,
 };
 
-@interface HYemotionModel : NSObject
+@interface HYEmotionModel : NSObject
 
 @property (nonatomic, strong) NSString *chs;  ///< 例如 [吃惊]
 @property (nonatomic, strong) NSString *cht;  ///< 例如 [吃驚]
@@ -37,6 +37,6 @@ typedef NS_ENUM(NSUInteger, HYEmotionType) {
 @property (nonatomic,copy) NSString *group_name_en;
 @property (nonatomic,copy) NSString *group_name_tw;
 @property (nonatomic,copy) NSString *group_type;
-@property (nonatomic,strong) NSArray <HYemotionModel *> *emotions;
+@property (nonatomic,strong) NSArray <HYEmotionModel *> *emotions;
 
 @end

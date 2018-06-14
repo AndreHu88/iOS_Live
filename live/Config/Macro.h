@@ -67,6 +67,13 @@ _Pragma("clang diagnostic pop") \
 #define KTABBAR_HEIGHT      self.tabBarController.tabBar.frame.size.height
 
 
+// 屏幕适配宽度
+#define KAdaptedWidth(x)    ceilf((x) * WIDTH_MULTIPLE)
+// 屏幕适配高度
+#define KAdaptedHeight(x)   ceilf((x) * HEIGHT_MULTIPLE)
+// 屏幕适配字体
+#define KAdaptedFontSize(R)     [UIFont systemFontOfSize:KAdaptedWidth(R)]
+
 
 /** ----------------------------颜色信息---------------------------------
  --------------------------------------------------------------------*/

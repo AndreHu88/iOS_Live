@@ -20,18 +20,6 @@
 	<array>
 		<dict>
 			<key>chs</key>
-			<string>[最右]</string>
-			<key>cht</key>
-			<string>[最右]</string>
-			<key>gif</key>
-			<string></string>
-			<key>png</key>
-			<string>d_zuiyou.png</string>
-			<key>type</key>
-			<string>0</string>
-		</dict>
-		<dict>
-			<key>chs</key>
 			<string>[微笑]</string>
 			<key>cht</key>
 			<string>[微笑]</string>

@@ -15,4 +15,7 @@
 
 + (UIImage *)emotionImageNamed:(NSString *)imageName;
 
+/** 获取bundle中的emotion */
++ (NSArray <HYEmotionGroupModel *> *)emotionGroups;
+
 @end

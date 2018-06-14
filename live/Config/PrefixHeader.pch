@@ -46,4 +46,6 @@
 #import "HYLyricTimeTool.h"
 #import "HYXiaMiMusicModel.h"
 
+#import "HYEmotionInputView.h"
+
 #endif /* PrefixHeader_pch */

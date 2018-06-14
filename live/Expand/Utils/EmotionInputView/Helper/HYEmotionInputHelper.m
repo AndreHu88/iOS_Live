@@ -41,7 +41,7 @@
     return image;
 }
 
-+ (NSArray *)emotionGroups{
++ (NSArray <HYEmotionGroupModel *> *)emotionGroups{
     
     NSString *emoticonBundlePath = [[NSBundle mainBundle] pathForResource:@"EmoticonWeibo" ofType:@"bundle"];
     NSString *emoticonPlistPath = [emoticonBundlePath stringByAppendingPathComponent:@"emoticons.plist"];

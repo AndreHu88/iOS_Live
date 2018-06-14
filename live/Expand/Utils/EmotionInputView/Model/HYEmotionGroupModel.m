@@ -8,7 +8,7 @@
 
 #import "HYEmotionGroupModel.h"
 
-@implementation HYemotionModel
+@implementation HYEmotionModel
 
 @end
 
@@ -16,7 +16,20 @@
 
 + (NSDictionary *)modelContainerPropertyGenericClass {
     
-    return @{@"emotions" : [HYemotionModel class]};
+    return @{@"emotions" : [HYEmotionModel class]};
+}
+
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"emotions" : @"emoticons"
+             };
+}
+
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    
+    [_emotions enumerateObjectsUsingBlock:^(HYEmotionModel *emotion, NSUInteger idx, BOOL *stop) {
+        emotion.group = self;
+    }];
+    return YES;
 }
 
 @end
