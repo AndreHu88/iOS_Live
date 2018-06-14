@@ -15,6 +15,9 @@
 #import "HYBaseNavController.h"
 #import "HYLocationManager.h"
 
+#import "HYVideoHardEncodeVC.h"
+#import "HYHomeLaunchView.h"
+
 @interface HYTabBarController ()
 
 @end
@@ -39,7 +42,8 @@
 - (void)addAllChildVC{
     
     // 利用KVO来使用自定义的tabBar
-    [self setValue:[[HYCustomTabBar alloc] init] forKey:@"tabBar"];
+    HYCustomTabBar *customTabBar = [HYCustomTabBar new];
+    [self setValue:customTabBar forKey:@"tabBar"];
     
     HYHomeViewController *homeVC = [HYHomeViewController new];
     [self addChildViewController:homeVC title:@"主页" image:@"tab_live" selectImage:@"tab_live_p"];
@@ -52,6 +56,18 @@
     
     HYMineViewController *mineVC = [HYMineViewController new];
     [self addChildViewController:mineVC title:@"我的" image:@"tab_me" selectImage:@"tab_me_p"];
+    
+    customTabBar.buttonClickBlock = ^{
+        
+        HYHomeLaunchView *launchView = [[HYHomeLaunchView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        [self.view addSubview:launchView];
+        [launchView showLaunchView];
+        launchView.buttonClickBlock = ^(NSInteger index) {
+            if (index == 0) {
+                [self presentViewController:[HYVideoHardEncodeVC new] animated:YES completion:nil];
+            }
+        };
+    };
 }
 
 

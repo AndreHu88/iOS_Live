@@ -10,6 +10,7 @@
 
 @interface HYHomeLaunchView : UIView
 
+@property (nonatomic, copy)   void(^buttonClickBlock)(NSInteger index);
 - (void)showLaunchView;
 
 @end

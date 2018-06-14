@@ -27,8 +27,9 @@ static CGFloat imageScale = 0.5;
 - (void)shakeAnimationWithDelay:(CGFloat)delay{
     
     CGRect originFrmae = self.frame;
-    self.frame = CGRectMake(originFrmae.origin.x, originFrmae.origin.y - 100, self.width, self.height);
-    [UIView animateWithDuration:4 delay:delay usingSpringWithDamping:0.3 initialSpringVelocity:10 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    self.frame = CGRectMake(originFrmae.origin.x, KSCREEN_HEIGHT, self.width, self.height);
+    self.alpha = 0;
+    [UIView animateWithDuration:5 delay:delay usingSpringWithDamping:0.2 initialSpringVelocity:40 options:UIViewAnimationOptionCurveEaseIn animations:^{
 
         self.frame = originFrmae;
         self.alpha = 1;

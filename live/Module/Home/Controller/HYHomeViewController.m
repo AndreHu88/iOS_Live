@@ -11,8 +11,6 @@
 #import "HYHotLiveViewController.h"
 #import "HYSmallVideoViewController.h"
 #import "HYEatChickenViewController.h"
-#import "HYVideoHardEncodeVC.h"
-#import "HYAudioEncodeVC.h"
 
 @interface HYHomeViewController () <UIScrollViewDelegate>
 
@@ -61,14 +59,9 @@
 }
 
 #pragma mark - action
-- (void)videoHardEncodeAction{
+- (void)searchAction{
     
-    [self.navigationController pushViewController:[HYVideoHardEncodeVC new] animated:YES];
-}
-
-- (void)audioHardEncodeAction{
     
-    [self.navigationController pushViewController:[HYAudioEncodeVC new] animated:YES];
 }
 
 #pragma mark - scrollViewDelegate
@@ -124,8 +117,8 @@
     self.titleView.centerX = self.view.centerX;
     [self.navigationController.navigationBar addSubview:self.titleView];
 
-    UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithTitle:@"视频硬编码" style:UIBarButtonItemStylePlain target:self action:@selector(videoHardEncodeAction)];
-    UIBarButtonItem *moreBtn = [[UIBarButtonItem alloc] initWithTitle:@"音频硬编码" style:UIBarButtonItemStylePlain target:self action:@selector(audioHardEncodeAction)];
+    UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"global_search"] style:UIBarButtonItemStylePlain target:self action:@selector(searchAction)];
+    UIBarButtonItem *moreBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"title_button_more"] style:UIBarButtonItemStylePlain target:self action:@selector(searchAction)];
     self.navigationItem.leftBarButtonItem = searchBtn;
     self.navigationItem.rightBarButtonItem = moreBtn;
     

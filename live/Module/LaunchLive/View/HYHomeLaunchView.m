@@ -44,24 +44,9 @@
     
     [self addSubview:self.startLiveBtn];
     [self addSubview:self.recordVideoBtn];
-}
-
-- (void)layoutSubviews{
     
-    CGFloat itemWidth = self.width / 2;
-    [_startLiveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.width.mas_equalTo(itemWidth);
-        make.height.mas_equalTo(80 * WIDTH_MULTIPLE);
-        make.centerY.equalTo(_whiteBgView);
-        make.left.equalTo(self);
-    }];
-    
-    [_recordVideoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-       
-        make.size.centerY.equalTo(_startLiveBtn);
-        make.left.equalTo(_startLiveBtn.mas_right);
-    }];
+    _startLiveBtn.frame = CGRectMake(0, KSCREEN_HEIGHT, KSCREEN_WIDTH / 2, KAdaptedWidth(80));
+    _recordVideoBtn.frame = CGRectMake(KSCREEN_WIDTH / 2, KSCREEN_HEIGHT, KSCREEN_WIDTH / 2, KAdaptedWidth(80));
 }
 
 #pragma mark - public
@@ -89,29 +74,57 @@
                 if ([button isKindOfClass:[HYButton class]]) {
                     
                     HYButton *btn = (HYButton *)button;
-                    [btn shakeAnimationWithDelay:j];
-                    
-                    j += 0.4;
+                    [self showAnimation:btn WithDelay:j];
+                    j += 0.2;
                 }
             }
         }];
     });
 }
 
-- (void)hideLaunchView{
+- (void)showAnimation:(UIView *)view WithDelay:(CGFloat)delay{
     
-    [_whiteBgView mas_updateConstraints:^(MASConstraintMaker *make) {
+    view.alpha = 0;
+    [UIView animateWithDuration:0.2 delay:delay usingSpringWithDamping:0.7 initialSpringVelocity:80 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
-        make.top.equalTo(self.mas_bottom);
+        view.centerY = _whiteBgView.centerY;
+        view.alpha = 1;
+    } completion:^(BOOL finished) {
+        
     }];
     
-    [UIView animateWithDuration:0.6 animations:^{
+}
+
+- (void)hideAnimation:(UIView *)view withDeley:(CGFloat)delay{
+    
+    view.alpha = 1;
+    [UIView animateWithDuration:0.2 delay:delay usingSpringWithDamping:0.3 initialSpringVelocity:80 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
+        view.top = KSCREEN_HEIGHT;
+        view.alpha = 0;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void)hideLaunchView{
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        for (NSInteger i = 0; i < self.subviews.count; i++) {
+            
+            UIView *button = self.subviews[i];
+            float j = 0;
+            if ([button isKindOfClass:[HYButton class]]) {
+                
+                HYButton *btn = (HYButton *)button;
+                [self hideAnimation:btn withDeley:j];
+                j += 0.2;
+            }
+        }
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
-        [self setNeedsUpdateConstraints];
-        [self layoutIfNeeded];
-       
-    }completion:^(BOOL finished) {
+        _whiteBgView.top = KSCREEN_HEIGHT;
+    } completion:^(BOOL finished) {
         
         [self removeFromSuperview];
     }];
@@ -124,6 +137,13 @@
     if (touchPoint.y <= _whiteBgView.top) {
         
         [self hideLaunchView];
+    }
+}
+
+- (void)buttonClick:(UIButton *)sender{
+    
+    if (self.buttonClickBlock) {
+        self.buttonClickBlock(sender.tag - 100);
     }
 }
 
@@ -147,6 +167,8 @@
         [_startLiveBtn setTitle:@"开直播" forState:UIControlStateNormal];
         [_startLiveBtn setTitleColor:KAPP_7b7b7b_COLOR forState:UIControlStateNormal];
         _startLiveBtn.titleLabel.font = KFitFont(15);
+        [_startLiveBtn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+        _startLiveBtn.tag = 100;
     }
     return _startLiveBtn;
 }
@@ -160,6 +182,8 @@
         [_recordVideoBtn setTitle:@"录视频" forState:UIControlStateNormal];
         [_recordVideoBtn setTitleColor:KAPP_7b7b7b_COLOR forState:UIControlStateNormal];
         _recordVideoBtn.titleLabel.font = KFitFont(15);
+        [_recordVideoBtn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+        _recordVideoBtn.tag = 101;
     }
     return _recordVideoBtn;
 }

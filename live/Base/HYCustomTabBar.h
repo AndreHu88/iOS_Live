@@ -12,5 +12,6 @@
 
 /** 中间凸起的按钮 */
 @property (nonatomic, strong) UIButton *centerBtn;
+@property (nonatomic, copy)   void(^buttonClickBlock)();
 
 @end
