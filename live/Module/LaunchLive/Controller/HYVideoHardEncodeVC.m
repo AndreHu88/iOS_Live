@@ -53,6 +53,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
     [self initData];
     [self setupSession];
     [self setupSubviews];
@@ -266,6 +267,7 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
     }
     else{
         DLog(@"H264: VTCompressionSessionEncodeFrame failed with %d", (int)status);
+        if (!_encodeingSession) return;
         VTCompressionSessionInvalidate(_encodeingSession);
         //释放资源
         CFRelease(_encodeingSession);
