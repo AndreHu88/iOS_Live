@@ -64,7 +64,16 @@
         [launchView showLaunchView];
         launchView.buttonClickBlock = ^(NSInteger index) {
             if (index == 0) {
-                [self presentViewController:[HYVideoHardEncodeVC new] animated:YES completion:nil];
+                
+                HYVideoHardEncodeVC *videoEncodeVC = [HYVideoHardEncodeVC new];
+                [self presentViewController:videoEncodeVC animated:YES completion:^{
+                    
+                    [UIView animateWithDuration:0.4 animations:^{
+                        videoEncodeVC.closeBtn.transform = CGAffineTransformMakeRotation(M_PI_2);
+                    } completion:^(BOOL finished) {
+                        videoEncodeVC.closeBtn.transform = CGAffineTransformIdentity;
+                    }];
+                }];
             }
         };
     };

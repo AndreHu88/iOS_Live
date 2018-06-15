@@ -10,4 +10,6 @@
 
 @interface HYVideoHardEncodeVC : HYBaseViewController
 
+@property (nonatomic,strong) UIButton *closeBtn;
+
 @end
