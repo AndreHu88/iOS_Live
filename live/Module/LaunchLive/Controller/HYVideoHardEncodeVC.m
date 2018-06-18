@@ -96,7 +96,7 @@
     AVCaptureVideoDataOutput *videoOutput = [AVCaptureVideoDataOutput new];
     [videoOutput setAlwaysDiscardsLateVideoFrames:YES];
     [videoOutput setSampleBufferDelegate:self queue:_captureQueue];
-    videoOutput.videoSettings = @{(id)kCVPixelBufferPixelFormatTypeKey : [NSNumber numberWithUnsignedInteger:kCVPixelFormatType_32BGRA], (id)kCVPixelBufferWidthKey : [NSNumber numberWithInteger:320], (id)kCVPixelBufferHeightKey : [NSNumber numberWithInteger:480]};
+    [videoOutput setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_420YpCbCr8BiPlanarFullRange] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
     
     _session = [AVCaptureSession new];
     //设置采集分辨率
@@ -111,7 +111,12 @@
     _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.view.layer addSublayer:_previewLayer];
     
-    //创建文件，初始化fileHandle
+    //创建文件，初始化fileHandle;
+    NSString *file = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"test.h264"];
+    [[NSFileManager defaultManager] removeItemAtPath:file error:nil];
+    [[NSFileManager defaultManager] createFileAtPath:file contents:nil attributes:nil];
+    _fileHandle = [NSFileHandle fileHandleForWritingAtPath:file];
+    
     
     [_session startRunning];
     [self setupVideoToolbox];
@@ -121,14 +126,15 @@
     
     [_session stopRunning];
     [_previewLayer removeFromSuperlayer];
-    
+    [_fileHandle closeFile];
+    _fileHandle = nil;
 }
 
 - (void)setupVideoToolbox{
     
     dispatch_sync(_encodeQueue, ^{
         
-        int width = 480, height = 640;
+        int width = 1280, height = 720;
         OSStatus status = VTCompressionSessionCreate(NULL, width, height, kCMVideoCodecType_H264, NULL, NULL, NULL, encodeComplectionCallback, (__bridge void *)(self), &_encodeingSession);
         DLog(@"status code is %d",(int)status);
         if (status != 0) {
@@ -140,13 +146,13 @@
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_RealTime, kCFBooleanTrue);
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_ProfileLevel, kVTProfileLevel_H264_Baseline_AutoLevel);
         
-        //设置关键帧间隔（）
+        //设置关键帧间隔（）关键字间隔越小越清晰
         int frameInterval = 10;
         CFNumberRef frameIntervalRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &frameInterval);
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_MaxKeyFrameInterval, frameIntervalRef);
         
         //设置期望帧率
-        int fps = 10;
+        int fps = 20;
         CFNumberRef fpsRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &fps);
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_ExpectedFrameRate, fpsRef);
         
@@ -168,12 +174,13 @@
 - (void)endVideoToolbox{
     
     VTCompressionSessionCompleteFrames(_encodeingSession, kCMTimeInvalid);
-    VTCompressionSessionInvalidate(_encodeingSession);
+    VTCompressionSessionInvalidate(_encodeingSession);      //销毁session
     CFRelease(_encodeingSession);       //释放资源
     _encodeingSession = NULL;
 }
 
 #pragma mark - encodeCallback
+//当系统编码完每一帧后，会异步的调用此方法
 void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
                                void * CM_NULLABLE sourceFrameRefCon,
                                OSStatus status,
@@ -185,7 +192,7 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
     if (status != noErr)    return;
     if (!CMSampleBufferDataIsReady(sampleBuffer)) {
         
-        NSLog(@"didCompressH264 data is not ready ");
+        NSLog(@"compressH264 data is not ready ");
         return;
     }
     
@@ -202,7 +209,7 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
         //returns the NAL unit at the given index from it.  These NAL units are typically parameter sets (e.g. SPS, PPS)
         OSStatus statusCode = CMVideoFormatDescriptionGetH264ParameterSetAtIndex(formatRef, 0, &spsParameterSetPointerOut, &spsParameterSetSizeOut, &spsParameterSetCountOut, 0);
         if (statusCode == noErr) {
-            //序列参数集SPS 作用于一系列连续的编码图像
+            //序列参数集SPS 作用于一系列连续的编码图像,检查PPS
             size_t ppsParameterSetSizeOut,ppsParameterSetCountOut;
             const uint8_t *ppsParameterSetPointerOut;
             OSStatus statusCode = CMVideoFormatDescriptionGetH264ParameterSetAtIndex(formatRef, 1, &ppsParameterSetPointerOut, &ppsParameterSetSizeOut, &ppsParameterSetCountOut, 0);
@@ -224,11 +231,16 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
     if (statusCode == noErr) {
         
         static const int AVCCHeaderLength = 4; // 返回的NALU数据前四个字节不是0001的startcode，而是大端模式的帧长度length
-        if (totalLength - AVCCHeaderLength > bufferOffset) {
+        while(totalLength - AVCCHeaderLength > bufferOffset) {
             
             uint32_t NALUUintLength = 0;
             memcpy(&NALUUintLength, dataPointer + bufferOffset, AVCCHeaderLength);
-            
+            //从大端转系统端
+            NALUUintLength = CFSwapInt32BigToHost(NALUUintLength);
+            NSData *data = [NSData dataWithBytes:(dataPointer + bufferOffset + AVCCHeaderLength) length:NALUUintLength];
+            [encoderVC encodeData:data isKeyFrame:iskeyFrame];
+            //读取下一个NALU，一次回调可能包含多个NALU
+            bufferOffset += AVCCHeaderLength + NALUUintLength;
         }
     }
     
@@ -241,15 +253,35 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
     const char bytes[] = "\x00\x00\x00\x01";
     size_t length = (sizeof bytes) - 1;
     NSData *ByteHeader = [NSData dataWithBytes:bytes length:length];
+    [_fileHandle writeData:ByteHeader];
+    [_fileHandle writeData:spsData];
+    [_fileHandle writeData:ByteHeader];
+    [_fileHandle writeData:ppsData];
+}
 
+- (void)encodeData:(NSData *)data isKeyFrame:(BOOL)isKeyFrame{
+    
+    if (_fileHandle) {
+        
+        const char bytes[] = "\x00\x00\x00\x01";
+        size_t length = (sizeof bytes) - 1; //string literals have implicit trailing '\0'
+        NSData *ByteHeader = [NSData dataWithBytes:bytes length:length];
+        [_fileHandle writeData:ByteHeader];
+        [_fileHandle writeData:data];
+    }
 }
 
 #pragma mark - AVCaptureOutputDelegate
 - (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
     
     if (!_isStartRecord) return;
-    //摄像头采集到的是CMSampleBufferRef,未编码的数据
-    [self videoEncode:sampleBuffer];
+    //摄像头采集到的是CMSampleBufferRef,编码每一帧
+    dispatch_sync(_encodeQueue, ^{
+       
+        //开启线程来编码，防止阻塞主线程摄像头卡顿
+        [self videoEncode:sampleBuffer];
+
+    });
 }
 
 - (void)videoEncode:(CMSampleBufferRef)sampleBuffer{
@@ -259,6 +291,7 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
     CVImageBufferRef imageBuffer = (CVImageBufferRef)CMSampleBufferGetImageBuffer(sampleBuffer);
     // 帧时间 如果不设置导致时间轴过长
     CMTime presentationTimeStamp = CMTimeMake(_frameID++, 1000);
+    //flags 0 表示同步解码
     VTEncodeInfoFlags flags;
     OSStatus status = VTCompressionSessionEncodeFrame(_encodeingSession, imageBuffer, presentationTimeStamp, kCMTimeInvalid, NULL, NULL, &flags);
     DLog(@"status code is %d",(int)status);
@@ -300,7 +333,7 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
     
     if (!_closeBtn) {
         _closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_closeBtn setBackgroundImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+        [_closeBtn setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
         [_closeBtn addTarget:self action:@selector(closeBtnAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _closeBtn;
@@ -310,7 +343,7 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
     
     if (!_startRecordBtn) {
         _startRecordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_startRecordBtn setBackgroundImage:[UIImage imageNamed:@"tab_launch"] forState:UIControlStateNormal];
+        [_startRecordBtn setImage:[UIImage imageNamed:@"tab_launch"] forState:UIControlStateNormal];
         [_startRecordBtn addTarget:self action:@selector(startRecordBtnAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _startRecordBtn;
