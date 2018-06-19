@@ -85,6 +85,10 @@
 
 - (void)setupSession{
     
+    _session = [AVCaptureSession new];
+    //设置采集分辨率
+    _session.sessionPreset = AVCaptureSessionPreset1920x1080;
+    
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     NSError *inputError;
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&inputError];
@@ -92,18 +96,19 @@
         [JRToast showWithText:inputError.description duration:2];
         return;
     }
+    //设置session的input output
+    if ([_session canAddInput:input])           [_session addInput:input];
     
     AVCaptureVideoDataOutput *videoOutput = [AVCaptureVideoDataOutput new];
-    [videoOutput setAlwaysDiscardsLateVideoFrames:YES];
+    [videoOutput setAlwaysDiscardsLateVideoFrames:NO];
     [videoOutput setSampleBufferDelegate:self queue:_captureQueue];
     [videoOutput setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_420YpCbCr8BiPlanarFullRange] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
+    if ([_session canAddOutput:videoOutput])    [_session addOutput:videoOutput];
+
     
-    _session = [AVCaptureSession new];
-    //设置采集分辨率
-    _session.sessionPreset = AVCaptureSessionPresetHigh;
-    //设置session的input output
-    [_session addInput:input];
-    [_session addOutput:videoOutput];
+    AVCaptureConnection *connection = [videoOutput connectionWithMediaType:AVMediaTypeVideo];
+    connection.videoOrientation = AVCaptureVideoOrientationPortrait;
+    
     
     //设置预览层
     _previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_session];
@@ -111,21 +116,23 @@
     _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.view.layer addSublayer:_previewLayer];
     
+    [_session startRunning];
+}
+
+- (void)setupFileHandle{
+    
     //创建文件，初始化fileHandle;
     NSString *file = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"test.h264"];
     [[NSFileManager defaultManager] removeItemAtPath:file error:nil];
     [[NSFileManager defaultManager] createFileAtPath:file contents:nil attributes:nil];
     _fileHandle = [NSFileHandle fileHandleForWritingAtPath:file];
-    
-    
-    [_session startRunning];
-    [self setupVideoToolbox];
 }
 
 - (void)stopCapture{
     
     [_session stopRunning];
     [_previewLayer removeFromSuperlayer];
+    [self endVideoToolbox];
     [_fileHandle closeFile];
     _fileHandle = nil;
 }
@@ -134,7 +141,9 @@
     
     dispatch_sync(_encodeQueue, ^{
         
-        int width = 1280, height = 720;
+        [self setupFileHandle];
+
+        int width = 720, height = 1280;
         OSStatus status = VTCompressionSessionCreate(NULL, width, height, kCMVideoCodecType_H264, NULL, NULL, NULL, encodeComplectionCallback, (__bridge void *)(self), &_encodeingSession);
         DLog(@"status code is %d",(int)status);
         if (status != 0) {
@@ -147,7 +156,7 @@
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_ProfileLevel, kVTProfileLevel_H264_Baseline_AutoLevel);
         
         //设置关键帧间隔（）关键字间隔越小越清晰
-        int frameInterval = 10;
+        int frameInterval = 1;
         CFNumberRef frameIntervalRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &frameInterval);
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_MaxKeyFrameInterval, frameIntervalRef);
         
@@ -168,6 +177,7 @@
         
         //准备编码
         VTCompressionSessionPrepareToEncodeFrames(_encodeingSession);
+        
     });
 }
 
@@ -177,6 +187,9 @@
     VTCompressionSessionInvalidate(_encodeingSession);      //销毁session
     CFRelease(_encodeingSession);       //释放资源
     _encodeingSession = NULL;
+    
+    [_fileHandle closeFile];
+    _fileHandle = nil;
 }
 
 #pragma mark - encodeCallback
@@ -199,7 +212,7 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
     //将C语言指针转化为当前VC
     HYVideoHardEncodeVC *encoderVC = (__bridge HYVideoHardEncodeVC *)outputCallbackRefCon;
     CFDictionaryRef dictRef = CFArrayGetValueAtIndex(CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, true), 0);
-    bool iskeyFrame = CFDictionaryContainsKey(dictRef, kCMSampleAttachmentKey_NotSync);
+    bool iskeyFrame = !CFDictionaryContainsKey(dictRef, kCMSampleAttachmentKey_NotSync);
     //判断是否为关键帧
     if (iskeyFrame) {
         
@@ -253,6 +266,7 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
     const char bytes[] = "\x00\x00\x00\x01";
     size_t length = (sizeof bytes) - 1;
     NSData *ByteHeader = [NSData dataWithBytes:bytes length:length];
+    if(!_fileHandle) return;
     [_fileHandle writeData:ByteHeader];
     [_fileHandle writeData:spsData];
     [_fileHandle writeData:ByteHeader];
@@ -261,6 +275,7 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
 
 - (void)encodeData:(NSData *)data isKeyFrame:(BOOL)isKeyFrame{
     
+    DLog(@"getEncodedData:%d", (int)[data length]);
     if (_fileHandle) {
         
         const char bytes[] = "\x00\x00\x00\x01";
@@ -321,11 +336,15 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
 
 - (void)startRecordBtnAction{
     
+    if (!_isStartRecord) {
+        [self setupVideoToolbox];
+    }
+    else{
+        [self endVideoToolbox];
+    }
     _isStartRecord = !_isStartRecord;
     NSString *toastStr = _isStartRecord ? @"开始录制，编码" : @"结束录制，编码";
     [JRToast showWithText:toastStr duration:2];
-    
-    
 }
 
 #pragma mark - lazyload

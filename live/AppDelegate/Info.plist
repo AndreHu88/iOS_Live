@@ -78,5 +78,7 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>请点击“允许”以允许访问</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 </dict>
 </plist>
