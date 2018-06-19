@@ -22,6 +22,18 @@
  CMClock
  
  CMTimebase: 关于CMClock的一个控制视图,包含CMClock、时间映射(Time mapping)、速率控制(Rate control)
+ 
+ H264中定义三种帧:
+ I帧：完整编码的帧叫I帧
+ P帧：参考之前的I帧生成的只包含差异部分编码的帧叫P帧
+ B帧：参考前后的帧编码的帧叫B帧
+ 
+ H264采用的核心算法是帧内压缩和帧间压缩
+ 帧内压缩是生成I帧的算法
+ 帧间压缩是生成B帧和P帧的算法
+ 
+ H.264详细讲解blog
+ https://www.jianshu.com/p/9edd9619e233?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation
  */
 
 #import "HYVideoHardEncodeVC.h"
@@ -134,7 +146,7 @@
     
     dispatch_sync(_encodeQueue, ^{
         
-        int width = 1280, height = 720;
+        int width = 720, height = 1280;
         OSStatus status = VTCompressionSessionCreate(NULL, width, height, kCMVideoCodecType_H264, NULL, NULL, NULL, encodeComplectionCallback, (__bridge void *)(self), &_encodeingSession);
         DLog(@"status code is %d",(int)status);
         if (status != 0) {
@@ -146,13 +158,13 @@
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_RealTime, kCFBooleanTrue);
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_ProfileLevel, kVTProfileLevel_H264_Baseline_AutoLevel);
         
-        //设置关键帧间隔（）关键字间隔越小越清晰
-        int frameInterval = 10;
+        //设置关键帧间隔（） 关键帧间隔越小越清晰
+        int frameInterval = 30;
         CFNumberRef frameIntervalRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &frameInterval);
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_MaxKeyFrameInterval, frameIntervalRef);
         
-        //设置期望帧率
-        int fps = 20;
+        //设置期望帧率(每秒多少帧,如果帧率过低,会造成画面卡顿)
+        int fps = 30;
         CFNumberRef fpsRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &fps);
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_ExpectedFrameRate, fpsRef);
         
@@ -203,6 +215,7 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
     //判断是否为关键帧
     if (iskeyFrame) {
         
+        //获取编码后的信息
         CMFormatDescriptionRef formatRef = CMSampleBufferGetFormatDescription(sampleBuffer);
         size_t spsParameterSetSizeOut,spsParameterSetCountOut;
         const uint8_t *spsParameterSetPointerOut;
@@ -224,18 +237,25 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
         }
     }
     
+    //CMBlockBufferRef已经压缩的图像数据
     CMBlockBufferRef dataBuffer = CMSampleBufferGetDataBuffer(sampleBuffer);
     size_t bufferOffset = 0,lengthAtOffset,totalLength;
-    char * dataPointer;
+    char *dataPointer;
     OSStatus statusCode = CMBlockBufferGetDataPointer(dataBuffer, 0, &lengthAtOffset, &totalLength, &dataPointer);
     if (statusCode == noErr) {
         
+        /**
+         一个完整的H.264/ AVC bitstream是由多个NAL-units所组成的, NAL 网络提取层
+         H.264的功能分为两层，视频编码层（VCL）和网络提取层（NAL）VCL数据即被压缩编码后的视频数据序列。在VCL数据要封装到NAL单元中之后，才可以用来传输或存储。
+         */
+        
         static const int AVCCHeaderLength = 4; // 返回的NALU数据前四个字节不是0001的startcode，而是大端模式的帧长度length
+        //循环读取NALU数据
         while(totalLength - AVCCHeaderLength > bufferOffset) {
             
             uint32_t NALUUintLength = 0;
             memcpy(&NALUUintLength, dataPointer + bufferOffset, AVCCHeaderLength);
-            //从大端转系统端
+            //从大端转系统端 以大端字节序表示。直接赋值给整型变量
             NALUUintLength = CFSwapInt32BigToHost(NALUUintLength);
             NSData *data = [NSData dataWithBytes:(dataPointer + bufferOffset + AVCCHeaderLength) length:NALUUintLength];
             [encoderVC encodeData:data isKeyFrame:iskeyFrame];
