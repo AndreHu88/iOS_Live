@@ -155,13 +155,13 @@
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_RealTime, kCFBooleanTrue);
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_ProfileLevel, kVTProfileLevel_H264_Baseline_AutoLevel);
         
-        //设置关键帧间隔（）关键字间隔越小越清晰
+        //设置关键帧间隔（）关键字间隔越小越清晰，数值越大压缩率越高
         int frameInterval = 1;
         CFNumberRef frameIntervalRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &frameInterval);
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_MaxKeyFrameInterval, frameIntervalRef);
         
         //设置期望帧率
-        int fps = 20;
+        int fps = 30;
         CFNumberRef fpsRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &fps);
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_ExpectedFrameRate, fpsRef);
         
@@ -170,7 +170,7 @@
         CFNumberRef bitRateRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &bitRate);
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_AverageBitRate, bitRateRef);
         
-        //设置码率上限，单位是bps
+        //设置码率上限，单位是bps,如果不设置默认会以很低的码率编码，导致编码出来的视频很模糊
         int bitRateMax = width * height * 3 * 4;
         CFNumberRef bitRateMaxRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &bitRateMax);
         VTSessionSetProperty(_encodeingSession, kVTCompressionPropertyKey_DataRateLimits, bitRateMaxRef);
@@ -278,7 +278,7 @@ void encodeComplectionCallback(void * CM_NULLABLE outputCallbackRefCon,
     DLog(@"getEncodedData:%d", (int)[data length]);
     if (_fileHandle) {
         
-        const char bytes[] = "\x00\x00\x00\x01";
+        const char bytes[] = "\x00\x00\x00\x01";   //00000001
         size_t length = (sizeof bytes) - 1; //string literals have implicit trailing '\0'
         NSData *ByteHeader = [NSData dataWithBytes:bytes length:length];
         [_fileHandle writeData:ByteHeader];

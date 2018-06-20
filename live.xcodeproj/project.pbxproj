@@ -96,6 +96,7 @@
 		B5465E5920B7EB3400118097 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = B5465E5820B7EB3300118097 /* loading.gif */; };
 		B5465E5D20B7FC4B00118097 /* UITableViewCell+HYCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E5C20B7FC4B00118097 /* UITableViewCell+HYCommon.m */; };
 		B5465E6220B7FD7200118097 /* ObjcRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E6120B7FD7200118097 /* ObjcRuntime.m */; };
+		B546901020DA25CB0051571C /* VideoEncodeHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = B546900F20DA25CB0051571C /* VideoEncodeHandle.m */; };
 		B547A48F20ABC574008FBA0E /* HYPresentAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */; };
 		B54E8CFC20B8017C00F6DCAD /* UIView+HYCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E8CFB20B8017C00F6DCAD /* UIView+HYCommon.m */; };
 		B5C1E6E420BCE5C000933D35 /* HYMusicPlayerDiscView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6E320BCE5C000933D35 /* HYMusicPlayerDiscView.m */; };
@@ -301,6 +302,8 @@
 		B5465E5C20B7FC4B00118097 /* UITableViewCell+HYCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+HYCommon.m"; sourceTree = "<group>"; };
 		B5465E6020B7FD7100118097 /* ObjcRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcRuntime.h; sourceTree = "<group>"; };
 		B5465E6120B7FD7200118097 /* ObjcRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcRuntime.m; sourceTree = "<group>"; };
+		B546900E20DA25CB0051571C /* VideoEncodeHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoEncodeHandle.h; sourceTree = "<group>"; };
+		B546900F20DA25CB0051571C /* VideoEncodeHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoEncodeHandle.m; sourceTree = "<group>"; };
 		B547A48D20ABC574008FBA0E /* HYPresentAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPresentAnimator.h; sourceTree = "<group>"; };
 		B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPresentAnimator.m; sourceTree = "<group>"; };
 		B54E8CFA20B8017C00F6DCAD /* UIView+HYCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+HYCommon.h"; path = "live/Expand/HYLoading/UIView+HYCommon.h"; sourceTree = SOURCE_ROOT; };
@@ -844,8 +847,8 @@
 		04CAEE771FF23387001127B5 /* LaunchLive */ = {
 			isa = PBXGroup;
 			children = (
+				B546900D20DA25AD0051571C /* ViewModel */,
 				3ED1855020D2B0B000A1E8C9 /* Controller */,
-				3ED1854F20D2B0B000A1E8C9 /* Model */,
 				04CAEE791FF233B4001127B5 /* View */,
 			);
 			path = LaunchLive;
@@ -858,13 +861,6 @@
 				04CAEE7C1FF233CC001127B5 /* HYHomeLaunchView.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		3ED1854F20D2B0B000A1E8C9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		3ED1855020D2B0B000A1E8C9 /* Controller */ = {
@@ -1024,6 +1020,15 @@
 				B5465E6120B7FD7200118097 /* ObjcRuntime.m */,
 			);
 			path = ObjRuntime;
+			sourceTree = "<group>";
+		};
+		B546900D20DA25AD0051571C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B546900E20DA25CB0051571C /* VideoEncodeHandle.h */,
+				B546900F20DA25CB0051571C /* VideoEncodeHandle.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B5C1E70520C113B800933D35 /* BaseComponent */ = {
@@ -1276,6 +1281,7 @@
 				046E5BA61FD8E59D00ED04FA /* HYLoadingManager.m in Sources */,
 				042572E61FC56D8F0040A10A /* HYPlistTools.m in Sources */,
 				B5C1E6ED20BE6DA100933D35 /* HYLyricTableViewCell.m in Sources */,
+				B546901020DA25CB0051571C /* VideoEncodeHandle.m in Sources */,
 				042C22E71FCE8F9200DFD274 /* HYLiveMessageModel.m in Sources */,
 				B5C1E71120C1141C00933D35 /* HYBaseTableViewCell.m in Sources */,
 				B5C1E6E720BCE6D600933D35 /* HYDiscView.m in Sources */,
