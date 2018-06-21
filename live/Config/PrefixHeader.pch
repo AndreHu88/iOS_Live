@@ -24,6 +24,7 @@
 #import <UIScrollView+EmptyDataSet.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <IJKMediaFramework/IJKMediaFramework.h>
+#import "GPUImage.h"
 #import <RongIMLib/RongIMLib.h>
 #import <PPBadgeView.h>
 

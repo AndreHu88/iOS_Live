@@ -42,6 +42,8 @@
 @property (nonatomic,strong) dispatch_queue_t captureQueue;
 @property (nonatomic,strong) NSFileHandle *fileHandle;
 
+@property (nonatomic,strong) GPUImageVideoCamera *videoCamera;
+
 @end
 
 @implementation HYVideoHardEncodeVC{
