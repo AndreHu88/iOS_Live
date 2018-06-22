@@ -27,6 +27,8 @@
 
 @interface HYGiftAnimationManager : NSObject
 
+@property (nonatomic,strong) UIView *containerView;
+
 + (instancetype)sharedManager;
 
 - (void)giftAnimationWithUserID:(NSString *)userID giftShowModel:(HYGiftShowModel *)showModel animationFinishBlock:(void(^)(BOOL result))finishBlcok;

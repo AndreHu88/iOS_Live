@@ -102,6 +102,8 @@
 		B54690D020DB91160051571C /* HYGiftShowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B54690CF20DB91160051571C /* HYGiftShowModel.m */; };
 		B54690D320DBA2350051571C /* HYGiftAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B54690D220DBA2350051571C /* HYGiftAnimationManager.m */; };
 		B54690D620DBA89D0051571C /* HYAnimationOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B54690D520DBA89D0051571C /* HYAnimationOperation.m */; };
+		B54690D920DC916F0051571C /* HYGiftAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B54690D820DC916F0051571C /* HYGiftAnimationView.m */; };
+		B54690DC20DCD0FF0051571C /* HYGiftCountLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B54690DB20DCD0FF0051571C /* HYGiftCountLabel.m */; };
 		B547A48F20ABC574008FBA0E /* HYPresentAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */; };
 		B54E8CFC20B8017C00F6DCAD /* UIView+HYCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B54E8CFB20B8017C00F6DCAD /* UIView+HYCommon.m */; };
 		B5C1E6E420BCE5C000933D35 /* HYMusicPlayerDiscView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6E320BCE5C000933D35 /* HYMusicPlayerDiscView.m */; };
@@ -492,6 +494,10 @@
 		B54690D220DBA2350051571C /* HYGiftAnimationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYGiftAnimationManager.m; sourceTree = "<group>"; };
 		B54690D420DBA89D0051571C /* HYAnimationOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYAnimationOperation.h; sourceTree = "<group>"; };
 		B54690D520DBA89D0051571C /* HYAnimationOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYAnimationOperation.m; sourceTree = "<group>"; };
+		B54690D720DC916F0051571C /* HYGiftAnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYGiftAnimationView.h; sourceTree = "<group>"; };
+		B54690D820DC916F0051571C /* HYGiftAnimationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYGiftAnimationView.m; sourceTree = "<group>"; };
+		B54690DA20DCD0FF0051571C /* HYGiftCountLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYGiftCountLabel.h; sourceTree = "<group>"; };
+		B54690DB20DCD0FF0051571C /* HYGiftCountLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYGiftCountLabel.m; sourceTree = "<group>"; };
 		B547A48D20ABC574008FBA0E /* HYPresentAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPresentAnimator.h; sourceTree = "<group>"; };
 		B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPresentAnimator.m; sourceTree = "<group>"; };
 		B54E8CFA20B8017C00F6DCAD /* UIView+HYCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+HYCommon.h"; path = "live/Expand/HYLoading/UIView+HYCommon.h"; sourceTree = SOURCE_ROOT; };
@@ -1431,6 +1437,10 @@
 				B54690D520DBA89D0051571C /* HYAnimationOperation.m */,
 				B54690D120DBA2350051571C /* HYGiftAnimationManager.h */,
 				B54690D220DBA2350051571C /* HYGiftAnimationManager.m */,
+				B54690D720DC916F0051571C /* HYGiftAnimationView.h */,
+				B54690D820DC916F0051571C /* HYGiftAnimationView.m */,
+				B54690DA20DCD0FF0051571C /* HYGiftCountLabel.h */,
+				B54690DB20DCD0FF0051571C /* HYGiftCountLabel.m */,
 			);
 			path = LiveGiftAnimation;
 			sourceTree = "<group>";
@@ -1637,6 +1647,7 @@
 				046E5BB31FD92A2D00ED04FA /* HYSmallVideoModel.m in Sources */,
 				042C22C81FCE5AF700DFD274 /* HYRCIMChatRoomHelper.m in Sources */,
 				3EF31F0420B5A46A00F37D88 /* HYMusicTool.m in Sources */,
+				B54690DC20DCD0FF0051571C /* HYGiftCountLabel.m in Sources */,
 				042C22B31FCD590F00DFD274 /* HYLiveBottomView.m in Sources */,
 				042572DF1FC56D8F0040A10A /* DESECB.m in Sources */,
 				042C22C51FCE5ADA00DFD274 /* HYRefreshGifHeader.m in Sources */,
@@ -1701,6 +1712,7 @@
 				042C22EE1FD108EA00DFD274 /* HYLiveInputBar.m in Sources */,
 				042C22AF1FCD590F00DFD274 /* HYHotLiveModel.m in Sources */,
 				042572AA1FC56CF30040A10A /* AppDelegate.m in Sources */,
+				B54690D920DC916F0051571C /* HYGiftAnimationView.m in Sources */,
 				04875B6F1FD95D6D0031FDA8 /* HYImageInteractivePushAnimation.m in Sources */,
 				042572E31FC56D8F0040A10A /* HYDateHandle.m in Sources */,
 				042572FA1FC574FE0040A10A /* HYBaseNavController.m in Sources */,

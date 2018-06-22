@@ -25,6 +25,11 @@
     
 }
 
+- (void)dealloc{
+    
+    NSLog(@"%@ dealloc",[self description]);
+}
+
 - (void)viewWillDisappear:(BOOL)animated{
     
     [self.view endEditing:YES];

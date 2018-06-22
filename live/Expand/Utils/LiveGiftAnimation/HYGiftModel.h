@@ -14,6 +14,7 @@
 @property(nonatomic, strong) NSString *name;    /**< 礼物的名称*/
 @property(nonatomic, strong) NSString *picUrl;  /**< 右侧礼物图片url */
 @property(nonatomic, strong) NSString *desc;    /**< 描述 */
+@property(nonatomic, assign) NSInteger count;
 
 @end
 
