@@ -28,6 +28,18 @@ self.automaticallyAdjustsScrollViewInsets = NO;\
 _Pragma("clang diagnostic pop") \
 
 
+#define RACObserve(TARGET, KEYPATH) \
+({ \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wreceiver-is-weak\"") \
+__weak id target_ = (TARGET); \
+[target_ rac_valuesForKeyPath:@keypath(TARGET, KEYPATH) observer:self]; \
+_Pragma("clang diagnostic pop") \
+})
+
+
+
+
 /** ----------------------------设备信息---------------------------------
  --------------------------------------------------------------------*/
 #pragma mark - 设备信息

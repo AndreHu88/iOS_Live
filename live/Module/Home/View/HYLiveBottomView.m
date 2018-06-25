@@ -85,6 +85,7 @@
     
     [[_closeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribe:viewModel.closeLiveSubject];
     [[_chatBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribe:viewModel.chatSubject];
+    [[_giftBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribe:viewModel.giftSubject];
 }
 
 - (void)setWithSmallVideoViewModel:(HYSmallVideoViewModel *)smallVideoViewModel{

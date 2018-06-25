@@ -21,6 +21,8 @@
 @property (nonatomic,strong) RACSubject *chatSubject;
 /** 关闭直播 */
 @property (nonatomic,strong) RACSubject *closeLiveSubject;
+/** 送礼物 */
+@property (nonatomic,strong) RACSubject *giftSubject;
 /** 是否正在播放 */
 @property (nonatomic,assign) BOOL isPlaying;
 

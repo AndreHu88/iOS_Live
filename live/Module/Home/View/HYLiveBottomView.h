@@ -10,7 +10,15 @@
 #import "HYLiveViewModel.h"
 #import "HYSmallVideoViewModel.h"
 
+@protocol HYLiveBottomViewActionDelegate <NSObject>
+
+- (void)buttonClikckWithIndex:(NSInteger)index;
+
+@end
+
 @interface HYLiveBottomView : UIView
+
+@property (nonatomic,weak) id<HYLiveBottomViewActionDelegate> delegate;
 
 - (void)setWithViewModel:(HYLiveViewModel *)viewModel;
 

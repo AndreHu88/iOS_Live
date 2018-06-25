@@ -42,7 +42,7 @@
     CGContextSetLineJoin(contentRef, kCGLineJoinRound);
     
     CGContextSetTextDrawingMode(contentRef, kCGTextStroke);
-    [[self.borderColor setStroke];
+    [self.borderColor setStroke];
     
     CGContextSetTextDrawingMode(contentRef, kCGTextFill);
 
