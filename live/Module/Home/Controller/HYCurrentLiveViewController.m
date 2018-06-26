@@ -11,6 +11,8 @@
 #import "HYLiveScrollView.h"
 #import "HYLiveViewModel.h"
 
+#import "EmitterManager.h"
+
 @interface HYCurrentLiveViewController () <UIScrollViewDelegate>
 
 @property (nonatomic,strong) HYLiveScrollView  *scrollView;
@@ -30,6 +32,20 @@
     [super viewDidLoad];
     [self bindViewModel];
     [self addChildVC];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+    
+    [EmitterManager show];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (void)bindViewModel{
@@ -58,17 +74,6 @@
     [self.view addSubview:liveControllerVC.view];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
-}
-
-- (void)viewWillDisappear:(BOOL)animated{
-    
-    [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
-}
 
 #pragma mark - lazyload
 - (HYLiveScrollView *)scrollView{

@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "live/Module/LaunchLive/Controller/HYVideoHardEncodeVC.m"
-            timestampString = "551251643.687083"
+            timestampString = "551694009.520979"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "encodeComplectionCallback"
             landmarkType = "9">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "live/Module/LaunchLive/Controller/HYVideoHardEncodeVC.m"
-            timestampString = "551251643.687336"
+            timestampString = "551694009.521089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "encodeComplectionCallback"
             landmarkType = "9">
          </BreakpointContent>

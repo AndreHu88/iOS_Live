@@ -40,9 +40,7 @@
     CGContextRef contentRef = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(contentRef, 4);
     CGContextSetLineJoin(contentRef, kCGLineJoinRound);
-    
     CGContextSetTextDrawingMode(contentRef, kCGTextStroke);
-    [[self.borderColor setStroke];
     
     CGContextSetTextDrawingMode(contentRef, kCGTextFill);
 

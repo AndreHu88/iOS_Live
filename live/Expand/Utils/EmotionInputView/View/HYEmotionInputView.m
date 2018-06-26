@@ -15,6 +15,7 @@
 #define KOnePageCount       (KEmotionRowCount * KEmotionColumn - 1)
 #define KEmotionWidth       (kScreenWidth - 10 * 2) / KEmotionRowCount
 #define KInputViewHeight    (KEmotionWidth * 3 + 10 + 20 + 40)
+#define kToolbarHeight      37
 
 
 
@@ -23,6 +24,7 @@
 @property (nonatomic,strong) NSArray<HYEmotionGroupModel *> *emotionGroup;
 @property (nonatomic,strong) NSArray<NSNumber *> *emotionGroupIndexsArray;
 @property (nonatomic,strong) NSArray<NSNumber *> *emotionGroupPageCountArray;
+@property (nonatomic,strong) NSMutableArray<UIButton *> *toolBtnsArray;
 @property (nonatomic,assign) NSInteger emotionTotalPageCount;
 @property (nonatomic,assign) NSInteger currentPageIndex;
 @property (nonatomic,strong) UICollectionView *collectionView;
@@ -52,6 +54,11 @@
         self.backgroundColor = UIColorHex(f9f9f9);
         [self _setupGroupData];
         [self _setupCollectionView];
+        [self _setupToolButton];
+        
+        _currentPageIndex = NSNotFound;
+        //设置collectionView滚动
+        [self toolbarButtonClick:self.toolBtnsArray.firstObject];
     }
     return self;
 }
@@ -112,6 +119,69 @@
     _pageControl.size = CGSizeMake(kScreenWidth, 20);
     _pageControl.top = _collectionView.bottom + 5;
     [self addSubview:_pageControl];
+}
+
+- (void)_setupToolButton{
+    
+    UIView *toolView = [UIView new];
+    toolView.size = CGSizeMake(KSCREEN_WIDTH, kToolbarHeight);
+    UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[HYEmotionInputHelper emotionImageNamed:@"compose_emotion_table_right_normal"]];
+    bgImageView.frame = toolView.bounds;
+    [toolView addSubview:bgImageView];
+    
+    UIScrollView *scrollView = [UIScrollView new];
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.alwaysBounceHorizontal = YES;
+    scrollView.size = toolView.size;
+    scrollView.contentSize = toolView.size;
+    [toolView addSubview:scrollView];
+    
+    _toolBtnsArray = [NSMutableArray array];
+    for (NSInteger i = 0; i < _emotionGroupIndexsArray.count; i++) {
+        
+        HYEmotionGroupModel *groupModel = self.emotionGroup[i];
+        UIButton *btn = [self _createToolBtn];
+        btn.tag = i;
+        [btn setTitle:groupModel.group_name_cn forState:UIControlStateNormal];
+        btn.left = KSCREEN_WIDTH / _emotionGroupIndexsArray.count * i;
+        
+        [scrollView addSubview:btn];
+        [_toolBtnsArray addObject:btn];
+    }
+    
+    toolView.bottom = self.height;
+    [self addSubview:toolView];
+    
+}
+
+- (UIButton *)_createToolBtn{
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.size = CGSizeMake(KSCREEN_WIDTH / _emotionGroupIndexsArray.count, kToolbarHeight);
+    button.titleLabel.font = [UIFont systemFontOfSize:14];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setTitleColor:UIColorHex(5D5C5A) forState:UIControlStateSelected];
+    
+    UIImage *image = [UIImage imageNamed:@"compose_emotion_table_left_normal"];
+    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, image.size.width - 1) resizingMode:UIImageResizingModeStretch];
+    [button setBackgroundImage:image forState:UIControlStateNormal];
+    
+    UIImage *selectImage = [UIImage imageNamed:@"compose_emotion_table_left_selected"];
+    selectImage = [selectImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, image.size.width - 1) resizingMode:UIImageResizingModeStretch];
+    [button setBackgroundImage:selectImage forState:UIControlStateSelected];
+    
+    [button addTarget:self action:@selector(toolbarButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    return button;
+}
+
+- (void)toolbarButtonClick:(UIButton *)sender{
+    
+    NSInteger pageIndex = sender.tag;
+    NSInteger page = _emotionGroupIndexsArray[pageIndex].integerValue;
+//    CGRect rect = CGRectMake(page * _collectionView.width, 0, _collectionView.width, _collectionView.height);
+    [_collectionView setContentOffset:CGPointMake(page * _collectionView.width, 0)];
+
+    [self scrollViewDidScroll:_collectionView];
 }
 
 #pragma mark - tool
@@ -210,6 +280,11 @@
         layer.left = (_pageControl.width - pageControlWidth) / 2 + i * (width + padding * 2) + padding;
         [_pageControl.layer addSublayer:layer];
     }
+    
+    [_toolBtnsArray enumerateObjectsUsingBlock:^(UIButton *btn, NSUInteger idx, BOOL * _Nonnull stop) {
+       
+        btn.selected = (idx == currentGroupIndex);
+    }];
 }
 
 @end
