@@ -6,18 +6,19 @@
 <h3>截图如下</h3>
 </div>
 <div>
-    <img src="https://github.com/AndreHu88/iOS_Live/blob/master/screenshot/IMG_1876.PNG" width="24%">
-    <img src="https://github.com/AndreHu88/iOS_Live/blob/master/screenshot/IMG_1877.PNG" width="24%">
-    <img src="https://github.com/AndreHu88/iOS_Live/blob/master/screenshot/IMG_1878.PNG" width="24%">
+    <img src="https://github.com/AndreHu88/iOS_Live/blob/master/screenshot/live_home_compress.gif" width="44%">
+    <img src="https://github.com/AndreHu88/iOS_Live/blob/master/screenshot/video.gif" width="44%">
 </div>
 <div>
-    <img src="https://github.com/AndreHu88/iOS_Live/blob/master/screenshot/IMG_1879.PNG" width="24%">
-    <img src="https://github.com/AndreHu88/iOS_Live/blob/master/screenshot/IMG_1882.PNG" width="24%">
-    <img src="https://github.com/AndreHu88/iOS_Live/blob/master/screenshot/IMG_1883.PNG" width="24%">
+    <img src="https://github.com/AndreHu88/iOS_Live/blob/master/screenshot/music.gif" width="44%">
+    <img src="https://github.com/AndreHu88/iOS_Live/blob/master/screenshot/near.PNG" width="44%">
 </div>
 
 ### 直播流媒体介绍
-直播，音乐播放demo https://github.com/AndreHu88/iOS_Live
+直播，音乐播放demo
+https://github.com/AndreHu88/iOS_Live
+个人博客讲解:http://www.sohod.cn
+
 视频流传输使用的是RTMP协议（类似于socket，基于TCP）
 RTMP是Real Time Messaging Protocol（实时消息传输协议）的首字母缩写。该协议基于TCP
 
@@ -76,4 +77,5 @@ videoToolbox是苹果的一个硬解码的框架，提供实现压缩，解压�
 这篇blog详解:http://www.samirchen.com/video-concept/
 ##### 音视频同步详解
 
+#### 具体内容见个人博客
 ### 声明,如果该demo涉及到侵权,烦请联系下我,我将删除本Demo.谢谢。本项目只做技术学习使用
