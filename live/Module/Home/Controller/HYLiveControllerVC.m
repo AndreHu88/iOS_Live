@@ -14,6 +14,7 @@
 #import "HYChatRoomCell.h"
 #import "HYChatRoomManager.h"
 #import "HYLiveInputBar.h"
+#import "HYGiftAnimationManager.h"
 
 @interface HYLiveControllerVC () <RCConnectionStatusChangeDelegate,RCIMClientReceiveMessageDelegate,UIGestureRecognizerDelegate,HYLiveInputBarControlDelegate>
 
@@ -95,6 +96,12 @@
        
         self.inputBar.hidden = NO;
         self.inputBar.status = HYLiveInputBarStatusInputText;
+    }];
+    
+    [self.viewModel.giftSubject subscribeNext:^(id x) {
+        
+        HYGiftAnimationManager *mananger = [HYGiftAnimationManager sharedManager];
+        
     }];
 }
 

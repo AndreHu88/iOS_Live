@@ -34,6 +34,7 @@
     _isScrollViewCanScroll = YES;
     _chatSubject = [RACSubject subject];
     _closeLiveSubject = [RACSubject subject];
+    _giftSubject = [RACSubject subject];
 }
 
 @end
