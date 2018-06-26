@@ -41,10 +41,7 @@
     CGContextSetLineWidth(contentRef, 4);
     CGContextSetLineJoin(contentRef, kCGLineJoinRound);
     CGContextSetTextDrawingMode(contentRef, kCGTextStroke);
-<<<<<<< HEAD
-=======
     [self.borderColor setStroke];
->>>>>>> 7456c6606bd42bf2bbf4aa1645517302b4740e25
     
     CGContextSetTextDrawingMode(contentRef, kCGTextFill);
 
