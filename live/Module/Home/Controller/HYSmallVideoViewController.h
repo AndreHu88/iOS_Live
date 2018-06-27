@@ -7,7 +7,12 @@
 //
 
 #import "HYBaseViewController.h"
+#import "HYImageTransition.h"
+
 
 @interface HYSmallVideoViewController : HYBaseViewController
+
+/** 转场的delegate */
+@property (nonatomic,strong) HYImageTransition *transition;
 
 @end

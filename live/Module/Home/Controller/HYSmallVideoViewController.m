@@ -10,15 +10,12 @@
 #import "HYSmallVideoCollectionCell.h"
 #import "HYSmallVideoModel.h"
 #import "HYSmallVideoPlayerVC.h"
-#import "HYImageTransition.h"
 
 @interface HYSmallVideoViewController () <UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic,strong) UICollectionView *collectionView;
 /** 数据源 */
 @property (nonatomic,strong) NSMutableArray *datalist;
-/** 转场的delegate */
-@property (nonatomic,strong) HYImageTransition *transition;
 /** 是否第一次加载 */
 @property (nonatomic,assign) BOOL isFirstLoad;
 
@@ -40,14 +37,6 @@ static NSString *cellID = @"smallVideoCellID";
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
     KAdjustsScrollViewInsets_NO(self, self.collectionView);
-}
-
-- (void)viewDidLayoutSubviews{
-    
-    [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-       
-        make.edges.equalTo(self.view);
-    }];
 }
 
 - (void)requestData{
@@ -90,11 +79,11 @@ static NSString *cellID = @"smallVideoCellID";
     HYSmallVideoModel *model = self.datalist[indexPath.item];
     //设置转场动画 先清空之前的transition
     self.transition = nil;
-    self.navigationController.delegate = self.transition;
     CGRect cellRect = [self.collectionView convertRect:cell.frame toView:self.collectionView];
     self.transition.beforeFrame = [self.collectionView convertRect:cellRect toView:self.view];
     self.transition.afterFrame = [UIScreen mainScreen].bounds;
     self.transition.transitionBeforeImgView = cell.coverImageView;
+    self.navigationController.delegate = self.transition;
     
     HYSmallVideoPlayerVC *playerVC = [HYSmallVideoPlayerVC new];
     playerVC.model = model;
@@ -132,11 +121,13 @@ static NSString *cellID = @"smallVideoCellID";
         CGFloat padding = 6 * WIDTH_MULTIPLE;
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        layout.itemSize = CGSizeMake((KSCREEN_WIDTH - padding * 2 - padding) / 2, 300 * WIDTH_MULTIPLE);
+        CGFloat itemWidth = (KSCREEN_WIDTH - padding * 2 - padding) / 2;
+        CGFloat itemHeight = itemWidth * (KSCREEN_HEIGHT / KSCREEN_WIDTH);
+        layout.itemSize = CGSizeMake(itemWidth, itemHeight);
         layout.minimumLineSpacing = 0;
         layout.minimumInteritemSpacing = 0;
         layout.sectionInset = UIEdgeInsetsMake(0, padding, 0, padding);
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, KSCREEN_WIDTH, KSCREEN_HEIGHT - KTABBAR_HEIGHT) collectionViewLayout:layout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;
