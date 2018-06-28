@@ -26,6 +26,7 @@
     KEYWINDOW.rootViewController = [HYTabBarController new];
     //开启远程接收时间
     [application beginReceivingRemoteControlEvents];
+    [HYCrashHandle sharedInstance];
     return YES;
 }
 

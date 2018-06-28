@@ -114,6 +114,7 @@
 		B546911620E22CE70051571C /* EmitterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B546911320E22CE70051571C /* EmitterManager.m */; };
 		B546911920E22DFA0051571C /* PanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = B546911820E22DFA0051571C /* PanelView.m */; };
 		B546911B20E22E100051571C /* pointerV2.png in Resources */ = {isa = PBXBuildFile; fileRef = B546911A20E22E0F0051571C /* pointerV2.png */; };
+		B546911E20E334440051571C /* HYCrashHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = B546911D20E334440051571C /* HYCrashHandle.m */; };
 		B547A48F20ABC574008FBA0E /* HYPresentAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */; };
 		B5C1E6E420BCE5C000933D35 /* HYMusicPlayerDiscView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6E320BCE5C000933D35 /* HYMusicPlayerDiscView.m */; };
 		B5C1E6E720BCE6D600933D35 /* HYDiscView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6E620BCE6D600933D35 /* HYDiscView.m */; };
@@ -525,6 +526,8 @@
 		B546911720E22DFA0051571C /* PanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelView.h; sourceTree = "<group>"; };
 		B546911820E22DFA0051571C /* PanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelView.m; sourceTree = "<group>"; };
 		B546911A20E22E0F0051571C /* pointerV2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pointerV2.png; sourceTree = "<group>"; };
+		B546911C20E334440051571C /* HYCrashHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYCrashHandle.h; sourceTree = "<group>"; };
+		B546911D20E334440051571C /* HYCrashHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYCrashHandle.m; sourceTree = "<group>"; };
 		B547A48D20ABC574008FBA0E /* HYPresentAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPresentAnimator.h; sourceTree = "<group>"; };
 		B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPresentAnimator.m; sourceTree = "<group>"; };
 		B5C1E6E220BCE5C000933D35 /* HYMusicPlayerDiscView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicPlayerDiscView.h; sourceTree = "<group>"; };
@@ -738,6 +741,8 @@
 				042572CE1FC56D8F0040A10A /* HYReachabilityManager.m */,
 				B547A48D20ABC574008FBA0E /* HYPresentAnimator.h */,
 				B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */,
+				B546911C20E334440051571C /* HYCrashHandle.h */,
+				B546911D20E334440051571C /* HYCrashHandle.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1758,6 +1763,7 @@
 				042C22BE1FCD5F4800DFD274 /* HYBaseTableViewController.m in Sources */,
 				B5465E2F20B55B8300118097 /* HYLrcModel.m in Sources */,
 				042572E51FC56D8F0040A10A /* HYPhoneInfo.m in Sources */,
+				B546911E20E334440051571C /* HYCrashHandle.m in Sources */,
 				0433B3E01FDE81DD0089B34E /* HYLocationManager.m in Sources */,
 				046E5BA61FD8E59D00ED04FA /* HYLoadingManager.m in Sources */,
 				042572E61FC56D8F0040A10A /* HYPlistTools.m in Sources */,

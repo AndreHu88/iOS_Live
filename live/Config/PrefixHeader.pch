@@ -48,5 +48,6 @@
 #import "HYXiaMiMusicModel.h"
 
 #import "HYEmotionInputView.h"
+#import "HYCrashHandle.h"
 
 #endif /* PrefixHeader_pch */

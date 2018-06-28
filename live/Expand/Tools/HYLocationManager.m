@@ -14,8 +14,8 @@
 
 @implementation HYLocationManager
 
-+ (HYLocationManager *)sharedManager
-{
++ (HYLocationManager *)sharedManager{
+    
     static dispatch_once_t onceToken;
     static HYLocationManager *locationMgr;
     dispatch_once(&onceToken, ^{
