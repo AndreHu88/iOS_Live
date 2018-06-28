@@ -110,7 +110,7 @@
     
     [UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveLinear animations:^{
     
-        
+       
     }completion:^(BOOL finished) {
         
         NSLog(@"panGesture animation finished");

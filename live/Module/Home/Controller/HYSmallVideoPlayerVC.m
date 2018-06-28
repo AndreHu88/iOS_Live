@@ -42,9 +42,9 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     
+    [super viewWillDisappear:animated];
     self.navigationController.navigationBarHidden = NO;
     self.tabBarController.tabBar.hidden = NO;
-    [super viewWillDisappear:animated];
     [_player shutdown];
 }
 
@@ -61,7 +61,6 @@
     [self.view addSubview:self.bgImgView];
     [self.view addSubview:self.player.view];
     [self.view addSubview:self.bottomView];
-
 
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureAction:)];
     [self.view addGestureRecognizer:panGesture];
@@ -103,8 +102,9 @@
     precent = precent > 1 ? 1 : precent;
     
     switch (pan.state) {
-        case UIGestureRecognizerStateBegan:
-        {
+        case UIGestureRecognizerStateBegan:{
+            
+            if ([self.player isPlaying]) [self.player pause];
             //1. 设置代理
             self.transition = nil;
             self.navigationController.delegate = self.transition;
@@ -112,17 +112,12 @@
             self.transition.screenShotImg = self.snapImage;
             self.transition.transitionBeforeImgView = self.bgImgView;
             self.tabBarController.tabBar.hidden = NO;
-            if (self.player.isPlaying) {
-                
-                [self.player pause];
-            }
             self.bottomView.hidden = self.player.view.hidden = YES;
             [self.navigationController popViewControllerAnimated:YES];
 
         }
             break;
-        case UIGestureRecognizerStateChanged:
-        {
+        case UIGestureRecognizerStateChanged:{
             
             self.bgImgView.center = CGPointMake(currentPoint.x, currentPoint.y);
             self.bgImgView.transform = CGAffineTransformMakeScale(1 - precent * 1.2, 1 - precent * 1.2);
@@ -144,16 +139,15 @@
             }
             else{
                 
+                //继续播放视频
                 self.bgImgView.transform = CGAffineTransformIdentity;
                 self.bgImgView.frame = [UIScreen mainScreen].bounds;
-            }
-            self.transition = nil;
-            self.navigationController.delegate = self.transition;
-            self.bottomView.hidden = self.player.view.hidden = NO;
-            if (!self.player.isPlaying) {
-                
+                [self.player prepareToPlay];
                 [self.player play];
             }
+            self.navigationController.delegate = self.transition;
+            self.bottomView.hidden = self.player.view.hidden = NO;
+        
             break;
         default:
             break;
