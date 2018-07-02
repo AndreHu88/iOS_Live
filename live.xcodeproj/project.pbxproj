@@ -107,7 +107,6 @@
 		B546910120E226280051571C /* HYPieView.m in Sources */ = {isa = PBXBuildFile; fileRef = B54690F820E226270051571C /* HYPieView.m */; };
 		B546910A20E227F00051571C /* UITableViewCell+HYCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B546910320E227EF0051571C /* UITableViewCell+HYCommon.m */; };
 		B546910B20E227F00051571C /* UILabel+HYJustifyAlign.m in Sources */ = {isa = PBXBuildFile; fileRef = B546910620E227EF0051571C /* UILabel+HYJustifyAlign.m */; };
-		B546910C20E227F00051571C /* MBProgressHUD+HYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B546910720E227EF0051571C /* MBProgressHUD+HYExtension.m */; };
 		B546910D20E227F00051571C /* UIView+HYCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B546910920E227F00051571C /* UIView+HYCommon.m */; };
 		B546911020E22A880051571C /* FilterVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = B546910F20E22A880051571C /* FilterVIew.m */; };
 		B546911520E22CE70051571C /* success_star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B546911220E22CE70051571C /* success_star@2x.png */; };
@@ -115,6 +114,7 @@
 		B546911920E22DFA0051571C /* PanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = B546911820E22DFA0051571C /* PanelView.m */; };
 		B546911B20E22E100051571C /* pointerV2.png in Resources */ = {isa = PBXBuildFile; fileRef = B546911A20E22E0F0051571C /* pointerV2.png */; };
 		B546911E20E334440051571C /* HYCrashHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = B546911D20E334440051571C /* HYCrashHandle.m */; };
+		B546913420E9CDB40051571C /* MBProgressHUD+HYCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B546913320E9CDB40051571C /* MBProgressHUD+HYCommon.m */; };
 		B547A48F20ABC574008FBA0E /* HYPresentAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */; };
 		B5C1E6E420BCE5C000933D35 /* HYMusicPlayerDiscView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6E320BCE5C000933D35 /* HYMusicPlayerDiscView.m */; };
 		B5C1E6E720BCE6D600933D35 /* HYDiscView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5C1E6E620BCE6D600933D35 /* HYDiscView.m */; };
@@ -512,10 +512,8 @@
 		B54690FA20E226280051571C /* JRToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JRToast.h; path = live/Expand/CustomView/JRToast.h; sourceTree = SOURCE_ROOT; };
 		B546910220E227EF0051571C /* UITableViewCell+HYCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+HYCommon.h"; sourceTree = "<group>"; };
 		B546910320E227EF0051571C /* UITableViewCell+HYCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+HYCommon.m"; sourceTree = "<group>"; };
-		B546910420E227EF0051571C /* MBProgressHUD+HYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+HYExtension.h"; sourceTree = "<group>"; };
 		B546910520E227EF0051571C /* UIView+HYCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HYCommon.h"; sourceTree = "<group>"; };
 		B546910620E227EF0051571C /* UILabel+HYJustifyAlign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+HYJustifyAlign.m"; sourceTree = "<group>"; };
-		B546910720E227EF0051571C /* MBProgressHUD+HYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+HYExtension.m"; sourceTree = "<group>"; };
 		B546910820E227F00051571C /* UILabel+HYJustifyAlign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+HYJustifyAlign.h"; sourceTree = "<group>"; };
 		B546910920E227F00051571C /* UIView+HYCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HYCommon.m"; sourceTree = "<group>"; };
 		B546910E20E22A870051571C /* FilterVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterVIew.h; sourceTree = "<group>"; };
@@ -528,6 +526,8 @@
 		B546911A20E22E0F0051571C /* pointerV2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pointerV2.png; sourceTree = "<group>"; };
 		B546911C20E334440051571C /* HYCrashHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYCrashHandle.h; sourceTree = "<group>"; };
 		B546911D20E334440051571C /* HYCrashHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYCrashHandle.m; sourceTree = "<group>"; };
+		B546913220E9CDB40051571C /* MBProgressHUD+HYCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+HYCommon.h"; sourceTree = "<group>"; };
+		B546913320E9CDB40051571C /* MBProgressHUD+HYCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+HYCommon.m"; sourceTree = "<group>"; };
 		B547A48D20ABC574008FBA0E /* HYPresentAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPresentAnimator.h; sourceTree = "<group>"; };
 		B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPresentAnimator.m; sourceTree = "<group>"; };
 		B5C1E6E220BCE5C000933D35 /* HYMusicPlayerDiscView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicPlayerDiscView.h; sourceTree = "<group>"; };
@@ -1213,8 +1213,8 @@
 		B5465E5A20B7FC0200118097 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				B546910420E227EF0051571C /* MBProgressHUD+HYExtension.h */,
-				B546910720E227EF0051571C /* MBProgressHUD+HYExtension.m */,
+				B546913220E9CDB40051571C /* MBProgressHUD+HYCommon.h */,
+				B546913320E9CDB40051571C /* MBProgressHUD+HYCommon.m */,
 				B546910820E227F00051571C /* UILabel+HYJustifyAlign.h */,
 				B546910620E227EF0051571C /* UILabel+HYJustifyAlign.m */,
 				B546910220E227EF0051571C /* UITableViewCell+HYCommon.h */,
@@ -1742,11 +1742,11 @@
 				B5C1E75E20C51C6300933D35 /* HYBaseCellModel.m in Sources */,
 				042C22B51FCD590F00DFD274 /* HYLiveTopView.m in Sources */,
 				B546910120E226280051571C /* HYPieView.m in Sources */,
-				B546910C20E227F00051571C /* MBProgressHUD+HYExtension.m in Sources */,
 				049AD39B1FDA2ACE009252A4 /* HYSmallVideoViewModel.m in Sources */,
 				042C22B41FCD590F00DFD274 /* HYLiveScrollView.m in Sources */,
 				04FFF9D21FF117CF00C93F70 /* HYNearLiveModel.m in Sources */,
 				042C22A91FCD590F00DFD274 /* HYFocusViewController.m in Sources */,
+				B546913420E9CDB40051571C /* MBProgressHUD+HYCommon.m in Sources */,
 				B5C1E70A20C113B800933D35 /* HYTableViewDataSource.m in Sources */,
 				046E5BAD1FD91B0D00ED04FA /* HYSmallVideoViewController.m in Sources */,
 				B5C1E71A20C501D000933D35 /* HYSocketUtils.m in Sources */,
