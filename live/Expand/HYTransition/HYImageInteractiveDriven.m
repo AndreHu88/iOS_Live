@@ -37,10 +37,10 @@
 - (void)panGestureAction:(UIPanGestureRecognizer *)pan{
     
     CGFloat precent = [self precentDrivenForGestrue:pan];
-    [self startDrivenPrecent];
 
     switch (pan.state) {
         case UIGestureRecognizerStateBegan:
+
             break;
         case UIGestureRecognizerStateChanged:
             //更新百分比
@@ -70,16 +70,21 @@
 //开始拖动
 - (void)startDrivenPrecent{
     
-//    UIView *containerView = [self.transitionContext containerView];
-//    UIViewController *toVC = [self.transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-//    [KEYWINDOW addSubview:toVC.view];
+    UIView *containerView = [self.transitionContext containerView];
+    UIViewController *toVC = [self.transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIView *toView = toVC.view;
+//    [containerView addSubview:toView];
     
     [KEYWINDOW addSubview:self.snapShotImgView];
-    [KEYWINDOW addSubview:self.blackBgView];
+    //有渐变的黑色背景
+    _blackBgView = [[UIView alloc] initWithFrame:containerView.bounds];
+    _blackBgView.backgroundColor = [UIColor blackColor];
+    [KEYWINDOW addSubview:_blackBgView];
     
     UIViewController *fromVC = [self.transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     fromVC.view.backgroundColor = [UIColor clearColor];
-    [KEYWINDOW addSubview:fromVC.view];
+    UIView *fromeView = fromVC.view;
+    [KEYWINDOW addSubview:fromeView];
 }
 
 - (void)updateDrivenPercent:(CGFloat)percent{
@@ -105,15 +110,37 @@
     
     UIView *containerView = [self.transitionContext containerView];
     UIViewController *toVC = [self.transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    toVC.view.top += KNavTotal_HEIGHT;
     [containerView addSubview:toVC.view];
     
+    //创建一个和之前的图片位置一样的View
+    UIView *imgBgView = [[UIView alloc] initWithFrame:self.transitionBeforeFrame];
+    imgBgView.top += KNavTotal_HEIGHT;
+    imgBgView.backgroundColor = KAPP_WHITE_COLOR;
+    imgBgView.hidden = YES;
+    [containerView addSubview:imgBgView];
+    
+    UIImageView *transitionImgView = [[UIImageView alloc] initWithFrame:self.transitionBeforeFrame];
+    transitionImgView.image = self.currentImgView.image;
+    [containerView addSubview:transitionImgView];
+    
+    //创建一个黑色的背景
+    UIView *blackBgView = [[UIView alloc] initWithFrame:containerView.bounds];
+    blackBgView.backgroundColor = KAPP_BLACK_COLOR;
+    [containerView addSubview:blackBgView];
     
     [UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveLinear animations:^{
-    
+        
+        CGRect beforeFrame = self.transitionAfterFrame;
+        //需要将y下移64，因为有导航栏
+        beforeFrame.origin.y += 64;
+        transitionImgView.frame = beforeFrame;
+        blackBgView.alpha = 0;
        
     }completion:^(BOOL finished) {
         
         NSLog(@"panGesture animation finished");
+        [transitionImgView removeFromSuperview];
         
         [_snapShotImgView removeFromSuperview];
         _snapShotImgView = nil;
@@ -136,6 +163,7 @@
 - (void)startInteractiveTransition:(id<UIViewControllerContextTransitioning>)transitionContext{
     
     self.transitionContext = transitionContext;
+    [self startDrivenPrecent];
 }
 
 #pragma mark - lazyload

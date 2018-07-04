@@ -30,7 +30,7 @@
     
     [HYNetWorkHandle getHotLiveListComplectionBlock:^(NSArray *datalist) {
         
-        if (datalist) {
+        if (datalist.count) {
             
             [self.datalist removeAllObjects];
             
@@ -40,6 +40,10 @@
                 [self.datalist addObject:model];
             }];
             
+        }
+        else{
+            _tableView.emptyDataSetSource = self;
+            _tableView.emptyDataSetDelegate = self;
         }
         [_tableView.mj_header endRefreshing];
         [_tableView reloadData];
@@ -118,8 +122,6 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.mj_header = [HYRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
         _tableView.backgroundColor = KAPP_TableView_BgColor;
-        _tableView.emptyDataSetSource = self;
-        _tableView.emptyDataSetDelegate = self;
     }
     return _tableView;
 }

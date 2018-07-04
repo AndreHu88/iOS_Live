@@ -16,5 +16,7 @@
 @property (nonatomic,strong) UIImageView *bgImgView;
 /** 截图 */
 @property (nonatomic,strong) UIImage *snapImage;
+/** 转场之前得图片为frame */
+@property (nonatomic,assign) CGRect beforeImageViewFrame;
 
 @end

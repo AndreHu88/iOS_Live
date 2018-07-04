@@ -35,6 +35,7 @@
     [self setStatusBarBackgroundColor:KAPP_Clear_COLOR];
     [self setupChildVC];
     [self addTitleView];
+    KAdjustsScrollViewInsets_NO(self, self.scrollView);
 }
 
 - (void)setupChildVC{
@@ -47,7 +48,7 @@
     [self addChildViewController:hotLiveVC];
     hotLiveVC.view.frame = self.view.bounds;
     hotLiveVC.view.left = KSCREEN_WIDTH;
-    hotLiveVC.view.height = KSCREEN_HEIGHT - 49;
+    hotLiveVC.view.height = KSCREEN_HEIGHT - KTABBAR_HEIGHT - KNavTotal_HEIGHT;
     [self.scrollView addSubview:hotLiveVC.view];
     
     HYEatChickenViewController *eatChickenVC = [HYEatChickenViewController new];
@@ -74,7 +75,7 @@
         
         self.smallVideoVC.view.frame = self.view.bounds;
         self.smallVideoVC.view.left = 0;
-        self.smallVideoVC.view.height = KSCREEN_HEIGHT - 49;
+        self.smallVideoVC.view.height = KSCREEN_HEIGHT - KTABBAR_HEIGHT - KNavTotal_HEIGHT;
         [self.scrollView addSubview:self.smallVideoVC.view];
     }
     
@@ -82,7 +83,7 @@
         
         self.checkenVC.view.frame = self.view.bounds;
         self.checkenVC.view.left = KSCREEN_WIDTH * 2;
-        self.checkenVC.view.height = KSCREEN_HEIGHT - 49;
+        self.checkenVC.view.height = KSCREEN_HEIGHT - KTABBAR_HEIGHT - KNavTotal_HEIGHT;
         [self.scrollView addSubview:self.checkenVC.view];
     }
    

@@ -178,9 +178,8 @@
     
     NSInteger pageIndex = sender.tag;
     NSInteger page = _emotionGroupIndexsArray[pageIndex].integerValue;
-//    CGRect rect = CGRectMake(page * _collectionView.width, 0, _collectionView.width, _collectionView.height);
-    [_collectionView setContentOffset:CGPointMake(page * _collectionView.width, 0)];
-
+    CGRect rect = CGRectMake(page * _collectionView.width, 0, _collectionView.width, _collectionView.height);
+    [_collectionView scrollRectToVisible:rect animated:YES];
     [self scrollViewDidScroll:_collectionView];
 }
 

@@ -74,7 +74,7 @@ _Pragma("clang diagnostic pop") \
 /** 状态栏高度 */
 #define KSTATUSBAR_HEIGHT   [[UIApplication sharedApplication] statusBarFrame].size.height
 /** 导航栏总高度 */
-#define KNavTotal_HEIGHT    (self.navigationController.navigationBar.frame.size.height + [[UIApplication sharedApplication] statusBarFrame].size.height)
+#define KNavTotal_HEIGHT    (KIs_iPhoneX ? 88 : 64)
 /** tabBar高度 */
 #define KTABBAR_HEIGHT      self.tabBarController.tabBar.frame.size.height
 
