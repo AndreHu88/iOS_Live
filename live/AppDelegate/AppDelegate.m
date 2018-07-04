@@ -80,5 +80,10 @@
     [application endReceivingRemoteControlEvents];
 }
 
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application{
+    
+    [[SDImageCache sharedImageCache] clearMemory];
+    [[SDWebImageManager sharedManager] cancelAll];
+}
 
 @end

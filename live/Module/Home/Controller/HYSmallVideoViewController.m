@@ -36,6 +36,7 @@ static NSString *cellID = @"smallVideoCellID";
     
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
+    self.collectionView.frame = CGRectMake(0, 0, KSCREEN_WIDTH, KSCREEN_HEIGHT - KTABBAR_HEIGHT - KNavTotal_HEIGHT);
     KAdjustsScrollViewInsets_NO(self, self.collectionView);
 }
 
@@ -86,6 +87,7 @@ static NSString *cellID = @"smallVideoCellID";
     self.navigationController.delegate = self.transition;
     
     HYSmallVideoPlayerVC *playerVC = [HYSmallVideoPlayerVC new];
+    playerVC.beforeImageViewFrame = self.transition.beforeFrame;
     playerVC.model = model;
     UIImage *image = cell.coverImageView.image;
     playerVC.bgImgView.image = image;
@@ -122,12 +124,12 @@ static NSString *cellID = @"smallVideoCellID";
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         CGFloat itemWidth = (KSCREEN_WIDTH - padding * 2 - padding) / 2;
-        CGFloat itemHeight = itemWidth * (KSCREEN_HEIGHT / KSCREEN_WIDTH);
+        CGFloat itemHeight = itemWidth * (KSCREEN_HEIGHT / (CGFloat)KSCREEN_WIDTH);
         layout.itemSize = CGSizeMake(itemWidth, itemHeight);
         layout.minimumLineSpacing = 0;
         layout.minimumInteritemSpacing = 0;
         layout.sectionInset = UIEdgeInsetsMake(0, padding, 0, padding);
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, KSCREEN_WIDTH, KSCREEN_HEIGHT - KTABBAR_HEIGHT) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, KSCREEN_WIDTH, KSCREEN_HEIGHT - KTABBAR_HEIGHT - KNavTotal_HEIGHT) collectionViewLayout:layout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;

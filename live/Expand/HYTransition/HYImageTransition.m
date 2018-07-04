@@ -79,7 +79,8 @@
         
         _interActiveDirven = [[HYImageInteractiveDriven alloc] initWithGesture:self.pan];
         _interActiveDirven.screenShotImg = self.screenShotImg;
-        _interActiveDirven.transitionAfterFrame = self.beforeFrame;
+        _interActiveDirven.transitionBeforeFrame = self.beforeFrame;
+        _interActiveDirven.transitionAfterFrame = self.afterFrame;
         _interActiveDirven.currentImgView = self.transitionBeforeImgView;
     }
     return _interActiveDirven;

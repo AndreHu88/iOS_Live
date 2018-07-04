@@ -33,7 +33,7 @@
 #import "WebApi.h"
 #import "JRToast.h"
 #import "HTTPManager.h"
-#import "MBProgressHUD+HYExtension.h"
+#import "MBProgressHUD+HYCommon.h"
 #import "HYNetWorkHandle.h"
 #import "HYRefreshGifHeader.h"
 #import "HYBaseTableViewController.h"

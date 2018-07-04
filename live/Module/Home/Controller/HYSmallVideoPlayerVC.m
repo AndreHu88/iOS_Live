@@ -104,13 +104,17 @@
     switch (pan.state) {
         case UIGestureRecognizerStateBegan:{
             
-            if ([self.player isPlaying]) [self.player pause];
+            if ([self.player isPlaying]) [self.player stop];
             //1. 设置代理
             self.transition = nil;
             self.navigationController.delegate = self.transition;
-            self.transition.pan = pan;
+            //小视频页面的截图
             self.transition.screenShotImg = self.snapImage;
+            //转场之前的frame
+            self.transition.afterFrame = self.beforeImageViewFrame;
+            self.transition.beforeFrame = self.view.bounds;
             self.transition.transitionBeforeImgView = self.bgImgView;
+            self.transition.pan = pan;
             self.tabBarController.tabBar.hidden = NO;
             self.bottomView.hidden = self.player.view.hidden = YES;
             [self.navigationController popViewControllerAnimated:YES];
@@ -128,21 +132,14 @@
             
             if (precent > 0.25) {
                 
-                //完成转场
-                [UIView animateWithDuration:0.2 animations:^{
-                    
-                    self.bgImgView.center = self.transition.transitionBeforeImgView.center;
-                } completion:^(BOOL finished) {
-                    
-                    self.bgImgView.transform = CGAffineTransformIdentity;
-                }];
+
             }
             else{
                 
                 //继续播放视频
+                self.player.view.hidden = NO;
                 self.bgImgView.transform = CGAffineTransformIdentity;
                 self.bgImgView.frame = [UIScreen mainScreen].bounds;
-                [self.player prepareToPlay];
                 [self.player play];
             }
             self.navigationController.delegate = self.transition;
@@ -229,7 +226,6 @@
         _bgImgView = [[UIImageView alloc] initWithFrame:CGRectZero];
         _bgImgView.contentMode = UIViewContentModeScaleAspectFill;
         _bgImgView.clipsToBounds = YES;
-        _bgImgView.image = [UIImage imageNamed:@"iksv_hotVideoBack"];
     }
     return _bgImgView;
 }
