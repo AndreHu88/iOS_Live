@@ -31,4 +31,6 @@
 //音乐
 #define API_XiaMiMusicList        @"http://music.xiami.com/resource/collect/detail/406549798?auth_key=1528390510-0-0-5cba7a2bccfebbed5fd109cd61079754"
 
+#define API_SinaWeibo             @"https://api.weibo.cn/2/statuses/unread_hot_timeline?gsid=_2A252MjRODeRxGeNN41sV9yrIwjWIHXVTZsCGrDV6PUJbkdAKLXbTkWpNSZ7kS3XfNDiEWc2vizSVactPodDfjVBz&from=1086393010&c=iphone&s=ebbbbbbb&refresh=pulldown&extparam=discover%7Cnew_feed&fid=102803"
+
 #endif
