@@ -82,6 +82,8 @@
 		B52D66F420C8D91C00010200 /* HYEmotionInputHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B52D66F320C8D91C00010200 /* HYEmotionInputHelper.m */; };
 		B52D66F620C8D95C00010200 /* EmoticonWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B52D66F520C8D95C00010200 /* EmoticonWeibo.bundle */; };
 		B52D66F920C8DC7700010200 /* HYEmotionGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B52D66F820C8DC7700010200 /* HYEmotionGroupModel.m */; };
+		B5308C6820EDF8EA0085769C /* HYTCPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = B5308C6720EDF8EA0085769C /* HYTCPServer.m */; };
+		B5308C6B20EDFF8F0085769C /* HYTCPSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B5308C6A20EDFF8F0085769C /* HYTCPSocketManager.m */; };
 		B5465E2920B557C000118097 /* HYMusicHandleTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E2820B557C000118097 /* HYMusicHandleTool.m */; };
 		B5465E2C20B55B6900118097 /* HYMusicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E2B20B55B6900118097 /* HYMusicModel.m */; };
 		B5465E2F20B55B8300118097 /* HYLrcModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B5465E2E20B55B8300118097 /* HYLrcModel.m */; };
@@ -293,6 +295,11 @@
 		B52D66F520C8D95C00010200 /* EmoticonWeibo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EmoticonWeibo.bundle; sourceTree = "<group>"; };
 		B52D66F720C8DC7700010200 /* HYEmotionGroupModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYEmotionGroupModel.h; sourceTree = "<group>"; };
 		B52D66F820C8DC7700010200 /* HYEmotionGroupModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYEmotionGroupModel.m; sourceTree = "<group>"; };
+		B5308C5F20EDEFAD0085769C /* HYSocketConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYSocketConfig.h; sourceTree = "<group>"; };
+		B5308C6620EDF8EA0085769C /* HYTCPServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTCPServer.h; sourceTree = "<group>"; };
+		B5308C6720EDF8EA0085769C /* HYTCPServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTCPServer.m; sourceTree = "<group>"; };
+		B5308C6920EDFF8F0085769C /* HYTCPSocketManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTCPSocketManager.h; sourceTree = "<group>"; };
+		B5308C6A20EDFF8F0085769C /* HYTCPSocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTCPSocketManager.m; sourceTree = "<group>"; };
 		B5465E2720B557C000118097 /* HYMusicHandleTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicHandleTool.h; sourceTree = "<group>"; };
 		B5465E2820B557C000118097 /* HYMusicHandleTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMusicHandleTool.m; sourceTree = "<group>"; };
 		B5465E2A20B55B6900118097 /* HYMusicModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMusicModel.h; sourceTree = "<group>"; };
@@ -1158,6 +1165,18 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B5308C5B20EDEA370085769C /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				B5308C6920EDFF8F0085769C /* HYTCPSocketManager.h */,
+				B5308C6A20EDFF8F0085769C /* HYTCPSocketManager.m */,
+				B5308C6620EDF8EA0085769C /* HYTCPServer.h */,
+				B5308C6720EDF8EA0085769C /* HYTCPServer.m */,
+				B5308C5F20EDEFAD0085769C /* HYSocketConfig.h */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
 		B5465E2420B557AD00118097 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1228,6 +1247,7 @@
 		B5465E5E20B7FD0C00118097 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B5308C5B20EDEA370085769C /* Socket */,
 				B54690CA20DB904D0051571C /* LiveGiftAnimation */,
 				B52D66EE20C8D8A900010200 /* EmotionInputView */,
 				B5465E5F20B7FD1E00118097 /* ObjRuntime */,
@@ -1732,6 +1752,7 @@
 				042C22AA1FCD590F00DFD274 /* HYCurrentLiveViewController.m in Sources */,
 				B5465E2C20B55B6900118097 /* HYMusicModel.m in Sources */,
 				B54690D320DBA2350051571C /* HYGiftAnimationManager.m in Sources */,
+				B5308C6820EDF8EA0085769C /* HYTCPServer.m in Sources */,
 				042C22AD1FCD590F00DFD274 /* HYLiveControllerVC.m in Sources */,
 				04875B6C1FD95B800031FDA8 /* HYImageTransition.m in Sources */,
 				3E60088820DE3E920090EFD3 /* HYGiftView.m in Sources */,
@@ -1794,6 +1815,7 @@
 				B54690FC20E226280051571C /* JRToast.m in Sources */,
 				042C22DE1FCE89BE00DFD274 /* HYChatRoomCell.m in Sources */,
 				042C22E41FCE8A3500DFD274 /* HYChatRoomManager.m in Sources */,
+				B5308C6B20EDFF8F0085769C /* HYTCPSocketManager.m in Sources */,
 				B54690FD20E226280051571C /* SAMTextView.m in Sources */,
 				042572FB1FC574FE0040A10A /* HYBaseViewController.m in Sources */,
 				042C22AB1FCD590F00DFD274 /* HYHomeViewController.m in Sources */,
