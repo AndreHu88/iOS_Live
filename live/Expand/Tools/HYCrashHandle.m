@@ -27,7 +27,7 @@ const NSString *KSignalNumber = @"signalNumber";
 }
 
 //+ (instancetype)allocWithZone:(struct _NSZone *)zone{
-//    
+//
 //    static dispatch_once_t onceToken;
 //    dispatch_once(&onceToken, ^{
 //        crashHandle = [[self class] allocWithZone:zone];

@@ -132,7 +132,13 @@
             
             if (precent > 0.25) {
                 
-
+//                [UIView animateWithDuration:0.4 delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveLinear animations:^{
+//
+//                    self.bgImgView.frame = self.beforeImageViewFrame;
+//
+//                } completion:^(BOOL finished) {
+//
+//                }];
             }
             else{
                 
@@ -142,6 +148,9 @@
                 self.bgImgView.frame = [UIScreen mainScreen].bounds;
                 [self.player play];
             }
+            
+            self.transition.beforeFrame = _bgImgView.frame;
+            self.transition = nil;
             self.navigationController.delegate = self.transition;
             self.bottomView.hidden = self.player.view.hidden = NO;
         
