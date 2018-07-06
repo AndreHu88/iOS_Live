@@ -106,7 +106,7 @@
     _snapShotImgView = nil;
     [_blackBgView removeFromSuperview];
     _blackBgView = nil;
-    [self.transitionContext completeTransition:![_transitionContext transitionWasCancelled]];
+    [self.transitionContext completeTransition:NO];
 }
 
 - (void)drivenPercentFinish{
@@ -115,13 +115,6 @@
     UIViewController *toVC = [self.transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     toVC.view.top += KNavTotal_HEIGHT;
     [containerView addSubview:toVC.view];
-    
-    //创建一个和之前的图片位置一样的View,填充白色，体现动画
-    UIView *imgBgView = [[UIView alloc] initWithFrame:self.transitionAfterFrame];
-    imgBgView.top += KNavTotal_HEIGHT;
-    imgBgView.backgroundColor = KAPP_WHITE_COLOR;
-    imgBgView.hidden = NO;
-    [containerView addSubview:imgBgView];
 
     UIImageView *transitionImgView = [[UIImageView alloc] initWithFrame:self.transitionBeforeFrame];
     transitionImgView.image = self.currentImgView.image;
