@@ -68,13 +68,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "live/Expand/HYTransition/HYImageInteractiveDriven.m"
-            timestampString = "552391552.759904"
+            timestampString = "552535047.535103"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
             endingLineNumber = "111"
-            landmarkName = "-drivenPercentFinish"
-            landmarkType = "7">
+            landmarkName = "HYImageInteractiveDriven"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -84,12 +84,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "live/Expand/HYTransition/HYImageInteractiveDriven.m"
-            timestampString = "552391552.760989"
+            timestampString = "552535047.535645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
             endingLineNumber = "75"
             landmarkName = "-startDrivenPrecent"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "live/Expand/Utils/Socket/HYTCPSocketManager.m"
+            timestampString = "552535047.53644"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "-_configSocketThread"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
