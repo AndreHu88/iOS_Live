@@ -25,27 +25,27 @@
 @implementation HYTCPServerShangHai
 
 - (NSString *)testEnvironmentHost{
-    return @"http://www.tcp.com/shanghai";
+    return @"localhost";
 }
 
 - (int16_t)testEnvironmentPort{
-    return 8080;
+    return 23456;
 }
 
 - (NSString *)developEnvironmentHost{
-    return @"http://www.tcp.com/shanghai";
+    return @"localhost";
 }
 
 - (int16_t)developEnvironmentPort{
-    return 8080;
+    return 23456;
 }
 
 - (NSString *)releaseEnvironmentHost{
-    return @"http://www.tcp.com/shanghai";
+    return @"localhost";
 }
 
 - (int16_t)releaseEnvironmentPort{
-    return 8080;
+    return 23456;
 }
 
 @end
@@ -58,27 +58,27 @@
 @implementation HYTCPServerGuangDong
 
 - (NSString *)testEnvironmentHost{
-    return @"http://www.tcp.com/shanghai";
+    return @"localhost";
 }
 
 - (int16_t)testEnvironmentPort{
-    return 8080;
+    return 23456;
 }
 
 - (NSString *)developEnvironmentHost{
-    return @"http://www.tcp.com/shanghai";
+    return @"localhost";
 }
 
 - (int16_t)developEnvironmentPort{
-    return 8080;
+    return 23456;
 }
 
 - (NSString *)releaseEnvironmentHost{
-    return @"http://www.tcp.com/shanghai";
+    return @"localhost";
 }
 
 - (int16_t)releaseEnvironmentPort{
-    return 8080;
+    return 23456;
 }
 
 @end
@@ -92,27 +92,27 @@
 @implementation HYTCPServerHK
 
 - (NSString *)testEnvironmentHost{
-    return @"http://www.tcp.com/shanghai";
+    return @"localhost";
 }
 
 - (int16_t)testEnvironmentPort{
-    return 8080;
+    return 23456;
 }
 
 - (NSString *)developEnvironmentHost{
-    return @"http://www.tcp.com/shanghai";
+    return @"localhost";
 }
 
 - (int16_t)developEnvironmentPort{
-    return 8080;
+    return 23456;
 }
 
 - (NSString *)releaseEnvironmentHost{
-    return @"http://www.tcp.com/shanghai";
+    return @"localhost";
 }
 
 - (int16_t)releaseEnvironmentPort{
-    return 8080;
+    return 23456;
 }
 
 @end

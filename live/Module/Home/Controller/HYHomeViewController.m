@@ -33,8 +33,8 @@
     
     [super viewDidLoad];
     [self setStatusBarBackgroundColor:KAPP_Clear_COLOR];
-    [self setupChildVC];
-    [self addTitleView];
+//    [self setupChildVC];
+//    [self addTitleView];
     KAdjustsScrollViewInsets_NO(self, self.scrollView);
 }
 

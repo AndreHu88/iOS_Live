@@ -20,28 +20,35 @@
 @property (nonatomic,strong) NSPort *machPort;
 @property (nonatomic,assign) BOOL isKeepConnecting;
 @property (nonatomic,assign) BOOL isConnecting;
+@property (nonatomic,assign) BOOL isReading;                    //是否正在读取
 @property (nonatomic,assign) NSInteger reconnectCount;          //重连次数
+@property (nonatomic,strong) NSMutableData *bufferData;         //缓冲池
 
 @end
 
 static NSInteger socketTag = 10086;
+static HYTCPSocketManager *socketManager;
+
 
 @implementation HYTCPSocketManager
 
 + (instancetype)shareInstance{
     
-    static HYTCPSocketManager *socketManager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        socketManager = [[HYTCPSocketManager allocWithZone:nil] initwithTCPServer:nil];
+        socketManager = [[HYTCPSocketManager alloc] initwithTCPServer:nil];
     });
     return socketManager;
 }
 
 + (instancetype)allocWithZone:(struct _NSZone *)zone{
     
-    return [self shareInstance];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        socketManager = [super allocWithZone:zone];
+    });
+    return socketManager;
 }
 
 
@@ -50,10 +57,12 @@ static NSInteger socketTag = 10086;
     
     if (self == [super init]) {
         
-        if (!TCPServer)   TCPServer = [HYTCPServer defaultServer];
+        TCPServer = TCPServer ?: [HYTCPServer defaultServer];
         self.TCPServer = TCPServer;
         [self _initGCDSocket];
-        [self _configSocketThread];
+        //创建线程，开启runloop
+        [NSThread detachNewThreadSelector:@selector(_configSocketThread) toTarget:self withObject:nil];
+        [self _initData];
     }
     return self;
 }
@@ -64,15 +73,19 @@ static NSInteger socketTag = 10086;
     _socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_socketQueue];
     _socket.IPv4PreferredOverIPv6 = YES;
     _isKeepConnecting = YES;
-    _machPort = [NSMachPort port];
+}
+
+- (void)_initData{
     
+    _bufferData = [NSMutableData data];
 }
 
 - (void)_configSocketThread{
     
     if (!_socketThread) {
         //如果线程不存在，就创建线程
-        _socketThread = [[NSThread alloc] init];
+        _socketThread = [NSThread currentThread];
+        _machPort = [NSMachPort port];
         [[NSRunLoop currentRunLoop] addPort:self.machPort forMode:NSDefaultRunLoopMode];
     }
     
@@ -109,7 +122,7 @@ static NSInteger socketTag = 10086;
     
     if (_isConnecting) return;
     _reconnectCount += 1;
-    //如果重连次数小于最大重连次数
+    //如果重连次数小于最大重连次数,就重连
     if (_reconnectCount < _maxRetryReconnectCount) {
         [self connect];
     }
@@ -131,12 +144,21 @@ static NSInteger socketTag = 10086;
     
     _isConnecting = NO;
     _isKeepConnecting = NO;
-    
+    [self _disconnect];
+    [self performSelector:@selector(_configSocketThread) onThread:_socketThread withObject:nil waitUntilDone:YES];
 }
 
 - (void)reconnect{
     
+    //将自动重连次数置空
+    self.reconnectCount = 0;
+    [self connect];
+}
+
+- (void)writeData:(NSData *)data{
     
+    if (data.length <= 0) return;
+    [self.socket writeData:data withTimeout:-1 tag:socketTag];
 }
 
 - (BOOL)isConnect{
@@ -147,11 +169,19 @@ static NSInteger socketTag = 10086;
     return _maxRetryReconnectCount ? _maxRetryReconnectCount : 5;
 }
 
+#pragma mark - ParseData
+- (void)readData{
+    
+    if (_isReading) return;
+    _isReading = YES;
+    
+}
 
 #pragma mark - GCDSocketDelegate
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port{
     
     DLog(@"socket连接成功了");
+    self.reconnectCount = 0;
     [self.socket readDataWithTimeout:-1 tag:socketTag];
 }
 
@@ -169,6 +199,8 @@ static NSInteger socketTag = 10086;
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
     
     [self.socket readDataWithTimeout:-1 tag:tag];
+    [self.bufferData appendData:data];
+    [self readData];
 }
 
 @end

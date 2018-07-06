@@ -49,5 +49,6 @@
 
 #import "HYEmotionInputView.h"
 #import "HYCrashHandle.h"
+#import "HYTCPSocketManager.h"
 
 #endif /* PrefixHeader_pch */

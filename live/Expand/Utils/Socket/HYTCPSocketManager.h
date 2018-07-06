@@ -18,5 +18,6 @@
 - (void)close;
 - (void)reconnect;
 - (BOOL)isConnect;
+- (void)writeData:(NSData *)data;
 
 @end

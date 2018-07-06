@@ -27,6 +27,7 @@
     //开启远程接收时间
     [application beginReceivingRemoteControlEvents];
     [HYCrashHandle sharedInstance];
+    [[HYTCPSocketManager shareInstance] connect];
     return YES;
 }
 
