@@ -59,6 +59,7 @@ static HYTCPSocketManager *socketManager;
         
         TCPServer = TCPServer ?: [HYTCPServer defaultServer];
         self.TCPServer = TCPServer;
+        self.maxRetryReconnectCount = _maxRetryReconnectCount ?: 5;
         [self _initGCDSocket];
         //创建线程，开启runloop
         [NSThread detachNewThreadSelector:@selector(_configSocketThread) toTarget:self withObject:nil];
@@ -187,7 +188,7 @@ static HYTCPSocketManager *socketManager;
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err{
     
-    DLog(@"socket连接断开了");
+    DLog(@"socket连接失败了:%@",err.description);
     [self _tryReconnect];
 }
 

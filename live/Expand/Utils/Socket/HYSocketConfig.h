@@ -31,6 +31,7 @@ typedef NS_ENUM(NSUInteger, TCPSocketRequestType) {
     TCPSocketRequestTypeHeart = 0x00000001,
     TCPSocketRequestTypeLogin = 0x00000002,
     TCPSocketRequestTypeNotification = 0x00000003,
+    TCPSocketRequestMinRequestIdentifier = 0x000000300,
     TCPSocketRequestTypeStock = 0x00000400,
 };
 
@@ -41,6 +42,8 @@ typedef NS_ENUM(NSUInteger, TCPSocketResponseCode) {
     TCPSocketResponseCodeInvaildMsgLength = 501,
     TCPSocketResponseCodeUndefinedMsg = 502,
 };
+
+static NSString *TCPHeartDetectAckKey = @"TCPHeartDetectAckKey";
 
 #define    SocketRequestTypeLength       4          //请求类型长度
 #define    SocketMsgSerialNumberLength   4          //消息序列号长度

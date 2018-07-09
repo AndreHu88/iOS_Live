@@ -9,6 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "HYSocketConfig.h"
 
+@interface HYTCPSocketRequest : NSObject
+
++ (instancetype)requestWithUrl:(TCPSocketRequestType)requestType parameters:(NSDictionary *)parameters header:(NSDictionary *)header;
+
+@property (nonatomic,assign) NSInteger requestIdentifier;
+
+
+- (NSData *)requestData;
+
+@end
+
+
 @interface HYTCPSocketResponse : NSObject
 
 + (instancetype)responseWithData:(NSData *)data;
