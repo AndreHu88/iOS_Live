@@ -9,6 +9,8 @@
 #import "HYTCPSocketManager.h"
 #import "HYTCPServer.h"
 #import <GCDAsyncSocket.h>
+#import "HYTCPSocketTask.h"
+#import "HYTCPSocketHeartDetect.h"
 
 @interface HYTCPSocketManager () <GCDAsyncSocketDelegate>
 
@@ -23,12 +25,15 @@
 @property (nonatomic,assign) BOOL isReading;                    //是否正在读取
 @property (nonatomic,assign) NSInteger reconnectCount;          //重连次数
 @property (nonatomic,strong) NSMutableData *bufferData;         //缓冲池
+@property (nonatomic,strong) NSMutableDictionary<NSNumber *, HYTCPSocketTask *> *taskDictionary;
+@property (nonatomic,strong) HYTCPSocketHeartDetect *heartDetect;
 
 @end
 
 static NSInteger socketTag = 10086;
+static NSInteger socketHeartTag = 10010;
 static HYTCPSocketManager *socketManager;
-
+static dispatch_semaphore_t lock;            //信号量，用来加锁
 
 @implementation HYTCPSocketManager
 
@@ -37,6 +42,7 @@ static HYTCPSocketManager *socketManager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
+        lock = dispatch_semaphore_create(1);
         socketManager = [[HYTCPSocketManager alloc] initwithTCPServer:nil];
     });
     return socketManager;
@@ -59,11 +65,15 @@ static HYTCPSocketManager *socketManager;
         
         TCPServer = TCPServer ?: [HYTCPServer defaultServer];
         self.TCPServer = TCPServer;
-        self.maxRetryReconnectCount = _maxRetryReconnectCount ?: 5;
+        [self _initData];
         [self _initGCDSocket];
         //创建线程，开启runloop
         [NSThread detachNewThreadSelector:@selector(_configSocketThread) toTarget:self withObject:nil];
-        [self _initData];
+        __weak typeof(self) weakSelf = self;
+        self.heartDetect = [HYTCPSocketHeartDetect heartDetectWithSocketManager:self timeoutHandler:^{
+            DLog(@"socket连接不通了，正在断开socket");
+            [weakSelf _disconnect];
+        }];
     }
     return self;
 }
@@ -79,6 +89,8 @@ static HYTCPSocketManager *socketManager;
 - (void)_initData{
     
     _bufferData = [NSMutableData data];
+    _taskDictionary = [NSMutableDictionary dictionary];
+    self.maxRetryReconnectCount = _maxRetryReconnectCount ?: 5;
 }
 
 - (void)_configSocketThread{
@@ -109,6 +121,13 @@ static HYTCPSocketManager *socketManager;
     if (!self.socket.isConnected) return;
     [self.socket setDelegate:nil delegateQueue:nil];
     [self.socket disconnect];
+    
+    
+    [self cancelAllSocketTasks];
+    dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+    [self.taskDictionary removeAllObjects];
+    dispatch_semaphore_signal(lock);
+    
 }
 
 - (void)_connectOnSocketThread{
@@ -170,12 +189,75 @@ static HYTCPSocketManager *socketManager;
     return _maxRetryReconnectCount ? _maxRetryReconnectCount : 5;
 }
 
+- (uint32_t)startSocketTask:(HYTCPSocketRequest *)request complection:(void (^)(NSDictionary *, NSError *))complection{
+    
+    HYTCPSocketTask *task = [HYTCPSocketTask taskWithRequest:request complection:complection];
+    if (!task)  return -1;
+    [task resume];
+    [self.taskDictionary setObject:task forKey:@(task.taskIdentifier)];
+    return task.taskIdentifier;
+}
+
+- (void)cancelSocketTaskWithIdentifier:(uint32_t)taskIdentifier{
+    
+    HYTCPSocketTask *task = self.taskDictionary[@(taskIdentifier)];
+    [task cancelTask];
+}
+
+- (void)cancelAllSocketTasks{
+    
+    [[self.taskDictionary allValues] makeObjectsPerformSelector:@selector(cancelTask)];
+    dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+    [_taskDictionary removeAllObjects];
+    dispatch_semaphore_signal(lock);
+    
+}
+
+- (void)resumeTask:(HYTCPSocketTask *)task{
+    
+    if (self.isConnect) {
+        NSData *requestData = [task.request requestData];
+        [self.socket writeData:requestData withTimeout:-1 tag:socketHeartTag];
+    }
+}
+
 #pragma mark - ParseData
 - (void)readData{
     
     if (_isReading) return;
     _isReading = YES;
+    NSData *responseData = [self _getResponseData];
+    [self _handleResponseData:responseData];
+    _isReading = NO;
     
+    if (responseData.length <= 0) return;
+    [self readData];
+    
+}
+
+- (NSData *)_getResponseData{
+    
+    NSData *receiveTotalData = self.bufferData;
+    uint32_t dataHeaderLength = [HYTCPDataParse responseHeaderLength];
+    if (self.bufferData.length < dataHeaderLength) return nil;
+    uint32_t responseContentLength = [HYTCPDataParse responseContentLengthFromData:self.bufferData];
+    uint32_t responseLength = dataHeaderLength + responseContentLength;
+    //接收的数据不是完整的
+    if (receiveTotalData.length < responseLength) return nil;
+    NSData *responseData = [receiveTotalData subdataWithRange:NSMakeRange(0, responseLength)];
+    self.bufferData = [[self.bufferData subdataWithRange:NSMakeRange(responseLength, receiveTotalData.length - responseLength)] mutableCopy];
+    return responseData;
+}
+
+- (void)_handleResponseData:(NSData *)responseData{
+    
+    HYTCPSocketResponse *response = [HYTCPSocketResponse responseWithData:responseData];
+    if (response.requestUrl == TCPSocketRequestTypeHeart) {
+        [self.heartDetect handlerServerAck:response.serialNum];
+    }
+    else if (response.requestUrl == TCPSocketRequestTypeNotification){
+        
+    }
 }
 
 #pragma mark - GCDSocketDelegate
@@ -184,6 +266,7 @@ static HYTCPSocketManager *socketManager;
     DLog(@"socket连接成功了");
     self.reconnectCount = 0;
     [self.socket readDataWithTimeout:-1 tag:socketTag];
+    [self.heartDetect reset];
 }
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err{
@@ -202,6 +285,7 @@ static HYTCPSocketManager *socketManager;
     [self.socket readDataWithTimeout:-1 tag:tag];
     [self.bufferData appendData:data];
     [self readData];
+    [self.heartDetect reset];
 }
 
 @end

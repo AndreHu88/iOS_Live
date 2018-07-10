@@ -118,6 +118,7 @@
 		B546911E20E334440051571C /* HYCrashHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = B546911D20E334440051571C /* HYCrashHandle.m */; };
 		B546913420E9CDB40051571C /* MBProgressHUD+HYCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B546913320E9CDB40051571C /* MBProgressHUD+HYCommon.m */; };
 		B547A48F20ABC574008FBA0E /* HYPresentAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */; };
+		B5902EE020F444F200DEA90A /* HYTCPSocketTask.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902EDF20F444F100DEA90A /* HYTCPSocketTask.m */; };
 		B59B462920EF06A4009E3F24 /* HYTCPDataParse.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B462820EF06A4009E3F24 /* HYTCPDataParse.m */; };
 		B59B462F20EF47C0009E3F24 /* HYTCPSocketResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B462E20EF47C0009E3F24 /* HYTCPSocketResponse.m */; };
 		B59B463520EF647D009E3F24 /* HYTCPSocketHeartDetect.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B463420EF647D009E3F24 /* HYTCPSocketHeartDetect.m */; };
@@ -540,6 +541,8 @@
 		B546913320E9CDB40051571C /* MBProgressHUD+HYCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+HYCommon.m"; sourceTree = "<group>"; };
 		B547A48D20ABC574008FBA0E /* HYPresentAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYPresentAnimator.h; sourceTree = "<group>"; };
 		B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYPresentAnimator.m; sourceTree = "<group>"; };
+		B5902EDE20F444F100DEA90A /* HYTCPSocketTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTCPSocketTask.h; sourceTree = "<group>"; };
+		B5902EDF20F444F100DEA90A /* HYTCPSocketTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTCPSocketTask.m; sourceTree = "<group>"; };
 		B59B462720EF06A4009E3F24 /* HYTCPDataParse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTCPDataParse.h; sourceTree = "<group>"; };
 		B59B462820EF06A4009E3F24 /* HYTCPDataParse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTCPDataParse.m; sourceTree = "<group>"; };
 		B59B462D20EF47C0009E3F24 /* HYTCPSocketResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTCPSocketResponse.h; sourceTree = "<group>"; };
@@ -1183,6 +1186,8 @@
 				B5308C6720EDF8EA0085769C /* HYTCPServer.m */,
 				B59B462720EF06A4009E3F24 /* HYTCPDataParse.h */,
 				B59B462820EF06A4009E3F24 /* HYTCPDataParse.m */,
+				B5902EDE20F444F100DEA90A /* HYTCPSocketTask.h */,
+				B5902EDF20F444F100DEA90A /* HYTCPSocketTask.m */,
 				B59B462D20EF47C0009E3F24 /* HYTCPSocketResponse.h */,
 				B59B462E20EF47C0009E3F24 /* HYTCPSocketResponse.m */,
 				B59B463320EF647D009E3F24 /* HYTCPSocketHeartDetect.h */,
@@ -1800,6 +1805,7 @@
 				B5465E6220B7FD7200118097 /* ObjcRuntime.m in Sources */,
 				042C22BE1FCD5F4800DFD274 /* HYBaseTableViewController.m in Sources */,
 				B5465E2F20B55B8300118097 /* HYLrcModel.m in Sources */,
+				B5902EE020F444F200DEA90A /* HYTCPSocketTask.m in Sources */,
 				042572E51FC56D8F0040A10A /* HYPhoneInfo.m in Sources */,
 				B546911E20E334440051571C /* HYCrashHandle.m in Sources */,
 				0433B3E01FDE81DD0089B34E /* HYLocationManager.m in Sources */,

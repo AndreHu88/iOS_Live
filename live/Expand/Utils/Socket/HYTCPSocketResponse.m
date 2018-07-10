@@ -22,6 +22,7 @@
         return [self heartDetectWithParameters:parameters];
     }
     
+    DLog(@"发送socket请求:%@",parameters);
     HYTCPSocketRequest *request = [HYTCPSocketRequest new];
     
     NSData *content = [parameters modelToJSONData];
@@ -40,6 +41,7 @@
 
 + (instancetype)heartDetectWithParameters:(NSDictionary *)parameters{
     
+    DLog(@"发送心跳包:%@",parameters);
     HYTCPSocketRequest *request = [HYTCPSocketRequest new];
     request.requestIdentifier = TCPSocketRequestTypeHeart;
 
@@ -82,9 +84,15 @@
     return self;
 }
 
+
+- (uint32_t)requestTimeOutInterval{
+    
+    return _requestTimeOutInterval > 0 ?: 10;
+}
+
 - (NSData *)requestData{
     
-    return [self.formatData copy];
+    return _formatData.copy;
 }
 
 
@@ -100,7 +108,7 @@
 
 + (instancetype)responseWithData:(NSData *)data{
     
-    if (data.length < 20) return nil;
+    if (data.length < [HYTCPDataParse responseHeaderLength]) return nil;
     HYTCPSocketResponse *response = [HYTCPSocketResponse new];
     response.data = data;
     return response;

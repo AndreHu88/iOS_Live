@@ -9,7 +9,6 @@
 #ifndef HYSocketConfig_h
 #define HYSocketConfig_h
 
-
 #import "HYTCPDataParse.h"
 
 //网络环境，配置成可灵活切换
@@ -29,10 +28,12 @@ typedef NS_ENUM(NSUInteger, HYTCPServerType) {
 //模拟socket网络请求类型
 typedef NS_ENUM(NSUInteger, TCPSocketRequestType) {
     TCPSocketRequestTypeHeart = 0x00000001,
-    TCPSocketRequestTypeLogin = 0x00000002,
+    TCPSocketRequestTypeTest = 0x00000002,
     TCPSocketRequestTypeNotification = 0x00000003,
     TCPSocketRequestMinRequestIdentifier = 0x000000300,
-    TCPSocketRequestTypeStock = 0x00000400,
+    TCPSocketRequestTypeWeiBoFollowList = 0x00000400,
+    TCPSocketRequestTypeStock = 0x00000401,
+    TCPSocketRequestTypeWeather = 0x00000410,
 };
 
 //枚举定义返回的code码
@@ -43,7 +44,24 @@ typedef NS_ENUM(NSUInteger, TCPSocketResponseCode) {
     TCPSocketResponseCodeUndefinedMsg = 502,
 };
 
-static NSString *TCPHeartDetectAckKey = @"TCPHeartDetectAckKey";
+//socket任务的状态
+typedef NS_ENUM(NSUInteger, TCPSocketTaskState) {
+    TCPSocketTaskStateSuspend = 0,
+    TCPSocketTaskStateRunning = 1,
+    TCPSocketTaskStateCancel = 2,
+    TCPSocketTaskStateComplection = 3,
+};
+
+typedef NS_ENUM(NSUInteger, TCPSocketTaskError) {
+    TCPSocketTaskErrorNone = 1,             //success
+    TCPSocketTaskErrorTimeOut,
+    TCPSocketTaskErrorCanceled,
+    TCPSocketTaskErrorNoData,
+    TCPSocketTaskErrorDefault,
+    TCPSocketTaskErrorNoMoreData,
+};
+
+static NSString *TCPHeartDetectAckKey = @"ackNum";
 
 #define    SocketRequestTypeLength       4          //请求类型长度
 #define    SocketMsgSerialNumberLength   4          //消息序列号长度
@@ -52,7 +70,7 @@ static NSString *TCPHeartDetectAckKey = @"TCPHeartDetectAckKey";
 #define    SocketMsgResponseHeaderLenght        (SocketRequestTypeLength + SocketMsgSerialNumberLength + SocketMsgResponseCodeLength  + SocketMsgConentLength)                          //socket报文的头部长度
 
 
-#define    TCPSocketHeartDetectInterval     10
+#define    TCPSocketHeartDetectInterval     30
 
 
 #ifdef DEBUG

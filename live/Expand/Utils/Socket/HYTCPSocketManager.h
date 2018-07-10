@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HYTCPSocketResponse.h"
+#import "HYTCPSocketTask.h"
 
 @interface HYTCPSocketManager : NSObject
 
@@ -19,5 +21,14 @@
 - (void)reconnect;
 - (BOOL)isConnect;
 - (void)writeData:(NSData *)data;
+
+/** 开启socket任务 */
+- (uint32_t)startSocketTask:(HYTCPSocketRequest *)request complection:(void(^)(NSDictionary *dict,NSError *error))complection;
+
+- (void)resumeTask:(HYTCPSocketTask *)task;
+
+/** 取消socket任务 */
+- (void)cancelSocketTaskWithIdentifier:(uint32_t)taskIdentifier;
+
 
 @end

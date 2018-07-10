@@ -13,8 +13,8 @@
 
 + (instancetype)requestWithUrl:(TCPSocketRequestType)requestType parameters:(NSDictionary *)parameters header:(NSDictionary *)header;
 
-@property (nonatomic,assign) NSInteger requestIdentifier;
-
+@property (nonatomic,assign) uint32_t requestIdentifier;
+@property (nonatomic,assign) uint32_t requestTimeOutInterval;
 
 - (NSData *)requestData;
 

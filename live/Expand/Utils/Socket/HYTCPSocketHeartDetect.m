@@ -32,7 +32,8 @@ static NSInteger maxMissCount = 3;      //最大丢失次数
 
 - (void)_start{
     
-    _timer = [NSTimer timerWithTimeInterval:TCPSocketHeartDetectInterval target:self selector:@selector(reset) userInfo:nil repeats:YES];
+    [self stop];
+    _timer = [NSTimer timerWithTimeInterval:TCPSocketHeartDetectInterval target:self selector:@selector(_sendHeartDetectPackage) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
 
@@ -45,11 +46,12 @@ static NSInteger maxMissCount = 3;      //最大丢失次数
     }
     
     //发送心跳包
-    
+    HYTCPSocketRequest *request = [HYTCPSocketRequest requestWithUrl:TCPSocketRequestTypeHeart parameters:@{TCPHeartDetectAckKey : @(TCPSocketRequestTypeHeart)} header:nil];
+    [self.socketManager startSocketTask:request complection:nil];
 }
 
 - (void)reset{
-    
+
     _heartMissCount = -1;
     [self _start];
 }
@@ -61,7 +63,7 @@ static NSInteger maxMissCount = 3;      //最大丢失次数
 
 - (void)handlerServerAck:(uint32_t)serverAckNum{
     
-    DLog(@"receive server ack:%d",serverAckNum);
+    DLog(@"收到:ack:%d",serverAckNum);
     if (serverAckNum == TCPSocketRequestTypeHeart) {
         self.heartMissCount = -1;
         return;
