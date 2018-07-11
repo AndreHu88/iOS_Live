@@ -13,7 +13,6 @@
 + (void)showPregressHUD:(UIView *)view{
     
     MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    [view addSubview:HUD];
     
     HUD.bezelView.color = [UIColor blackColor];            //设置菊花背景颜色
     HUD.contentColor = [UIColor whiteColor];               //设置内容颜色
@@ -30,7 +29,6 @@
     
     if ([text isKindOfClass:[NSNull class]] || text.length == 0) return;
     MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    [view addSubview:HUD];
     
     HUD.mode = MBProgressHUDModeText;
     HUD.bezelView.backgroundColor = [UIColor blackColor];
@@ -47,7 +45,6 @@
     
     text = text.length > 0 ? text : @"正在获取数据..";
     MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:KEYWINDOW animated:YES];
-    [KEYWINDOW addSubview:HUD];
     HUD.bezelView.color = [UIColor blackColor];            //设置菊花背景颜色
     HUD.contentColor = [UIColor whiteColor];               //设置内容颜色
     HUD.label.text = text;

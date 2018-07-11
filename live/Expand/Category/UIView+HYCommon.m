@@ -12,7 +12,7 @@ static char BlankPageViewKey, LoadingViewKey;
 
 @implementation UIView (HYCommon)
 
-- (UIViewController *)findViewController{
+- (UIViewController *)ViewController{
     
     for (UIView *next = self; next; next = next.superview) {
         UIResponder* nextResponder = [next nextResponder];
@@ -133,6 +133,47 @@ static char BlankPageViewKey, LoadingViewKey;
     return objc_getAssociatedObject(self, &LoadingViewKey);
 }
 
+#pragma mark - HUD
+- (void)showHUD{
+    
+    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self animated:YES];
+    HUD.bezelView.color = [UIColor blackColor];            //设置菊花背景颜色
+    HUD.contentColor = [UIColor whiteColor];               //设置内容颜色
+    [HUD showAnimated:YES];
+}
+
+- (void)showHUDWithText:(NSString *)text{
+    
+    if ([text isKindOfClass:[NSNull class]] || text.length == 0) return;
+    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self animated:YES];
+    
+    HUD.bezelView.backgroundColor = [UIColor blackColor];
+    HUD.label.text = text;
+    HUD.contentColor = [UIColor whiteColor];
+    
+    [HUD showAnimated:YES];
+    [HUD hideAnimated:YES afterDelay:1.5];
+}
+
+- (void)showHUDWithIcon:(NSString *)iconName text:(NSString *)text{
+    
+    if (iconName.length == 0 || text.length ==0)  return;
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.customView.backgroundColor = [UIColor blackColor];
+    hud.contentColor = [UIColor whiteColor];
+    UIImage *image = [[UIImage imageNamed:iconName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    hud.customView = [[UIImageView alloc] initWithImage:image];
+    hud.square = YES;
+    hud.label.text = text;
+    [hud hideAnimated:YES afterDelay:2.f];
+}
+
+- (void)hideHUD{
+    
+    [MBProgressHUD hideHUDForView:self animated:YES];
+}
+
 @end
 
 @implementation LoadingView
@@ -167,5 +208,6 @@ static char BlankPageViewKey, LoadingViewKey;
     [_loadingImageView stopAnimating];
     self.hidden = YES;
 }
+
 
 @end

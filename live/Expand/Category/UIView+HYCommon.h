@@ -36,8 +36,15 @@
                          offset:(CGFloat)offset
               reloadButtonBlock:(void(^)(id sender))block;
 
+
 - (UIView *)blankPageContainer;
-- (UIViewController *)findViewController;
+- (UIViewController *)ViewController;
+
+//HUD
+- (void)showHUD;
+- (void)showHUDWithText:(NSString *)text;
+- (void)showHUDWithIcon:(NSString *)iconName text:(NSString *)text;
+- (void)hideHUD;
 
 //loading
 - (void)beginLoading;
