@@ -120,6 +120,7 @@
 		B547A48F20ABC574008FBA0E /* HYPresentAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = B547A48E20ABC574008FBA0E /* HYPresentAnimator.m */; };
 		B5902EE020F444F200DEA90A /* HYTCPSocketTask.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902EDF20F444F100DEA90A /* HYTCPSocketTask.m */; };
 		B5902F9920FF259C00DEA90A /* HYSuspendTopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902F9820FF259C00DEA90A /* HYSuspendTopVC.m */; };
+		B5902F9D210036C300DEA90A /* HYSuspendBgScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902F9C210036C300DEA90A /* HYSuspendBgScrollView.m */; };
 		B59B462920EF06A4009E3F24 /* HYTCPDataParse.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B462820EF06A4009E3F24 /* HYTCPDataParse.m */; };
 		B59B462F20EF47C0009E3F24 /* HYTCPSocketResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B462E20EF47C0009E3F24 /* HYTCPSocketResponse.m */; };
 		B59B463520EF647D009E3F24 /* HYTCPSocketHeartDetect.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B463420EF647D009E3F24 /* HYTCPSocketHeartDetect.m */; };
@@ -546,6 +547,8 @@
 		B5902EDF20F444F100DEA90A /* HYTCPSocketTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTCPSocketTask.m; sourceTree = "<group>"; };
 		B5902F9720FF259C00DEA90A /* HYSuspendTopVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYSuspendTopVC.h; sourceTree = "<group>"; };
 		B5902F9820FF259C00DEA90A /* HYSuspendTopVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYSuspendTopVC.m; sourceTree = "<group>"; };
+		B5902F9B210036C300DEA90A /* HYSuspendBgScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYSuspendBgScrollView.h; sourceTree = "<group>"; };
+		B5902F9C210036C300DEA90A /* HYSuspendBgScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYSuspendBgScrollView.m; sourceTree = "<group>"; };
 		B59B462720EF06A4009E3F24 /* HYTCPDataParse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTCPDataParse.h; sourceTree = "<group>"; };
 		B59B462820EF06A4009E3F24 /* HYTCPDataParse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTCPDataParse.m; sourceTree = "<group>"; };
 		B59B462D20EF47C0009E3F24 /* HYTCPSocketResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTCPSocketResponse.h; sourceTree = "<group>"; };
@@ -917,6 +920,7 @@
 		042C229D1FCD590F00DFD274 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				B5902F9A210036AE00DEA90A /* SuspendVC */,
 				042C229E1FCD590F00DFD274 /* Controller */,
 			);
 			path = Mine;
@@ -1553,6 +1557,15 @@
 			path = Emitter;
 			sourceTree = "<group>";
 		};
+		B5902F9A210036AE00DEA90A /* SuspendVC */ = {
+			isa = PBXGroup;
+			children = (
+				B5902F9B210036C300DEA90A /* HYSuspendBgScrollView.h */,
+				B5902F9C210036C300DEA90A /* HYSuspendBgScrollView.m */,
+			);
+			path = SuspendVC;
+			sourceTree = "<group>";
+		};
 		B5C1E70520C113B800933D35 /* BaseComponent */ = {
 			isa = PBXGroup;
 			children = (
@@ -1862,6 +1875,7 @@
 				B5E9ECFA20D2092000E08CA2 /* HYEmotionInputView.m in Sources */,
 				041F8D361FF1E20F001E952A /* HYNearCollectionViewCell.m in Sources */,
 				049AD3A11FDA3AED009252A4 /* HYImageInteractiveDriven.m in Sources */,
+				B5902F9D210036C300DEA90A /* HYSuspendBgScrollView.m in Sources */,
 				3EFFD46320C97399003AA7C7 /* HYXiaMiMusicModel.m in Sources */,
 				B5C1E76020C51C6300933D35 /* HYBaseModel.m in Sources */,
 				B5C1E70B20C113B800933D35 /* HYTableViewDelegate.m in Sources */,
