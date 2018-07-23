@@ -43,6 +43,7 @@ static NSInteger maxMissCount = 3;      //最大丢失次数
     if (_heartMissCount >= maxMissCount && self.timeoutHandler) {
         self.timeoutHandler();
         self.heartMissCount = -1;
+        return;
     }
     
     //发送心跳包

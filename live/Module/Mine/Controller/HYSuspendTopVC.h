@@ -6,22 +6,35 @@
 //  Copyright © 2018 胡勇. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "HYBaseViewController.h"
+
+@class HYSuspendTopVC;
 
 @protocol HYSuspendViewControllerDataSource <NSObject>
 
-- (UIScrollView *)suspendScrollViewWithViewController:(UIViewController *)viewController pageIndex:(NSInteger)pageIndex;
+/// 返回scrollView
+- (UIScrollView *)suspendScrollViewWithViewController:(HYSuspendTopVC *)viewController pageIndex:(NSInteger)pageIndex;
 
 @end
 
-@interface HYSuspendTopVC : UIViewController
+@protocol HYSuspendViewControllerDelegate <NSObject>
+
+- (void)suspendScrollViewDidScroll:(UIScrollView *)scrollView;
+
+@end
+
+@interface HYSuspendTopVC : HYBaseViewController
 
 + (instancetype)suspendTopWithTitleArray:(NSArray *)titleArray suspendViewControllers:(NSArray *)viewControllers;
 
-@property (nonatomic,weak)   id<HYSuspendViewControllerDataSource> dataSource;
+@property (nonatomic,weak)  id<HYSuspendViewControllerDataSource> dataSource;
+
+@property (nonatomic,weak)  id<HYSuspendViewControllerDelegate> delegate;
 
 @property (nonatomic,strong) UIView *headerView;
 
 @property (nonatomic,assign) NSInteger pageIndex;
+
+@property (nonatomic,strong) NSMutableArray *suspendVCArrays;   //自控制器array
 
 @end

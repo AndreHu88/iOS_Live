@@ -73,6 +73,7 @@ static dispatch_semaphore_t lock;            //信号量，用来加锁
         self.heartDetect = [HYTCPSocketHeartDetect heartDetectWithSocketManager:self timeoutHandler:^{
             DLog(@"socket连接不通了，正在断开socket");
             [weakSelf _disconnect];
+            [weakSelf.heartDetect stop];
         }];
     }
     return self;

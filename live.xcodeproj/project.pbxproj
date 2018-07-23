@@ -121,6 +121,9 @@
 		B5902EE020F444F200DEA90A /* HYTCPSocketTask.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902EDF20F444F100DEA90A /* HYTCPSocketTask.m */; };
 		B5902F9920FF259C00DEA90A /* HYSuspendTopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902F9820FF259C00DEA90A /* HYSuspendTopVC.m */; };
 		B5902F9D210036C300DEA90A /* HYSuspendBgScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902F9C210036C300DEA90A /* HYSuspendBgScrollView.m */; };
+		B5902FA02101AEDA00DEA90A /* HYMyFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902F9F2101AEDA00DEA90A /* HYMyFollowViewController.m */; };
+		B5902FA32101AEF700DEA90A /* HYMyAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902FA22101AEF700DEA90A /* HYMyAlbumViewController.m */; };
+		B5902FA62101BE6F00DEA90A /* HYUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902FA52101BE6F00DEA90A /* HYUserProfileViewController.m */; };
 		B59B462920EF06A4009E3F24 /* HYTCPDataParse.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B462820EF06A4009E3F24 /* HYTCPDataParse.m */; };
 		B59B462F20EF47C0009E3F24 /* HYTCPSocketResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B462E20EF47C0009E3F24 /* HYTCPSocketResponse.m */; };
 		B59B463520EF647D009E3F24 /* HYTCPSocketHeartDetect.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B463420EF647D009E3F24 /* HYTCPSocketHeartDetect.m */; };
@@ -549,6 +552,12 @@
 		B5902F9820FF259C00DEA90A /* HYSuspendTopVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYSuspendTopVC.m; sourceTree = "<group>"; };
 		B5902F9B210036C300DEA90A /* HYSuspendBgScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYSuspendBgScrollView.h; sourceTree = "<group>"; };
 		B5902F9C210036C300DEA90A /* HYSuspendBgScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYSuspendBgScrollView.m; sourceTree = "<group>"; };
+		B5902F9E2101AEDA00DEA90A /* HYMyFollowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMyFollowViewController.h; sourceTree = "<group>"; };
+		B5902F9F2101AEDA00DEA90A /* HYMyFollowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMyFollowViewController.m; sourceTree = "<group>"; };
+		B5902FA12101AEF700DEA90A /* HYMyAlbumViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYMyAlbumViewController.h; sourceTree = "<group>"; };
+		B5902FA22101AEF700DEA90A /* HYMyAlbumViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMyAlbumViewController.m; sourceTree = "<group>"; };
+		B5902FA42101BE6F00DEA90A /* HYUserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYUserProfileViewController.h; sourceTree = "<group>"; };
+		B5902FA52101BE6F00DEA90A /* HYUserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYUserProfileViewController.m; sourceTree = "<group>"; };
 		B59B462720EF06A4009E3F24 /* HYTCPDataParse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTCPDataParse.h; sourceTree = "<group>"; };
 		B59B462820EF06A4009E3F24 /* HYTCPDataParse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTCPDataParse.m; sourceTree = "<group>"; };
 		B59B462D20EF47C0009E3F24 /* HYTCPSocketResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTCPSocketResponse.h; sourceTree = "<group>"; };
@@ -1562,6 +1571,12 @@
 			children = (
 				B5902F9B210036C300DEA90A /* HYSuspendBgScrollView.h */,
 				B5902F9C210036C300DEA90A /* HYSuspendBgScrollView.m */,
+				B5902F9E2101AEDA00DEA90A /* HYMyFollowViewController.h */,
+				B5902F9F2101AEDA00DEA90A /* HYMyFollowViewController.m */,
+				B5902FA12101AEF700DEA90A /* HYMyAlbumViewController.h */,
+				B5902FA22101AEF700DEA90A /* HYMyAlbumViewController.m */,
+				B5902FA42101BE6F00DEA90A /* HYUserProfileViewController.h */,
+				B5902FA52101BE6F00DEA90A /* HYUserProfileViewController.m */,
 			);
 			path = SuspendVC;
 			sourceTree = "<group>";
@@ -1786,6 +1801,7 @@
 				B5E9ECFD20D2190E00E08CA2 /* HYEmotionCollectionViewCell.m in Sources */,
 				042572D91FC56D8F0040A10A /* HTTPManager.m in Sources */,
 				046E5BB61FD93DA200ED04FA /* HYSmallVideoPlayerVC.m in Sources */,
+				B5902FA62101BE6F00DEA90A /* HYUserProfileViewController.m in Sources */,
 				B5465E2920B557C000118097 /* HYMusicHandleTool.m in Sources */,
 				042C22AC1FCD590F00DFD274 /* HYHotLiveViewController.m in Sources */,
 				B5C1E6FC20BE8A3200933D35 /* HYMusicPlayInfoModel.m in Sources */,
@@ -1815,6 +1831,7 @@
 				B54690D020DB91160051571C /* HYGiftShowModel.m in Sources */,
 				B5C1E6F920BE82BF00933D35 /* HYLyricLabel.m in Sources */,
 				B546910B20E227F00051571C /* UILabel+HYJustifyAlign.m in Sources */,
+				B5902FA02101AEDA00DEA90A /* HYMyFollowViewController.m in Sources */,
 				3E440D1920C048AF002D83D4 /* HYMusicProgressSlider.m in Sources */,
 				B5C1E6F320BE7B1F00933D35 /* HYLyricTimeTool.m in Sources */,
 				042572DD1FC56D8F0040A10A /* Reachability.m in Sources */,
@@ -1837,6 +1854,7 @@
 				B5C1E6E720BCE6D600933D35 /* HYDiscView.m in Sources */,
 				B546911020E22A880051571C /* FilterVIew.m in Sources */,
 				042C22B11FCD590F00DFD274 /* HYLiveTableViewCell.m in Sources */,
+				B5902FA32101AEF700DEA90A /* HYMyAlbumViewController.m in Sources */,
 				B54690CD20DB90610051571C /* HYGiftModel.m in Sources */,
 				B54690D620DBA89D0051571C /* HYAnimationOperation.m in Sources */,
 				B59B462920EF06A4009E3F24 /* HYTCPDataParse.m in Sources */,
