@@ -16,6 +16,7 @@
 @property (nonatomic,strong) HYSuspendBgScrollView *bgScrollView;
 @property (nonatomic,strong) UIScrollView *headerBtnScrollView;
 @property (nonatomic,strong) UIScrollView *headerBgScrollView;
+@property (nonatomic,strong) SPPageMenu *menu;
 @property (nonatomic,assign) CGFloat insetTop;                  /// TableView距离顶部的偏移量
 @property (nonatomic,strong) UIScrollView *currentScrollView;   /// 当前显示的页面
 @property (nonatomic,strong) UIViewController *currentViewController;       /// 当前控制器
@@ -23,6 +24,7 @@
 @property (nonatomic,strong) UIScrollView *pageScrollView;
 @property (nonatomic,strong) NSMutableDictionary *displayVCCacheDict;
 @property (nonatomic,assign) BOOL isHeaderViewInScrollView;     /// headerView是否在ScrollView上
+@property (nonatomic,assign) BOOL isHeaderMenuSuspend;          /// buttonMenu是否悬浮
 
 @end
 
@@ -103,9 +105,11 @@ static CGFloat buttonMenuHeight  = 44.f;
     if (_headerBtnScrollView) return;
     _headerBtnScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, _headerView.height, KSCREEN_WIDTH, buttonMenuHeight)];
     [self.view addSubview:_headerBtnScrollView];
-    SPPageMenu *menu = [SPPageMenu pageMenuWithFrame:_headerBtnScrollView.bounds trackerStyle:SPPageMenuTrackerStyleLine];
-    [menu setItems:_titleArray selectedItemIndex:0];
-    [_headerBtnScrollView addSubview:menu];
+    
+    _menu = [SPPageMenu pageMenuWithFrame:_headerBtnScrollView.bounds trackerStyle:SPPageMenuTrackerStyleLine];
+    [_menu setItems:_titleArray selectedItemIndex:0];
+    _menu.permutationWay = SPPageMenuPermutationWayNotScrollEqualWidths;
+    [_headerBtnScrollView addSubview:_menu];
 }
 
 - (void)_setupPageScrollView{
@@ -126,7 +130,7 @@ static CGFloat buttonMenuHeight  = 44.f;
     
     self.currentViewController = self.suspendVCArrays[index];
     self.currentPageIndex = index;
-    if (self.displayVCCacheDict[@(index)]) return;
+//    if (self.displayVCCacheDict[@(index)]) return;
     [self _addSubViewControllerWithIndex:index];
     
 }
@@ -134,14 +138,25 @@ static CGFloat buttonMenuHeight  = 44.f;
 - (void)_addSubViewControllerWithIndex:(NSInteger)index{
     
     UIViewController *viewController = self.suspendVCArrays[index];
-    [self addChildViewController:viewController];
-    viewController.view.frame = CGRectMake(KSCREEN_WIDTH * index, 0, KSCREEN_WIDTH, self.pageScrollView.height);
-    [self.pageScrollView addSubview:viewController.view];
+    //判断viewController是否已经创建了
+    UIViewController *displayViewController = [self.displayVCCacheDict objectForKey:@(index)];
+    if (!displayViewController) {
+        
+        [self addChildViewController:viewController];
+        viewController.view.frame = CGRectMake(KSCREEN_WIDTH * index, 0, KSCREEN_WIDTH, self.pageScrollView.height);
+        [self.pageScrollView addSubview:viewController.view];
+    }
     UIScrollView *scrollView = self.currentScrollView;
     scrollView.delegate = self;
     scrollView.frame = viewController.view.bounds;
     scrollView.contentInset = UIEdgeInsetsMake(_insetTop, 0, 0, 0);
     [viewController didMoveToParentViewController:self];
+    
+    if (![self.displayVCCacheDict objectForKey:@(index)]) {
+        //如果缓存中不存在
+        scrollView.contentInset = UIEdgeInsetsMake(_insetTop, 0, 0, 0);
+        scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(_insetTop, 0, 0, 0);
+    }
     
     if (self.displayVCCacheDict.count == 0) {
         //第一次加载时，设置inset
@@ -152,11 +167,17 @@ static CGFloat buttonMenuHeight  = 44.f;
         [scrollView setContentOffset:CGPointMake(0, -_insetTop) animated:NO];
     }
     else{
-        //当前已经有偏移量了，直接计算
+
         CGFloat buttonScrollViewY = [_headerBtnScrollView.superview convertRect:_headerBtnScrollView.frame toView:self.view].origin.y;
-        CGFloat scrollMenuViewOffsetY = _headerView.height - buttonScrollViewY;
-        scrollMenuViewOffsetY = -_insetTop + scrollMenuViewOffsetY;
-        [scrollView setContentOffset:CGPointMake(0, scrollMenuViewOffsetY) animated:NO];
+        if (_isHeaderMenuSuspend) {
+            //已经悬浮了
+            [scrollView setContentOffset:CGPointMake(0, -buttonMenuHeight)];
+        }
+        else{
+            //求出偏移量
+            CGFloat currentOffsetY = _headerBgScrollView.height - buttonScrollViewY - _insetTop;
+            [scrollView setContentOffset:CGPointMake(0, currentOffsetY)];
+        }
         
     }
     
@@ -171,7 +192,7 @@ static CGFloat buttonMenuHeight  = 44.f;
     UIScrollView *scrollView;
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(suspendScrollViewWithViewController:pageIndex:)]) {
         
-        scrollView = [self.dataSource suspendScrollViewWithViewController:self pageIndex:_pageIndex];
+        scrollView = [self.dataSource suspendScrollViewWithViewController:self pageIndex:_currentPageIndex];
     }
     NSAssert(scrollView != nil, @"请设置相应DataSource的数据源方法");
     return scrollView;
@@ -180,6 +201,7 @@ static CGFloat buttonMenuHeight  = 44.f;
 #pragma mark - ScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
+    DLog(@"scrollview:%@,currentOffsetY:%f",NSStringFromClass([scrollView class]),scrollView.contentOffset.y);
     if (scrollView == self.bgScrollView) {
         
         return;
@@ -192,29 +214,49 @@ static CGFloat buttonMenuHeight  = 44.f;
         /// 在滑动时将顶部headerView 放置到View上
         [self _replaceHeaderViewFromScrollViewToView];
         [self _initSubViewControllersWithIndex:page];
+        _menu.selectedItemIndex = page;
         return;
     };
     
     if (!_isHeaderViewInScrollView) return;
     if (scrollView != self.currentScrollView) return;
     //上下滑动,计算顶部悬浮
-    [self _calculateBgScrollViewHeaderSuspend];
+    [self _calculateBgScrollViewHeaderSuspend:scrollView];
 }
 
 /// 计算bgScrollView的顶部悬停
-- (void)_calculateBgScrollViewHeaderSuspend{
+- (void)_calculateBgScrollViewHeaderSuspend:(UIScrollView *)scrollView{
     
-    CGFloat offsetY = self.bgScrollView.contentOffset.y;
-    if (offsetY >= _insetTop) {
-        [self.bgScrollView setContentOffset:CGPointMake(0, _insetTop)];
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (offsetY <= - _insetTop) {
+        //下拉ScrollView
+        [self.bgScrollView setContentOffset:CGPointMake(0,-_insetTop)];
     }
     else{
-        UIScrollView *scrollView = self.currentScrollView;
-        if (scrollView.contentOffset.y > 0) {
-            [self.currentScrollView setContentOffset:CGPointMake(0, _insetTop)];
+        //上滑scrollView
+        if (offsetY > -buttonMenuHeight) {
+            //滑到buttonMenu悬浮在顶部
+            _headerBtnScrollView.top = offsetY;
+            _headerBgScrollView.top = -_insetTop;
+            _isHeaderMenuSuspend = YES;
+            [self _adjustButtonMenu:scrollView];
+            
+        }
+        else{
+            _isHeaderMenuSuspend = NO;
+            _headerBgScrollView.top = -_insetTop;
+            _headerBtnScrollView.top = _headerBgScrollView.bottom;
         }
     }
     
+}
+
+- (void)_adjustButtonMenu:(UIScrollView *)scrollView{
+    
+    if (scrollView.subviews.lastObject != self.headerBgScrollView) {
+        //如果buttonMenu不在最顶部，移到最顶部
+        [scrollView bringSubviewToFront:self.headerBgScrollView];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
@@ -230,14 +272,17 @@ static CGFloat buttonMenuHeight  = 44.f;
         
         //计算bgScrollView上的headerView相对pageScrollView的位置
         //[viewB convertRect:viewC.frame toView:viewA];     //计算viewB上的viewC相对于viewA的frame
-        CGFloat headerViewTop = [_headerBgScrollView.superview convertRect:_headerBgScrollView.frame toView:self.pageScrollView].origin.y;
-        CGFloat buttonMenuTop = [_headerBtnScrollView.superview convertRect:_headerBtnScrollView.frame toView:self.pageScrollView].origin.y;
+        UIScrollView *scrollView = self.currentScrollView;
+        CGFloat headerViewTop = [_headerBgScrollView.superview convertRect:_headerBgScrollView.frame toView:scrollView].origin.y;
+        CGFloat buttonMenuTop = [_headerBtnScrollView.superview convertRect:_headerBtnScrollView.frame toView:scrollView].origin.y;
+        
         
         [_headerBgScrollView removeFromSuperview];
         [_headerBtnScrollView removeFromSuperview];
         
         _headerBgScrollView.top = headerViewTop;
         _headerBtnScrollView.top = buttonMenuTop;
+        DLog(@"_headerBgViewTop:%f",_headerBgScrollView.top);
         
         [self.view addSubview:_headerBgScrollView];
         [self.view addSubview:_headerBtnScrollView];
@@ -261,6 +306,7 @@ static CGFloat buttonMenuHeight  = 44.f;
         
         _headerBgScrollView.top = headerViewY;
         _headerBtnScrollView.top = buttonMenuY;
+        DLog(@"_headerBgViewTop:%f",_headerBgScrollView.top);
         
         [scrollView addSubview:self.headerBgScrollView];
         [scrollView addSubview:self.headerBtnScrollView];

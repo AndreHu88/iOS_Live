@@ -68,7 +68,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "live/Expand/HYTransition/HYImageInteractiveDriven.m"
-            timestampString = "554031760.821018"
+            timestampString = "554119037.948886"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
@@ -84,7 +84,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "live/Expand/HYTransition/HYImageInteractiveDriven.m"
-            timestampString = "554031760.82172"
+            timestampString = "554119037.9495569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
@@ -100,7 +100,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "live/Expand/Utils/Socket/HYTCPSocketManager.m"
-            timestampString = "554031760.822264"
+            timestampString = "554119037.950165"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "270"
@@ -116,59 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "live/Module/Mine/Controller/HYSuspendTopVC.m"
-            timestampString = "554031760.822356"
+            timestampString = "554119037.950263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "-_setupHeaderView"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "live/Module/Mine/Controller/HYSuspendTopVC.m"
-            timestampString = "554031760.822823"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "-_addSubViewControllerWithIndex:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "live/Module/Mine/Controller/HYSuspendTopVC.m"
-            timestampString = "554031760.8233449"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "-_addSubViewControllerWithIndex:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "live/Module/Mine/Controller/HYSuspendTopVC.m"
-            timestampString = "554031760.823976"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
             landmarkName = "-_replaceHeaderViewFromViewToScrollView"
             landmarkType = "7">
          </BreakpointContent>
@@ -180,12 +132,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "live/Module/Mine/Controller/HYSuspendTopVC.m"
-            timestampString = "554031760.8245291"
+            timestampString = "554119037.950615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
-            landmarkName = "-_calculateBgScrollViewHeaderSuspend"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "-_replaceHeaderViewFromScrollViewToView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
