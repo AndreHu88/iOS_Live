@@ -41,11 +41,18 @@
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor = [UIColor purpleColor];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
         if (@available(iOS 11.0, *)) {
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
+        
+        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            
+        }];
+        
+        _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            
+        }];
     }
     return _tableView;
 }

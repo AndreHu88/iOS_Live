@@ -10,7 +10,7 @@
 #import "HYSuspendBgScrollView.h"
 #import <SPPageMenu.h>
 
-@interface HYSuspendTopVC () <UIScrollViewDelegate>
+@interface HYSuspendTopVC () <UIScrollViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic,strong) NSMutableArray *titleArray;
 @property (nonatomic,strong) HYSuspendBgScrollView *bgScrollView;
@@ -54,9 +54,33 @@ static CGFloat buttonMenuHeight  = 44.f;
     [super viewDidLoad];
     [self _checkParameters];
     [self _setupSubviews];
+    [self _setupPopGetsture];
+    
 }
 
-#pragma mark - public
+- (void)_setupPopGetsture{
+    
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    }
+}
+
+#pragma mark - GestureDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    
+    // 首先判断gestureRecognizer是不是系统pop手势
+    if ([gestureRecognizer.view isKindOfClass:NSClassFromString(@"UILayoutContainerView")]) {
+        // 再判断系统手势的state是began还是fail，同时判断scrollView的位置是不是正好在最左边
+        if (otherGestureRecognizer.state == UIGestureRecognizerStateBegan && self.pageScrollView.contentOffset.x == 0) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 
 #pragma mark - private
 - (void)_checkParameters{
@@ -231,22 +255,25 @@ static CGFloat buttonMenuHeight  = 44.f;
     if (offsetY <= - _insetTop) {
         //下拉ScrollView
         [self.bgScrollView setContentOffset:CGPointMake(0,-_insetTop)];
+        self.headerBgScrollView.top = offsetY;
     }
     else{
-        //上滑scrollView
-        if (offsetY > -buttonMenuHeight) {
-            //滑到buttonMenu悬浮在顶部
-            _headerBtnScrollView.top = offsetY;
-            _headerBgScrollView.top = -_insetTop;
-            _isHeaderMenuSuspend = YES;
-            [self _adjustButtonMenu:scrollView];
-            
-        }
-        else{
-            _isHeaderMenuSuspend = NO;
-            _headerBgScrollView.top = -_insetTop;
-            _headerBtnScrollView.top = _headerBgScrollView.bottom;
-        }
+        self.headerBgScrollView.top = -_insetTop;
+    }
+    
+    //上滑scrollView
+    if (offsetY > -buttonMenuHeight) {
+        //滑到buttonMenu悬浮在顶部
+        _headerBtnScrollView.top = offsetY;
+        _headerBgScrollView.top = -_insetTop;
+        _isHeaderMenuSuspend = YES;
+        [self _adjustButtonMenu:scrollView];
+        
+    }
+    else{
+        _isHeaderMenuSuspend = NO;
+//        _headerBgScrollView.top = -_insetTop;
+        _headerBtnScrollView.top = _headerBgScrollView.bottom;
     }
     
 }
@@ -272,9 +299,8 @@ static CGFloat buttonMenuHeight  = 44.f;
         
         //计算bgScrollView上的headerView相对pageScrollView的位置
         //[viewB convertRect:viewC.frame toView:viewA];     //计算viewB上的viewC相对于viewA的frame
-        UIScrollView *scrollView = self.currentScrollView;
-        CGFloat headerViewTop = [_headerBgScrollView.superview convertRect:_headerBgScrollView.frame toView:scrollView].origin.y;
-        CGFloat buttonMenuTop = [_headerBtnScrollView.superview convertRect:_headerBtnScrollView.frame toView:scrollView].origin.y;
+        CGFloat headerViewTop = [_headerBgScrollView.superview convertRect:_headerBgScrollView.frame toView:self.pageScrollView].origin.y;
+        CGFloat buttonMenuTop = [_headerBtnScrollView.superview convertRect:_headerBtnScrollView.frame toView:self.pageScrollView].origin.y;
         
         
         [_headerBgScrollView removeFromSuperview];

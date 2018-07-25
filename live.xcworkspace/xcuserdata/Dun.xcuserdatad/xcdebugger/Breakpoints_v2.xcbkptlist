@@ -9,32 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "live/Module/Focus/View/HYMusicPlayerDiscView.m"
-            timestampString = "549517042.681354"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "-scrollViewDidEndScrollingAnimation:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            scope = "0"
-            stopOnStyle = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "live/Module/LaunchLive/Controller/HYVideoHardEncodeVC.m"
             timestampString = "551694009.520979"
             startingColumnNumber = "9223372036854775807"
@@ -68,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "live/Expand/HYTransition/HYImageInteractiveDriven.m"
-            timestampString = "554119037.948886"
+            timestampString = "554199698.4100929"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
@@ -84,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "live/Expand/HYTransition/HYImageInteractiveDriven.m"
-            timestampString = "554119037.9495569"
+            timestampString = "554199698.411869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
@@ -100,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "live/Expand/Utils/Socket/HYTCPSocketManager.m"
-            timestampString = "554119037.950165"
+            timestampString = "554199698.413041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "270"
@@ -116,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "live/Module/Mine/Controller/HYSuspendTopVC.m"
-            timestampString = "554119037.950263"
+            timestampString = "554199698.4133331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
             landmarkName = "-_replaceHeaderViewFromViewToScrollView"
             landmarkType = "7">
          </BreakpointContent>
@@ -132,12 +106,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "live/Module/Mine/Controller/HYSuspendTopVC.m"
-            timestampString = "554119037.950615"
+            timestampString = "554199698.413483"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
             landmarkName = "-_replaceHeaderViewFromScrollViewToView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/MJRefresh/MJRefresh/Base/MJRefreshComponent.m"
+            timestampString = "554194591.569117"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "-willMoveToSuperview:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/MJRefresh/MJRefresh/Base/MJRefreshHeader.m"
+            timestampString = "554195064.386942"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-scrollViewContentOffsetDidChange:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

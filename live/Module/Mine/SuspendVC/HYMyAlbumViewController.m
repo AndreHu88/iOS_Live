@@ -44,8 +44,15 @@
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:layout];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
-        _collectionView.backgroundColor = KAPP_RANDOM_COLOR;
+        _collectionView.backgroundColor = [UIColor whiteColor];
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
+        _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        }];
+        
+        _collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            
+        }];
     }
     return _collectionView;
 }

@@ -205,7 +205,7 @@
     [attributeStr setTextHighlight:sinerText range:NSMakeRange(musicModel.name.length, musicModel.singer.length)];
     sinerText.tapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
         
-        [JRToast showWithText:[NSString stringWithFormat:@"tap %@",text] duration:2];
+        [JRToast showWithText:[NSString stringWithFormat:@"tap %@",text.string] duration:2];
     };
     self.titleLabel.attributedText = attributeStr;
     self.navigationItem.titleView = self.titleLabel;
