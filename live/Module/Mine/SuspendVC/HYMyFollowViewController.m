@@ -21,6 +21,17 @@
     [self.view addSubview:self.tableView];
 }
 
+#pragma mark - Request
+- (void)requestData{
+    
+    
+}
+
+- (void)requestDataMore{
+    
+    
+}
+
 #pragma mark - TableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -45,14 +56,9 @@
         if (@available(iOS 11.0, *)) {
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
+        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestData)];
         
-        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            
-        }];
-        
-        _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-            
-        }];
+        _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(requestDataMore)];
     }
     return _tableView;
 }

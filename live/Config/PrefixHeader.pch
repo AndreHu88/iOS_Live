@@ -36,6 +36,8 @@
 #import "MBProgressHUD+HYCommon.h"
 #import "HYNetWorkHandle.h"
 #import "HYRefreshGifHeader.h"
+#import "HYTableViewDelegate.h"
+#import "HYTableViewDataSource.h"
 #import "HYBaseTableViewController.h"
 #import "HYLoadingManager.h"
 #import "HYLevelView.h"
