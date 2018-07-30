@@ -14,5 +14,7 @@
 @property(nonatomic,copy)    NSString *cellIdientifier;
 @property(nonatomic,weak)    id dataModel;
 @property (nonatomic,copy)   NSString *title;
+@property (nonatomic,strong) NSIndexPath *indexPath;
+
 
 @end

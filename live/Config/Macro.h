@@ -92,6 +92,11 @@ _Pragma("clang diagnostic pop") \
 // 屏幕适配字体
 #define KAdaptedFontSize(R)     [UIFont systemFontOfSize:KAdaptedWidth(R)]
 
+
+#define kPaddingLeftWidth       15.0
+#define  kBadgeTipStr           @"badgeTip"
+
+
 #define KAPP_NAME           ([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"])
 #define KAPP_VERSION        ([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"])
 #define KAPP_BUILD          ([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"])

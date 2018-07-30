@@ -25,7 +25,6 @@ typedef NS_ENUM(NSUInteger, HYTextFieldCellKeyBoardMode) {
 @property (nonatomic,copy) NSString *title;
 @property (nonatomic,copy) NSString *placeholderStr;
 @property (nonatomic,copy) NSString *value;
-@property (nonatomic,strong) NSIndexPath *indexPath;
 @property (nonatomic,assign) HYTextFieldCellInputMode inputMode;
 @property (nonatomic,assign) HYTextFieldCellKeyBoardMode keywoardMode;
 

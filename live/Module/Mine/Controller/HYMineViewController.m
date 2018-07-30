@@ -9,7 +9,7 @@
 #import "HYMineViewController.h"
 #import "HYUserProfileViewController.h"
 #import "HYMineHeaderView.h"
-#import "HYTextFieldTableViewCell.h"
+#import "HYUserInfoIconCell.h"
 
 @interface HYMineViewController ()
 
@@ -38,13 +38,18 @@
     self.navigationController.navigationBar.hidden = YES;
 }
 
+- (void)viewDidDisappear:(BOOL)animated{
+    
+    [super viewDidDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 - (void)setupNav{
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self wr_setNavBarBarTintColor:KAPP_WHITE_COLOR];
     [self wr_setNavBarTitleColor:KAPP_BLACK_COLOR];
     [self wr_setNavBarShadowImageHidden:YES];
-
 }
 
 - (void)setupTableView{
@@ -59,23 +64,23 @@
         make.edges.equalTo(self.view);
     }];
     
-    [_tableView registerClass:[HYTextFieldTableViewCell class] forCellReuseIdentifier:@"HYTextFieldTableViewCell"];
+    [_tableView registerClass:[HYUserInfoIconCell class] forCellReuseIdentifier:NSStringFromClass([HYUserInfoIconCell class])];
 }
 
 - (void)setupTableViewData{
     
     NSArray *titleArray = @[@"钱包",@"账户",@"等级",@"观看记录"];
+    NSArray *imageArray = @[@"user_info_company",@"user_info_help",@"user_info_setup",@"user_info_shop"];
     NSMutableArray *sectionArray = [NSMutableArray array];
     for (NSInteger i = 0; i < titleArray.count; i++) {
         
-        HYTextFieldCellModel *textFieldCellModel = [HYTextFieldCellModel new];
-        textFieldCellModel.cellIdientifier = @"HYTextFieldTableViewCell";
-        textFieldCellModel.cellHeight = KAdaptedWidth(50);
-        textFieldCellModel.title = titleArray[i];
-        textFieldCellModel.placeholderStr = titleArray[i];
-        textFieldCellModel.indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        textFieldCellModel.inputMode = HYTextFieldCellInputModeNotEdit;
-        [sectionArray addObject:textFieldCellModel];
+        HYUserInfoIconCellModel *cellModel = [HYUserInfoIconCellModel new];
+        cellModel.cellIdientifier = NSStringFromClass([HYUserInfoIconCell class]);
+        cellModel.cellHeight = KAdaptedWidth(50);
+        cellModel.title = titleArray[i];
+        cellModel.iconName = imageArray[i];
+        cellModel.indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [sectionArray addObject:cellModel];
     }
     
     [self.dataSetsArray addObject:sectionArray];
@@ -126,7 +131,6 @@
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerViewAction)];
         [_headerView addGestureRecognizer:tapGesture];
         _tableView.tableHeaderView = _headerView;
-        
     }
     return _tableView;
 }
