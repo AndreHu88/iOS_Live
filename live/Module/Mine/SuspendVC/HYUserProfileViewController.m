@@ -22,7 +22,6 @@
     NSArray *vcArray = [self pageVCArray];
     HYUserProfileViewController *userProfileVC = (HYUserProfileViewController *)[HYUserProfileViewController suspendTopWithTitleArray:titleArray suspendViewControllers:vcArray];
     userProfileVC.dataSource = userProfileVC;
-    userProfileVC.delegate = self;
     
     NSArray *bannerUrlArray = @[@"https://img.zcool.cn/community/014b1f5b553ff5a80121ade05fe9a8.jpg",@"https://img.zcool.cn/community/0132465b54dbd6a8012036be578293.png",@"https://img.zcool.cn/community/014c785b51ecb7a80121ade0bea244.jpg"];
     SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, KSCREEN_WIDTH, 200) imageURLStringsGroup:bannerUrlArray];
@@ -73,9 +72,12 @@
     return scrollView;
 }
 
+#pragma mark - setStatusBar
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    
+    return UIStatusBarStyleDefault;
+}
 
-
-#pragma mark - SuspendViewDelegate
 
 
 - (void)didReceiveMemoryWarning {

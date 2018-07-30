@@ -8,9 +8,17 @@
 
 #import "HYMineViewController.h"
 #import "HYUserProfileViewController.h"
-
+#import "HYMineHeaderView.h"
+#import "HYTextFieldTableViewCell.h"
 
 @interface HYMineViewController ()
+
+@property (nonatomic,strong) HYMineHeaderView *headerView;
+@property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) HYTableViewDataSource *dataSource;
+@property (nonatomic,strong) HYTableViewDelegate *delegate;
+@property (nonatomic,strong) NSMutableArray *dataSetsArray;
+
 
 @end
 
@@ -19,11 +27,72 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    [self setupNav];
+    [self setupTableView];
+    [self setupTableViewData];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
     
-    HYEmotionInputView *inputView = [HYEmotionInputView sharedInputView];
-    [self.view addSubview:inputView];
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+}
+
+- (void)setupNav{
     
-    [self setUserProfileBtn];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    [self wr_setNavBarBarTintColor:KAPP_WHITE_COLOR];
+    [self wr_setNavBarTitleColor:KAPP_BLACK_COLOR];
+    [self wr_setNavBarShadowImageHidden:YES];
+
+}
+
+- (void)setupTableView{
+    
+    self.dataSetsArray = [NSMutableArray array];
+    self.delegate = [HYTableViewDelegate new];
+    self.dataSource = [HYTableViewDataSource new];
+    self.dataSource.dataSource = self.dataSetsArray;
+    self.delegate.dataSource = self.dataSetsArray;
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
+    [_tableView registerClass:[HYTextFieldTableViewCell class] forCellReuseIdentifier:@"HYTextFieldTableViewCell"];
+}
+
+- (void)setupTableViewData{
+    
+    NSArray *titleArray = @[@"钱包",@"账户",@"等级",@"观看记录"];
+    NSMutableArray *sectionArray = [NSMutableArray array];
+    for (NSInteger i = 0; i < titleArray.count; i++) {
+        
+        HYTextFieldCellModel *textFieldCellModel = [HYTextFieldCellModel new];
+        textFieldCellModel.cellIdientifier = @"HYTextFieldTableViewCell";
+        textFieldCellModel.cellHeight = KAdaptedWidth(50);
+        textFieldCellModel.title = titleArray[i];
+        textFieldCellModel.placeholderStr = titleArray[i];
+        textFieldCellModel.indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        textFieldCellModel.inputMode = HYTextFieldCellInputModeNotEdit;
+        [sectionArray addObject:textFieldCellModel];
+    }
+    
+    [self.dataSetsArray addObject:sectionArray];
+    [self.tableView reloadData];
+}
+
+#pragma mark - action
+- (void)headerViewAction{
+    
+    HYUserProfileViewController *profileVC = [HYUserProfileViewController userProfile];
+    [self.navigationController pushViewController:profileVC animated:YES];
+}
+
+#pragma mark - setStatusBar
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    
+    return UIStatusBarStyleDefault;
 }
 
 - (void)setUserProfileBtn{
@@ -43,6 +112,24 @@
     }];
 }
 
+#pragma mark - lazyload
+- (UITableView *)tableView{
+    
+    if (!_tableView) {
+        
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.delegate = self.delegate;
+        _tableView.dataSource = self.dataSource;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _headerView = [[HYMineHeaderView alloc] initWithFrame:CGRectMake(0, 0, KSCREEN_WIDTH, 200 * WIDTH_MULTIPLE)];
+        _headerView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerViewAction)];
+        [_headerView addGestureRecognizer:tapGesture];
+        _tableView.tableHeaderView = _headerView;
+        
+    }
+    return _tableView;
+}
 
 
 - (void)didReceiveMemoryWarning {

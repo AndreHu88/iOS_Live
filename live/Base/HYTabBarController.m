@@ -15,10 +15,11 @@
 #import "HYBaseNavController.h"
 #import "HYLocationManager.h"
 
+#import "HYUserProfileViewController.h"
 #import "HYVideoHardEncodeVC.h"
 #import "HYHomeLaunchView.h"
 
-@interface HYTabBarController ()
+@interface HYTabBarController () <UITabBarControllerDelegate>
 
 @end
 
@@ -28,6 +29,7 @@
     
     [super viewDidLoad];
     
+    self.delegate = self;
     //删除tabbar的阴影线
     [[UITabBar appearance] setShadowImage:[UIImage new]];
     [[UITabBar appearance] setBackgroundImage:[UIImage new]];
@@ -55,6 +57,7 @@
     [self addChildViewController:focusVC title:@"网易云" image:@"tab_following" selectImage:@"tab_following_p"];
     
     HYMineViewController *mineVC = [HYMineViewController new];
+//    HYUserProfileViewController *mineVC = [HYUserProfileViewController userProfile];
     [self addChildViewController:mineVC title:@"我的" image:@"tab_me" selectImage:@"tab_me_p"];
     
     customTabBar.buttonClickBlock = ^{
@@ -108,8 +111,22 @@
         }
     }
     
+}
+
+#pragma mark - TabBarControllerDelegate
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    
     
 }
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    
+    if (self.selectedViewController == viewController) {
+        //做刷新操作
+    }
+    return YES;
+}
+
 
 - (void)didReceiveMemoryWarning {
     
