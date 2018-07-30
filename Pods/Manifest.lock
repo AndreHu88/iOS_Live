@@ -35,6 +35,7 @@ PODS:
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
   - SPPageMenu (2.5.3)
+  - SSKeychain (1.4.1)
   - WRNavigationBar (1.2.0)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
@@ -53,6 +54,7 @@ DEPENDENCIES:
   - RongCloudIM/IMLib (~> 2.8.3)
   - SDCycleScrollView (~> 1.65)
   - SPPageMenu
+  - SSKeychain
   - WRNavigationBar
   - YYKit (~> 1.0.9)
 
@@ -71,6 +73,7 @@ SPEC REPOS:
     - SDCycleScrollView
     - SDWebImage
     - SPPageMenu
+    - SSKeychain
     - WRNavigationBar
     - YYKit
 
@@ -88,9 +91,10 @@ SPEC CHECKSUMS:
   SDCycleScrollView: d0fd5fe40a80918371fd8939214eb3be81033d83
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SPPageMenu: 72d6ce1e8a25b6b8fbbc50635a15e809dc43ad13
+  SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
   WRNavigationBar: dc952230effbb646785f962587caaac06c60f229
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 6a72003da07a2ad7ddfaf2a57b6839f4781ed5d5
+PODFILE CHECKSUM: 325fb3ca6f556c43ce5188fe86ec8a40e17dc024
 
 COCOAPODS: 1.5.0

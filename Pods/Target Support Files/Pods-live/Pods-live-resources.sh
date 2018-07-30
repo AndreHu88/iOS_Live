@@ -95,11 +95,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle"
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist"
+  install_resource "${PODS_ROOT}/SSKeychain/Support/SSKeychain.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle"
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist"
+  install_resource "${PODS_ROOT}/SSKeychain/Support/SSKeychain.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

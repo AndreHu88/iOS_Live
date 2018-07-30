@@ -124,6 +124,7 @@
 		B5902FA02101AEDA00DEA90A /* HYMyFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902F9F2101AEDA00DEA90A /* HYMyFollowViewController.m */; };
 		B5902FA32101AEF700DEA90A /* HYMyAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902FA22101AEF700DEA90A /* HYMyAlbumViewController.m */; };
 		B5902FA62101BE6F00DEA90A /* HYUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902FA52101BE6F00DEA90A /* HYUserProfileViewController.m */; };
+		B5902FAD210AF45B00DEA90A /* SSKeychain+HYCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902FAC210AF45B00DEA90A /* SSKeychain+HYCommon.m */; };
 		B59B462920EF06A4009E3F24 /* HYTCPDataParse.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B462820EF06A4009E3F24 /* HYTCPDataParse.m */; };
 		B59B462F20EF47C0009E3F24 /* HYTCPSocketResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B462E20EF47C0009E3F24 /* HYTCPSocketResponse.m */; };
 		B59B463520EF647D009E3F24 /* HYTCPSocketHeartDetect.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B463420EF647D009E3F24 /* HYTCPSocketHeartDetect.m */; };
@@ -558,6 +559,8 @@
 		B5902FA22101AEF700DEA90A /* HYMyAlbumViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMyAlbumViewController.m; sourceTree = "<group>"; };
 		B5902FA42101BE6F00DEA90A /* HYUserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYUserProfileViewController.h; sourceTree = "<group>"; };
 		B5902FA52101BE6F00DEA90A /* HYUserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYUserProfileViewController.m; sourceTree = "<group>"; };
+		B5902FAB210AF45B00DEA90A /* SSKeychain+HYCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SSKeychain+HYCommon.h"; sourceTree = "<group>"; };
+		B5902FAC210AF45B00DEA90A /* SSKeychain+HYCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SSKeychain+HYCommon.m"; sourceTree = "<group>"; };
 		B59B462720EF06A4009E3F24 /* HYTCPDataParse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTCPDataParse.h; sourceTree = "<group>"; };
 		B59B462820EF06A4009E3F24 /* HYTCPDataParse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTCPDataParse.m; sourceTree = "<group>"; };
 		B59B462D20EF47C0009E3F24 /* HYTCPSocketResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTCPSocketResponse.h; sourceTree = "<group>"; };
@@ -1278,6 +1281,8 @@
 				B546910320E227EF0051571C /* UITableViewCell+HYCommon.m */,
 				B546910520E227EF0051571C /* UIView+HYCommon.h */,
 				B546910920E227F00051571C /* UIView+HYCommon.m */,
+				B5902FAB210AF45B00DEA90A /* SSKeychain+HYCommon.h */,
+				B5902FAC210AF45B00DEA90A /* SSKeychain+HYCommon.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1741,12 +1746,14 @@
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
+				"${PODS_ROOT}/SSKeychain/Support/SSKeychain.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCConfig.plist",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SSKeychain.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1867,6 +1874,7 @@
 				042572AA1FC56CF30040A10A /* AppDelegate.m in Sources */,
 				B54690D920DC916F0051571C /* HYGiftAnimationView.m in Sources */,
 				04875B6F1FD95D6D0031FDA8 /* HYImageInteractivePushAnimation.m in Sources */,
+				B5902FAD210AF45B00DEA90A /* SSKeychain+HYCommon.m in Sources */,
 				042572E31FC56D8F0040A10A /* HYDateHandle.m in Sources */,
 				B54690FF20E226280051571C /* HYButton.m in Sources */,
 				042572FA1FC574FE0040A10A /* HYBaseNavController.m in Sources */,
