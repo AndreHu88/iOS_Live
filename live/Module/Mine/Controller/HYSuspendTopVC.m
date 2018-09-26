@@ -226,12 +226,12 @@ static CGFloat buttonMenuHeight  = 44.f;
 #pragma mark - SPMenuDelegate
 - (void)pageMenu:(SPPageMenu *)pageMenu itemSelectedAtIndex:(NSInteger)index{
     
-//    if (index == 0) {
-//        [self.pageScrollView setContentOffset:CGPointMake(0, 0)];
-//    }
-//    else{
-//        [self.pageScrollView setContentOffset:CGPointMake(KSCREEN_WIDTH, 0)];
-//    }
+    if (index == 0) {
+        [self.pageScrollView setContentOffset:CGPointMake(0, 0)];
+    }
+    else{
+        [self.pageScrollView setContentOffset:CGPointMake(KSCREEN_WIDTH, 0)];
+    }
 }
 
 
@@ -251,7 +251,7 @@ static CGFloat buttonMenuHeight  = 44.f;
         /// 在滑动时将顶部headerView 放置到View上
         [self _replaceHeaderViewFromScrollViewToView];
         [self _initSubViewControllersWithIndex:page];
-        _menu.selectedItemIndex = page;
+//        _menu.selectedItemIndex = page;
         return;
     };
     
