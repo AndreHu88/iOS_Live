@@ -59,7 +59,7 @@ DEPENDENCIES:
   - YYKit (~> 1.0.9)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - CocoaAsyncSocket
     - DZNEmptyDataSet
@@ -97,4 +97,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 325fb3ca6f556c43ce5188fe86ec8a40e17dc024
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.7.0.rc.1

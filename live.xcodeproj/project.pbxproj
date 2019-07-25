@@ -1780,7 +1780,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-live/Pods-live-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-live/Pods-live-resources.sh",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
@@ -1795,7 +1795,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-live/Pods-live-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-live/Pods-live-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8535024AC68D6FA0879060AD /* [CP] Check Pods Manifest.lock */ = {
