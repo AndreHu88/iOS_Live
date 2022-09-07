@@ -23,6 +23,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+        self.sliderValue = 0;
         [self setupSubViews];
         self.userInteractionEnabled = YES;
     }
@@ -39,40 +40,61 @@
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sliderTapped:)];
     [self addGestureRecognizer:tapGes];
     
-    [self setupMasonryLayout];
+    _progressBgView.frame = CGRectMake(0, 0, self.width, 2);
+    _sliderProgressView.frame = CGRectMake(0, 0, 0, 2);
+    _sliderBtn.frame = CGRectMake(0, 0, 15, 15);
 }
 
-- (void)setupMasonryLayout{
+- (void)layoutSubviews{
     
-    [self.progressBgView mas_makeConstraints:^(MASConstraintMaker *make) {
-       
-        make.centerY.equalTo(self);
-        make.height.mas_equalTo(self.height / 2);
-        make.left.right.equalTo(self);
-    }];
+   
+
+    _progressBgView.centerY = self.centerY;
+    _sliderProgressView.centerY = self.centerY;
+    _sliderBtn.centerY = self.centerY;
     
-    [self.sliderProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.centerY.equalTo(self);
-        make.height.mas_equalTo(self.height / 2);
-        make.left.equalTo(self);
-    }];
-    
-    [self.sliderBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.centerY.equalTo(self);
-        make.height.mas_equalTo(self.height / 2);
-        make.left.equalTo(self);
-    }];
+//    [self.progressBgView mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.centerY.equalTo(self);
+//        make.height.mas_equalTo(2);
+//        make.left.right.equalTo(self);
+//    }];
+//
+//    [self.sliderProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.left.equalTo(self);
+//        make.top.bottom.equalTo(self.progressBgView);
+//        make.width.mas_equalTo(0);
+//    }];
+//
+//    [self.sliderBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(self.width * self.sliderValue);
+//        make.centerY.equalTo(self);
+//        make.size.mas_equalTo(CGSizeMake(15 * WIDTH_MULTIPLE, 15 * WIDTH_MULTIPLE));
+//    }];
+//
+//    [self layoutIfNeeded];
 }
 
 - (void)setSliderValue:(CGFloat)sliderValue{
     
     _sliderValue = sliderValue;
     
+    CGFloat currentLeft = self.width * sliderValue;
+    
     //更新sliderView的frame 滑块按钮的frame
-    self.sliderProgressView.width = self.progressBgView.width * sliderValue;
-    self.sliderBtn.centerX = self.progressBgView.width * sliderValue;
+    self.sliderProgressView.width = currentLeft;
+    self.sliderBtn.left = currentLeft;
+    
+//    [_sliderProgressView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.width.mas_equalTo(currentLeft);
+//    }];
+//
+//    [_sliderBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(currentLeft);
+//    }];
+    
+    
 }
 
 
