@@ -7,6 +7,7 @@
 //
 
 #import "HYTableViewDataSource.h"
+#import "UITableViewCell+HYCommon.h"
 
 @implementation HYTableViewDataSource
 
@@ -36,6 +37,7 @@
     if (self.bindingCellBlock) {
         self.bindingCellBlock(tableView,rowDataSource,baseCell,indexPath);
     }
+    
     return baseCell;
 }
 

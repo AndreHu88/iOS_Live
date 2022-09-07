@@ -24,12 +24,18 @@
 #pragma mark - Request
 - (void)requestData{
     
-    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [self.tableView.mj_header endRefreshing];
+    });
 }
 
 - (void)requestDataMore{
     
-    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [self.tableView.mj_footer endRefreshing];
+    });
 }
 
 #pragma mark - TableViewDataSource

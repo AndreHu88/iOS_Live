@@ -26,12 +26,20 @@ static NSString *KUserInfo = @"userInfo";
 //音乐播放完成
 static NSString *KMusicPlayComplectionNotificationName = @"KMusicPlayComplectionNotificationName";
 
-// 后面NSString这是运行时能获取到的C语言的类型
+// SString这是运行时能获取到的C语言的类型
 static NSString * const TYPE_UINT8   = @"TC";// char是1个字节，8位
 static NSString * const TYPE_UINT16   = @"TS";// short是2个字节，16位
 static NSString * const TYPE_UINT32   = @"TI";
 static NSString * const TYPE_UINT64   = @"TQ";
 static NSString * const TYPE_STRING   = @"T@\"NSString\"";
 static NSString * const TYPE_ARRAY   = @"T@\"NSArray\"";
+
+/// SSKeyChain常量
+static NSString * const Service_Name = @"com.live.music";
+static NSString * const User_Password = @"User_Password";
+static NSString * const User_AccessToken = @"User_AccessToken";
+
+
+
 
 #endif /* AppConst_h */

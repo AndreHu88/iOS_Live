@@ -99,13 +99,15 @@
         return;
     }
     //设置session的input output
-    if ([_session canAddInput:input])           [_session addInput:input];
+    if ([_session canAddInput:input])
+        [_session addInput:input];
     
     AVCaptureVideoDataOutput *videoOutput = [AVCaptureVideoDataOutput new];
     [videoOutput setAlwaysDiscardsLateVideoFrames:NO];
     [videoOutput setSampleBufferDelegate:self queue:_captureQueue];
     [videoOutput setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_420YpCbCr8BiPlanarFullRange] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
-    if ([_session canAddOutput:videoOutput])    [_session addOutput:videoOutput];
+    if ([_session canAddOutput:videoOutput])
+        [_session addOutput:videoOutput];
 
     
     AVCaptureConnection *connection = [videoOutput connectionWithMediaType:AVMediaTypeVideo];

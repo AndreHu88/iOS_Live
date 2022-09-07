@@ -54,8 +54,14 @@ _Pragma("clang diagnostic pop") \
 /** 是否为iphone6Plus */
 #define IS_IPHONE_6PLUS         ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )736 ) < DBL_EPSILON )
 
+///--------
+/// Version
+///--------
+#define IOS11 @available(iOS 11.0, *)
+
 /** 设备的主window */
 #define KEYWINDOW               [[[UIApplication sharedApplication] delegate] window]
+
 #define KRootViewController     [UIApplication sharedApplication].keyWindow.rootViewController
 
 /** ----------------------------尺寸信息---------------------------------
@@ -85,6 +91,15 @@ _Pragma("clang diagnostic pop") \
 #define KAdaptedHeight(x)   ceilf((x) * HEIGHT_MULTIPLE)
 // 屏幕适配字体
 #define KAdaptedFontSize(R)     [UIFont systemFontOfSize:KAdaptedWidth(R)]
+
+
+#define kPaddingLeftWidth       15.0
+#define  kBadgeTipStr           @"badgeTip"
+
+
+#define KAPP_NAME           ([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"])
+#define KAPP_VERSION        ([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"])
+#define KAPP_BUILD          ([[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"])
 
 
 /** ----------------------------颜色信息---------------------------------

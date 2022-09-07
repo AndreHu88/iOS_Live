@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HYBlankPageView.h"
+#import "UIBadgeView.h"
 
 @interface LoadingView : UIView
 
@@ -17,6 +18,13 @@
 - (void)stopAnimating;
 
 @end
+
+
+typedef NS_ENUM(NSInteger, BadgePositionType) {
+    
+    BadgePositionTypeDefault = 0,
+    BadgePositionTypeMiddle
+};
 
 @interface UIView (HYCommon)
 
@@ -49,6 +57,14 @@
 //loading
 - (void)beginLoading;
 - (void)endLoading;
+
+//badgeView
+- (void)addBadgeTip:(NSString *)badgeValue withCenterPosition:(CGPoint)center;
+- (void)addBadgeTip:(NSString *)badgeValue;
+- (void)addBadgePoint:(NSInteger)pointRadius withPosition:(BadgePositionType)type;
+- (void)addBadgePoint:(NSInteger)pointRadius withPointPosition:(CGPoint)point;
+- (void)removeBadgePoint;
+- (void)removeBadgeTips;
 
 @end
 

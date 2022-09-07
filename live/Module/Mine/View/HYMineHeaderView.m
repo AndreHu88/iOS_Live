@@ -62,12 +62,12 @@
         make.right.equalTo(self).offset(-15 * WIDTH_MULTIPLE);
     }];
     
-    [_line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self);
-        make.height.mas_equalTo(0.5);
-        make.left.equalTo(_headerImgView);
-        make.right.offset(-15 * WIDTH_MULTIPLE);
-    }];
+//    [_line mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(self);
+//        make.height.mas_equalTo(0.5);
+//        make.left.equalTo(_headerImgView);
+//        make.right.offset(-15 * WIDTH_MULTIPLE);
+//    }];
     
     [_messageBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(30 * WIDTH_MULTIPLE, 30 * WIDTH_MULTIPLE));

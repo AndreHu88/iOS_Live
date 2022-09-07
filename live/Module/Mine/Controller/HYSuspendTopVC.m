@@ -10,7 +10,7 @@
 #import "HYSuspendBgScrollView.h"
 #import <SPPageMenu.h>
 
-@interface HYSuspendTopVC () <UIScrollViewDelegate,UIGestureRecognizerDelegate>
+@interface HYSuspendTopVC () <UIScrollViewDelegate,UIGestureRecognizerDelegate,SPPageMenuDelegate>
 
 @property (nonatomic,strong) NSMutableArray *titleArray;
 @property (nonatomic,strong) HYSuspendBgScrollView *bgScrollView;
@@ -115,7 +115,7 @@ static CGFloat buttonMenuHeight  = 44.f;
     }
     _bgScrollView.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:_bgScrollView];
-    _bgScrollView.frame = CGRectMake(0, 0, KSCREEN_WIDTH, KSCREEN_HEIGHT - KNavTotal_HEIGHT);
+    _bgScrollView.frame = CGRectMake(0, 0, KSCREEN_WIDTH, KSCREEN_HEIGHT);
     _bgScrollView.contentSize = CGSizeMake(KSCREEN_WIDTH, self.bgScrollView.height);
 }
 
@@ -131,6 +131,7 @@ static CGFloat buttonMenuHeight  = 44.f;
     [self.view addSubview:_headerBtnScrollView];
     
     _menu = [SPPageMenu pageMenuWithFrame:_headerBtnScrollView.bounds trackerStyle:SPPageMenuTrackerStyleLine];
+    _menu.delegate = self;
     [_menu setItems:_titleArray selectedItemIndex:0];
     _menu.permutationWay = SPPageMenuPermutationWayNotScrollEqualWidths;
     [_headerBtnScrollView addSubview:_menu];
@@ -139,7 +140,7 @@ static CGFloat buttonMenuHeight  = 44.f;
 - (void)_setupPageScrollView{
     
     if (_pageScrollView) return;
-    _pageScrollView = [[HYSuspendBgScrollView alloc] initWithFrame:CGRectMake(0, 0, KSCREEN_WIDTH, KSCREEN_HEIGHT - KNavTotal_HEIGHT)];
+    _pageScrollView = [[HYSuspendBgScrollView alloc] initWithFrame:CGRectMake(0, 0, KSCREEN_WIDTH, _bgScrollView.height)];
     _pageScrollView.contentSize = CGSizeMake(KSCREEN_WIDTH * self.suspendVCArrays.count, _pageScrollView.height);
     _pageScrollView.delegate = self;
     _pageScrollView.showsVerticalScrollIndicator = NO;
@@ -222,6 +223,18 @@ static CGFloat buttonMenuHeight  = 44.f;
     return scrollView;
 }
 
+#pragma mark - SPMenuDelegate
+- (void)pageMenu:(SPPageMenu *)pageMenu itemSelectedAtIndex:(NSInteger)index{
+    
+    if (index == 0) {
+        [self.pageScrollView setContentOffset:CGPointMake(0, 0)];
+    }
+    else{
+        [self.pageScrollView setContentOffset:CGPointMake(KSCREEN_WIDTH, 0)];
+    }
+}
+
+
 #pragma mark - ScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
@@ -238,7 +251,7 @@ static CGFloat buttonMenuHeight  = 44.f;
         /// 在滑动时将顶部headerView 放置到View上
         [self _replaceHeaderViewFromScrollViewToView];
         [self _initSubViewControllersWithIndex:page];
-        _menu.selectedItemIndex = page;
+//        _menu.selectedItemIndex = page;
         return;
     };
     

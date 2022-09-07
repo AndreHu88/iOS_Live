@@ -10,7 +10,7 @@
 #import "HYMyFollowViewController.h"
 #import "HYMyAlbumViewController.h"
 
-@interface HYUserProfileViewController () <HYSuspendViewControllerDataSource,HYSuspendViewControllerDelegate,SDCycleScrollViewDelegate>
+@interface HYUserProfileViewController () <HYSuspendViewControllerDataSource,SDCycleScrollViewDelegate>
 
 @end
 
@@ -38,7 +38,19 @@
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    [self setupNav];
+}
+
+- (void)setupNav{
+    
+    [super setupNav];
+    self.edgesForExtendedLayout = UIRectEdgeTop;
+    [self wr_setNavBarBarTintColor:KAPP_THEME_COLOR];
+    [self wr_setNavBarTitleColor:KAPP_THEME_COLOR];
+    [self wr_setNavBarBackgroundAlpha:0];
+    [self wr_setNavBarShadowImageHidden:YES];
     
     
 }

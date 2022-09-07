@@ -125,6 +125,11 @@
 		B5902FA02101AEDA00DEA90A /* HYMyFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902F9F2101AEDA00DEA90A /* HYMyFollowViewController.m */; };
 		B5902FA32101AEF700DEA90A /* HYMyAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902FA22101AEF700DEA90A /* HYMyAlbumViewController.m */; };
 		B5902FA62101BE6F00DEA90A /* HYUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902FA52101BE6F00DEA90A /* HYUserProfileViewController.m */; };
+		B5902FAD210AF45B00DEA90A /* SSKeychain+HYCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902FAC210AF45B00DEA90A /* SSKeychain+HYCommon.m */; };
+		B5902FFE210EEF2600DEA90A /* HYUserInfoIconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5902FFD210EEF2600DEA90A /* HYUserInfoIconCell.m */; };
+		B5903004210EF25700DEA90A /* UIBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5903002210EF25700DEA90A /* UIBadgeView.m */; };
+		B5903007210EF79A00DEA90A /* UITableView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = B5903005210EF79A00DEA90A /* UITableView+Common.m */; };
+		B590300A210EF83300DEA90A /* UITapImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5903009210EF83300DEA90A /* UITapImageView.m */; };
 		B59B462920EF06A4009E3F24 /* HYTCPDataParse.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B462820EF06A4009E3F24 /* HYTCPDataParse.m */; };
 		B59B462F20EF47C0009E3F24 /* HYTCPSocketResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B462E20EF47C0009E3F24 /* HYTCPSocketResponse.m */; };
 		B59B463520EF647D009E3F24 /* HYTCPSocketHeartDetect.m in Sources */ = {isa = PBXBuildFile; fileRef = B59B463420EF647D009E3F24 /* HYTCPSocketHeartDetect.m */; };
@@ -563,6 +568,16 @@
 		B5902FA22101AEF700DEA90A /* HYMyAlbumViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYMyAlbumViewController.m; sourceTree = "<group>"; };
 		B5902FA42101BE6F00DEA90A /* HYUserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYUserProfileViewController.h; sourceTree = "<group>"; };
 		B5902FA52101BE6F00DEA90A /* HYUserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYUserProfileViewController.m; sourceTree = "<group>"; };
+		B5902FAB210AF45B00DEA90A /* SSKeychain+HYCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SSKeychain+HYCommon.h"; sourceTree = "<group>"; };
+		B5902FAC210AF45B00DEA90A /* SSKeychain+HYCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SSKeychain+HYCommon.m"; sourceTree = "<group>"; };
+		B5902FFC210EEF2600DEA90A /* HYUserInfoIconCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYUserInfoIconCell.h; sourceTree = "<group>"; };
+		B5902FFD210EEF2600DEA90A /* HYUserInfoIconCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYUserInfoIconCell.m; sourceTree = "<group>"; };
+		B5903002210EF25700DEA90A /* UIBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBadgeView.m; sourceTree = "<group>"; };
+		B5903003210EF25700DEA90A /* UIBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBadgeView.h; sourceTree = "<group>"; };
+		B5903005210EF79A00DEA90A /* UITableView+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Common.m"; sourceTree = "<group>"; };
+		B5903006210EF79A00DEA90A /* UITableView+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Common.h"; sourceTree = "<group>"; };
+		B5903008210EF83300DEA90A /* UITapImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITapImageView.h; sourceTree = "<group>"; };
+		B5903009210EF83300DEA90A /* UITapImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITapImageView.m; sourceTree = "<group>"; };
 		B59B462720EF06A4009E3F24 /* HYTCPDataParse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTCPDataParse.h; sourceTree = "<group>"; };
 		B59B462820EF06A4009E3F24 /* HYTCPDataParse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYTCPDataParse.m; sourceTree = "<group>"; };
 		B59B462D20EF47C0009E3F24 /* HYTCPSocketResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYTCPSocketResponse.h; sourceTree = "<group>"; };
@@ -768,6 +783,10 @@
 		042572C01FC56D8F0040A10A /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				B5903008210EF83300DEA90A /* UITapImageView.h */,
+				B5903009210EF83300DEA90A /* UITapImageView.m */,
+				B5903003210EF25700DEA90A /* UIBadgeView.h */,
+				B5903002210EF25700DEA90A /* UIBadgeView.m */,
 				0433B3DE1FDE81DC0089B34E /* HYLocationManager.h */,
 				0433B3DF1FDE81DD0089B34E /* HYLocationManager.m */,
 				042572C51FC56D8F0040A10A /* HYDateHandle.h */,
@@ -1128,6 +1147,8 @@
 				3EC4E132210DD5CF00089733 /* HYMineHeaderView.m */,
 				3EC4E134210DEA9700089733 /* HYTextFieldTableViewCell.h */,
 				3EC4E135210DEA9800089733 /* HYTextFieldTableViewCell.m */,
+				B5902FFC210EEF2600DEA90A /* HYUserInfoIconCell.h */,
+				B5902FFD210EEF2600DEA90A /* HYUserInfoIconCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1293,8 +1314,12 @@
 				B546910620E227EF0051571C /* UILabel+HYJustifyAlign.m */,
 				B546910220E227EF0051571C /* UITableViewCell+HYCommon.h */,
 				B546910320E227EF0051571C /* UITableViewCell+HYCommon.m */,
+				B5903006210EF79A00DEA90A /* UITableView+Common.h */,
+				B5903005210EF79A00DEA90A /* UITableView+Common.m */,
 				B546910520E227EF0051571C /* UIView+HYCommon.h */,
 				B546910920E227F00051571C /* UIView+HYCommon.m */,
+				B5902FAB210AF45B00DEA90A /* SSKeychain+HYCommon.h */,
+				B5902FAC210AF45B00DEA90A /* SSKeychain+HYCommon.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1753,20 +1778,22 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-live/Pods-live-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-live/Pods-live-resources.sh",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
+				"${PODS_ROOT}/SSKeychain/Support/SSKeychain.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCConfig.plist",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SSKeychain.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-live/Pods-live-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-live/Pods-live-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8535024AC68D6FA0879060AD /* [CP] Check Pods Manifest.lock */ = {
@@ -1798,6 +1825,7 @@
 				3EC4E133210DD5CF00089733 /* HYMineHeaderView.m in Sources */,
 				B5C1E76220C51F7C00933D35 /* HYBaseCellModel.h in Sources */,
 				B52D66F920C8DC7700010200 /* HYEmotionGroupModel.m in Sources */,
+				B590300A210EF83300DEA90A /* UITapImageView.m in Sources */,
 				B5C1E76320C51F7C00933D35 /* HYBaseNetworkModel.h in Sources */,
 				046E5BB31FD92A2D00ED04FA /* HYSmallVideoModel.m in Sources */,
 				B59B463520EF647D009E3F24 /* HYTCPSocketHeartDetect.m in Sources */,
@@ -1883,7 +1911,9 @@
 				042C22AF1FCD590F00DFD274 /* HYHotLiveModel.m in Sources */,
 				042572AA1FC56CF30040A10A /* AppDelegate.m in Sources */,
 				B54690D920DC916F0051571C /* HYGiftAnimationView.m in Sources */,
+				B5903007210EF79A00DEA90A /* UITableView+Common.m in Sources */,
 				04875B6F1FD95D6D0031FDA8 /* HYImageInteractivePushAnimation.m in Sources */,
+				B5902FAD210AF45B00DEA90A /* SSKeychain+HYCommon.m in Sources */,
 				042572E31FC56D8F0040A10A /* HYDateHandle.m in Sources */,
 				3EC4E136210DEA9800089733 /* HYTextFieldTableViewCell.m in Sources */,
 				B54690FF20E226280051571C /* HYButton.m in Sources */,
@@ -1891,6 +1921,7 @@
 				B5C1E6F020BE728100933D35 /* HYLyricHandleTool.m in Sources */,
 				042C22B71FCD590F00DFD274 /* HYMineViewController.m in Sources */,
 				B546910D20E227F00051571C /* UIView+HYCommon.m in Sources */,
+				B5903004210EF25700DEA90A /* UIBadgeView.m in Sources */,
 				B54690FC20E226280051571C /* JRToast.m in Sources */,
 				042C22DE1FCE89BE00DFD274 /* HYChatRoomCell.m in Sources */,
 				042C22E41FCE8A3500DFD274 /* HYChatRoomManager.m in Sources */,
@@ -1899,6 +1930,7 @@
 				042572FB1FC574FE0040A10A /* HYBaseViewController.m in Sources */,
 				042C22AB1FCD590F00DFD274 /* HYHomeViewController.m in Sources */,
 				B54690E220E0AFFE0051571C /* HYChatToolView.m in Sources */,
+				B5902FFE210EEF2600DEA90A /* HYUserInfoIconCell.m in Sources */,
 				042C22B61FCD590F00DFD274 /* HYLiveViewModel.m in Sources */,
 				04CAEE7D1FF233CC001127B5 /* HYHomeLaunchView.m in Sources */,
 				B546911920E22DFA0051571C /* PanelView.m in Sources */,

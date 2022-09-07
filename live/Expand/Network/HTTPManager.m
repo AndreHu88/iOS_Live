@@ -65,20 +65,21 @@ static HTTPManager *httpManager;
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/plain", @"text/html", nil];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.requestSerializer.timeoutInterval = 10.0f;
-    
+    DLog(@"url: %@ \nparam: %@", urlString, para);
     if (type == RequestTypeGet) {
         
         [manager GET:urlString parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
             [HYLoadingManager dismissLoadingView];
             successBlock(responseObject);
+            DLog(@"%@", responseObject);
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
             successBlock(nil);
             [HYLoadingManager dismissLoadingView];
             [JRToast showWithText:@"少年，服务器游走去了"];
-            
+            DLog(@"%@", error);
         }];
     }
     else{
@@ -91,12 +92,15 @@ static HTTPManager *httpManager;
                 
             });
             successBlock(responseObject);
+            DLog(@"%@", responseObject);
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
             [HYLoadingManager dismissLoadingView];
             successBlock(nil);
             [JRToast showWithText:@"少年，服务器游走去了"];
+            DLog(@"%@", error);
+
         }];
     }
     

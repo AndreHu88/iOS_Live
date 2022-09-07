@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "99F13EE05F59555D7102A2ACD626AF74"
+               BlueprintIdentifier = "758C103E34A7A434A5444B2E4D25BABF"
                BlueprintName = "SPPageMenu"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libSPPageMenu.a">
