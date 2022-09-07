@@ -94,6 +94,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    [tableView deselectRowAtIndexPath: indexPath animated: true];
+    
     HYMusicModel *musicModel = [HYMusicHandleTool shareInstance].musicList[indexPath.row];
     HYMusicPlayerVC *playerVC = [HYMusicPlayerVC new];
     playerVC.musicModel = musicModel;

@@ -21,7 +21,7 @@
 
     [self setupNav];
     self.view.backgroundColor = KAPP_TableView_BgColor;
-    [self setStatusBarBackgroundColor:[UIColor clearColor]];
+//    [self setStatusBarBackgroundColor:[UIColor clearColor]];
     
 }
 
@@ -175,11 +175,11 @@
 //设置状态栏颜色
 - (void)setStatusBarBackgroundColor:(UIColor *)color {
     
-    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
-    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
-        
-        statusBar.backgroundColor = color;
-    }
+//    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+//    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+//        
+//        statusBar.backgroundColor = color;
+//    }
 }
 
 

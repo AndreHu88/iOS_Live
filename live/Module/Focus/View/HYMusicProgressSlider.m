@@ -38,6 +38,8 @@
     //给sliderView添加一个点击手势
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sliderTapped:)];
     [self addGestureRecognizer:tapGes];
+    
+    [self setupMasonryLayout];
 }
 
 - (void)setupMasonryLayout{
@@ -61,29 +63,6 @@
         make.centerY.equalTo(self);
         make.height.mas_equalTo(self.height / 2);
         make.left.equalTo(self);
-    }];
-}
-
-- (void)layoutSubviews{
-    
-    [super layoutSubviews];
-    [self.progressBgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.centerY.equalTo(self);
-        make.height.mas_equalTo(2);
-        make.left.right.equalTo(self);
-    }];
-    
-    [self.sliderProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
-       
-        make.left.equalTo(self);
-        make.top.bottom.equalTo(self.progressBgView);
-    }];
-    
-    [self.sliderBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self);
-        make.centerY.equalTo(self);
-        make.size.mas_equalTo(CGSizeMake(15 * WIDTH_MULTIPLE, 15 * WIDTH_MULTIPLE));
     }];
 }
 

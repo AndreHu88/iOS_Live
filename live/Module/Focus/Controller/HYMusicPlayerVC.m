@@ -38,7 +38,7 @@
     
     [super viewWillAppear:animated];
     [self setupNav];
-    [self setupLockScreenControlInfo];
+//    [self setupLockScreenControlInfo];
 }
 
 - (void)setupNav{
